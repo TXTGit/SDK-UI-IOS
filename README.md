@@ -1,5 +1,4 @@
-# Kandy-UI
-Base on the Kandy ios sdk to build the UI component. In order to integrate more earlier.
+# KandySDKDemo
 
 #reference url
 ###https://www.kandy.io/
