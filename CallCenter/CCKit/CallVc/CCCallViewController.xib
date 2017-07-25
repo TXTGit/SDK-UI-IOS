@@ -344,11 +344,10 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ORi-g0-c4o">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.91299623249999995" green="0.92831248040000003" blue="0.99467796090000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="10z-q1-Bqb">
                     <rect key="frame" x="263" y="17" width="112" height="138"/>
-                    <color key="backgroundColor" red="0.91299623249999995" green="0.92831248040000003" blue="0.99467796090000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="112" id="U25-ch-b7o"/>
                         <constraint firstAttribute="height" constant="138" id="Wpo-Ee-Lh5"/>

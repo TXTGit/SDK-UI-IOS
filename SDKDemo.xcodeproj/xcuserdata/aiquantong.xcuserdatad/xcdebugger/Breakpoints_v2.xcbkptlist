@@ -169,8 +169,8 @@
                   symbolName = "__45-[CCMPVSettingCallViewController viewDidLoad]_block_invoke"
                   moduleName = "SDKDemo"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aiquantong/Documents/genband/code/Haier/CallCenter/CCKit/MPVVc/CCMPVSettingCallViewController.m"
-                  timestampString = "522667727.760951"
+                  urlString = "file:///Users/aiquantong/Documents/genband/code/sdkDemo/CallCenter/CCKit/MPVVc/CCMPVSettingCallViewController.m"
+                  timestampString = "522675097.519467"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
@@ -184,8 +184,8 @@
                   symbolName = "__45-[CCMPVSettingCallViewController viewDidLoad]_block_invoke_2"
                   moduleName = "SDKDemo"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aiquantong/Documents/genband/code/Haier/CallCenter/CCKit/MPVVc/CCMPVSettingCallViewController.m"
-                  timestampString = "522667727.762403"
+                  urlString = "file:///Users/aiquantong/Documents/genband/code/sdkDemo/CallCenter/CCKit/MPVVc/CCMPVSettingCallViewController.m"
+                  timestampString = "522675097.520954"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
@@ -241,6 +241,54 @@
             endingLineNumber = "99"
             landmarkName = "-onclickCamera:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CallCenter/CCKit/MPVVc/CCMPVCallViewController.m"
+            timestampString = "522675095.835566"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "-onclickHangup:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__41-[CCMPVCallViewController onclickHangup:]_block_invoke"
+                  moduleName = "SDKDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aiquantong/Documents/genband/code/sdkDemo/CallCenter/CCKit/MPVVc/CCMPVCallViewController.m"
+                  timestampString = "522675097.489992"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "292"
+                  endingLineNumber = "292"
+                  offsetFromSymbolStart = "593">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__41-[CCMPVCallViewController onclickHangup:]_block_invoke_2"
+                  moduleName = "SDKDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aiquantong/Documents/genband/code/sdkDemo/CallCenter/CCKit/MPVVc/CCMPVCallViewController.m"
+                  timestampString = "522675097.491519"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "292"
+                  endingLineNumber = "292"
+                  offsetFromSymbolStart = "21">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

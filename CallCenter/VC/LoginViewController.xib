@@ -53,7 +53,7 @@
                                 <constraint firstAttribute="height" constant="35" id="4eH-78-c5n"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                            <textInputTraits key="textInputTraits"/>
                         </textField>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -99,7 +99,7 @@
                     </variation>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SDKDemo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIb-j0-Dnd">
-                    <rect key="frame" x="119" y="54" width="138" height="35"/>
+                    <rect key="frame" x="118.5" y="54" width="138" height="35"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="138" id="FLk-eP-Zzl"/>
                         <constraint firstAttribute="height" constant="35" id="uLL-3N-wnY"/>
@@ -167,7 +167,7 @@
                                 <constraint firstAttribute="height" constant="35" id="tl8-Dp-tnH"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                            <textInputTraits key="textInputTraits"/>
                         </textField>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

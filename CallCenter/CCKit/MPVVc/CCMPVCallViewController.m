@@ -32,7 +32,6 @@
 @property(nonatomic, strong) IBOutlet UIButton *callAudioSwitchMuteButton;
 @property(nonatomic, strong) IBOutlet UIButton *callAudioSwitchSpeakerButton;
 
-
 @property(nonatomic, strong) IBOutlet UIView *callVideoView;
 @property(nonatomic, strong) IBOutlet UIView *callRemoteView;
 @property (nonatomic, strong) IBOutlet UILabel *callVideoCallSourceLabel;
@@ -390,10 +389,16 @@
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
-    return (UIInterfaceOrientationMaskPortrait |
-            UIInterfaceOrientationMaskLandscapeRight);
-    
+    if ([[CallModule shareInstance] checkCurrentCallIsVideo]) {
+        self.callVideoView.frame = self.view.frame;
+        return (UIInterfaceOrientationMaskPortrait |
+                UIInterfaceOrientationMaskLandscapeRight);
+    }else{
+        self.callAudioView.frame = self.view.frame;
+        return (UIInterfaceOrientationMaskPortrait);
+    }
 }
+
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
