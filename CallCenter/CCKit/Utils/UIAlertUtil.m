@@ -130,7 +130,7 @@ static UIAlertUtil *shareInstance;
             va_start(arguments, otherButtonTitles);
             
             while ((otherButtonTitlesther = va_arg(arguments, id))) {
-                UIAlertAction *ok2 = [UIAlertAction actionWithTitle:otherButtonTitles
+                UIAlertAction *ok2 = [UIAlertAction actionWithTitle:otherButtonTitlesther
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction *action) {
                                                                 alertCallBack(i);
