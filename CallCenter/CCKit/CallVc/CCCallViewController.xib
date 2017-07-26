@@ -102,6 +102,7 @@
                             </constraints>
                             <state key="normal" image="call_action_refuse.png"/>
                             <connections>
+                                <action selector="onclickHangup:" destination="-1" eventType="touchUpInside" id="3Ci-rI-sBI"/>
                                 <action selector="onclickRefuse:" destination="-1" eventType="touchUpInside" id="ge4-i0-fx3"/>
                             </connections>
                         </button>

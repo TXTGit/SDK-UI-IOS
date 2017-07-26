@@ -296,6 +296,7 @@
 
 -(IBAction)onclickRefuse:(id)sender
 {
+    [(UIButton *)sender setEnabled:NO];
     [CCKitManger reject:^(NSError *error) {
 
     }];
@@ -307,6 +308,7 @@
 {
     [self stopTimer];
     
+    [(UIButton *)sender setEnabled:NO];
     [CCKitManger hangup:^(NSError *error) {
 
     }];
