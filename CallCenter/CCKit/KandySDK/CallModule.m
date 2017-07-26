@@ -112,7 +112,7 @@
             callModuleState = CALLModuleState_terminated;
             [TonePlayer stopTonePlayer];
             [TonePlayer stopRingSound];
-            [TonePlayer startOverSound];
+            [TonePlayer startOverSound:RING_TYPE_OVER_HANGUP];
             
             self.currentIncomingCall = nil;
             self.outgoingCall = nil;
@@ -130,7 +130,7 @@
             callModuleState = CALLModuleState_unknown;
             [TonePlayer stopTonePlayer];
             [TonePlayer stopRingSound];
-            [TonePlayer startOverSound];
+            [TonePlayer startOverSound:RING_TYPE_OVER_HANGUP];
             
             self.currentIncomingCall = nil;
             self.outgoingCall = nil;
@@ -433,7 +433,8 @@ static CallModule *shareInstance = nil;
             if(callback) callback(rerror);
         }else{
             if(callback) callback(nil);
-            [TonePlayer startRingSound];
+            
+            [TonePlayer startRingSound:RING_TYPE_CONNECTING];
             typeof(self) strongself = weekSelf;
             if(strongself){
                 [strongself setupCameraResolution];
@@ -862,7 +863,7 @@ static CallModule *shareInstance = nil;
                  callback(nil);
              }
              
-             [TonePlayer startRingSound];
+             [TonePlayer startRingSound:RING_TYPE_CONNECTING];
              
              [toutgoingCall establishWithResponseBlock:^(NSError *error) {
                  KDALog(@"establishWithResponseBlock error === %@", [error description]);

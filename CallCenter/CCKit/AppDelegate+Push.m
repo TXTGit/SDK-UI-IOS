@@ -181,6 +181,8 @@ static char Object_NotificationsList;
     }
     
     if (messageType && [messageType isEqualToString:@"incomingCall"]) {
+        [TonePlayer startTonePlayerWithOneTime];
+        
         NSString *alertBodyStr = @"你有一个来电：";
         NSDictionary *senderDic = [dic objectForKey:@"sender"];
         if (senderDic) {
@@ -194,7 +196,7 @@ static char Object_NotificationsList;
                 alertBodyStr = [NSString stringWithFormat:@"%@ %@", alertBodyStr, userId];
             }
         }
-        
+
         notification.alertBody = alertBodyStr;
         notification.category = @"comingCall";
         notification.userInfo = dic;

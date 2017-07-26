@@ -43,10 +43,6 @@
 		2821C2401F1F75300034FDAA /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821C21F1F1F75300034FDAA /* UIView+Toast.m */; };
 		2821C2411F1F75300034FDAA /* AccessModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821C2221F1F75300034FDAA /* AccessModule.m */; };
 		2821C2431F1F75300034FDAA /* CallModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821C2261F1F75300034FDAA /* CallModule.m */; };
-		2821C2451F1F75300034FDAA /* busytone.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 2821C22A1F1F75300034FDAA /* busytone.m4r */; };
-		2821C2461F1F75300034FDAA /* ringbacktone.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 2821C22B1F1F75300034FDAA /* ringbacktone.m4r */; };
-		2821C2471F1F75300034FDAA /* ringtone.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 2821C22C1F1F75300034FDAA /* ringtone.m4r */; };
-		2821C2481F1F75300034FDAA /* TonePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821C22E1F1F75300034FDAA /* TonePlayer.m */; };
 		2821C2491F1F75300034FDAA /* KandyAdpter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821C2301F1F75300034FDAA /* KandyAdpter.m */; };
 		2821C24A1F1F75300034FDAA /* KandySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2821C2311F1F75300034FDAA /* KandySDK.framework */; };
 		2821C24B1F1F75300034FDAA /* CustomSDKLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821C2341F1F75300034FDAA /* CustomSDKLogger.m */; };
@@ -104,6 +100,12 @@
 		287694DF1D1A6E2200AEECB8 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287694C01D1A6E2200AEECB8 /* VideoToolbox.framework */; };
 		2885F1E31F205AB3005F2E71 /* ConferenceModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 2885F1E21F205AB3005F2E71 /* ConferenceModule.m */; };
 		2885F1F51F2088D7005F2E71 /* AppDelegate+Push.m in Sources */ = {isa = PBXBuildFile; fileRef = 2885F1F41F2088D7005F2E71 /* AppDelegate+Push.m */; };
+		289C7EC61F284A5500C7924D /* busytone.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 289C7EBF1F284A5500C7924D /* busytone.m4r */; };
+		289C7EC71F284A5500C7924D /* connecting.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 289C7EC01F284A5500C7924D /* connecting.m4r */; };
+		289C7EC81F284A5500C7924D /* hangup.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 289C7EC11F284A5500C7924D /* hangup.m4r */; };
+		289C7EC91F284A5500C7924D /* ringbacktone.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 289C7EC21F284A5500C7924D /* ringbacktone.m4r */; };
+		289C7ECA1F284A5500C7924D /* ringtone.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 289C7EC31F284A5500C7924D /* ringtone.m4r */; };
+		289C7ECB1F284A5500C7924D /* TonePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 289C7EC51F284A5500C7924D /* TonePlayer.m */; };
 		28AB39E21E77DB1900A04FDD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AB39E11E77DB1900A04FDD /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
@@ -157,11 +159,6 @@
 		2821C2221F1F75300034FDAA /* AccessModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessModule.m; sourceTree = "<group>"; };
 		2821C2251F1F75300034FDAA /* CallModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallModule.h; sourceTree = "<group>"; };
 		2821C2261F1F75300034FDAA /* CallModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallModule.m; sourceTree = "<group>"; };
-		2821C22A1F1F75300034FDAA /* busytone.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = busytone.m4r; sourceTree = "<group>"; };
-		2821C22B1F1F75300034FDAA /* ringbacktone.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = ringbacktone.m4r; sourceTree = "<group>"; };
-		2821C22C1F1F75300034FDAA /* ringtone.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = ringtone.m4r; sourceTree = "<group>"; };
-		2821C22D1F1F75300034FDAA /* TonePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TonePlayer.h; sourceTree = "<group>"; };
-		2821C22E1F1F75300034FDAA /* TonePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TonePlayer.m; sourceTree = "<group>"; };
 		2821C22F1F1F75300034FDAA /* KandyAdpter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KandyAdpter.h; sourceTree = "<group>"; };
 		2821C2301F1F75300034FDAA /* KandyAdpter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KandyAdpter.m; sourceTree = "<group>"; };
 		2821C2311F1F75300034FDAA /* KandySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KandySDK.framework; sourceTree = "<group>"; };
@@ -237,6 +234,13 @@
 		2885F1E21F205AB3005F2E71 /* ConferenceModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConferenceModule.m; sourceTree = "<group>"; };
 		2885F1F31F2088D7005F2E71 /* AppDelegate+Push.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Push.h"; sourceTree = "<group>"; };
 		2885F1F41F2088D7005F2E71 /* AppDelegate+Push.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Push.m"; sourceTree = "<group>"; };
+		289C7EBF1F284A5500C7924D /* busytone.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = busytone.m4r; sourceTree = "<group>"; };
+		289C7EC01F284A5500C7924D /* connecting.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = connecting.m4r; sourceTree = "<group>"; };
+		289C7EC11F284A5500C7924D /* hangup.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = hangup.m4r; sourceTree = "<group>"; };
+		289C7EC21F284A5500C7924D /* ringbacktone.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = ringbacktone.m4r; sourceTree = "<group>"; };
+		289C7EC31F284A5500C7924D /* ringtone.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = ringtone.m4r; sourceTree = "<group>"; };
+		289C7EC41F284A5500C7924D /* TonePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TonePlayer.h; sourceTree = "<group>"; };
+		289C7EC51F284A5500C7924D /* TonePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TonePlayer.m; sourceTree = "<group>"; };
 		28AB39E11E77DB1900A04FDD /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -398,6 +402,9 @@
 		2821C2201F1F75300034FDAA /* KandySDK */ = {
 			isa = PBXGroup;
 			children = (
+				289C7EBE1F284A5500C7924D /* Data */,
+				289C7EC41F284A5500C7924D /* TonePlayer.h */,
+				289C7EC51F284A5500C7924D /* TonePlayer.m */,
 				2821C22F1F1F75300034FDAA /* KandyAdpter.h */,
 				2821C2301F1F75300034FDAA /* KandyAdpter.m */,
 				2821C2211F1F75300034FDAA /* AccessModule.h */,
@@ -410,23 +417,10 @@
 				2821C2361F1F75300034FDAA /* ProvisionModule.m */,
 				2821C2371F1F75300034FDAA /* SystemModule.h */,
 				2821C2381F1F75300034FDAA /* SystemModule.m */,
-				2821C2291F1F75300034FDAA /* Data */,
 				2821C2311F1F75300034FDAA /* KandySDK.framework */,
 				2821C2321F1F75300034FDAA /* log */,
 			);
 			path = KandySDK;
-			sourceTree = "<group>";
-		};
-		2821C2291F1F75300034FDAA /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				2821C22A1F1F75300034FDAA /* busytone.m4r */,
-				2821C22B1F1F75300034FDAA /* ringbacktone.m4r */,
-				2821C22C1F1F75300034FDAA /* ringtone.m4r */,
-				2821C22D1F1F75300034FDAA /* TonePlayer.h */,
-				2821C22E1F1F75300034FDAA /* TonePlayer.m */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 		2821C2321F1F75300034FDAA /* log */ = {
@@ -583,6 +577,18 @@
 			name = newFramework;
 			sourceTree = "<group>";
 		};
+		289C7EBE1F284A5500C7924D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				289C7EBF1F284A5500C7924D /* busytone.m4r */,
+				289C7EC01F284A5500C7924D /* connecting.m4r */,
+				289C7EC11F284A5500C7924D /* hangup.m4r */,
+				289C7EC21F284A5500C7924D /* ringbacktone.m4r */,
+				289C7EC31F284A5500C7924D /* ringtone.m4r */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -648,31 +654,33 @@
 				281B1EE61F25D9C70004178B /* CCMPVRoomListViewController.xib in Resources */,
 				2821C1D01F1F5E0F0034FDAA /* voice_blue@2x.png in Resources */,
 				2821C19F1F1F5E0F0034FDAA /* call_action_refuse@2x.png in Resources */,
+				289C7EC61F284A5500C7924D /* busytone.m4r in Resources */,
 				281B1ECA1F25BCED0004178B /* CCMPVInviteViewController.xib in Resources */,
 				2821C1CE1F1F5E0F0034FDAA /* speacker_close@2x.png in Resources */,
 				2821C25A1F1F75FF0034FDAA /* SupportViewController.xib in Resources */,
 				281B1EC41F25BC350004178B /* CCCallViewController.xib in Resources */,
+				289C7EC91F284A5500C7924D /* ringbacktone.m4r in Resources */,
 				2821C1AE1F1F5E0F0034FDAA /* mic_close@2x.png in Resources */,
 				281B1EEF1F25F46B0004178B /* mpv_setting@2x.png in Resources */,
-				2821C2471F1F75300034FDAA /* ringtone.m4r in Resources */,
 				28AB39E21E77DB1900A04FDD /* LaunchScreen.xib in Resources */,
 				2821C1AF1F1F5E0F0034FDAA /* mic_open@2x.png in Resources */,
-				2821C2461F1F75300034FDAA /* ringbacktone.m4r in Resources */,
 				281B1EF61F25FE040004178B /* MBProgressHUD.bundle in Resources */,
 				2821C1A21F1F5E0F0034FDAA /* camera_switch@2x.png in Resources */,
 				281B1ECC1F25C4E30004178B /* mpv_add@2x.png in Resources */,
+				289C7EC81F284A5500C7924D /* hangup.m4r in Resources */,
 				2821C1A11F1F5E0F0034FDAA /* camera_open@2x.png in Resources */,
 				2821C1CF1F1F5E0F0034FDAA /* speacker_open@2x.png in Resources */,
 				2848D56A1F271262003BB0E9 /* MPVMemTableViewCell.xib in Resources */,
 				2821C1D41F1F5E0F0034FDAA /* VoipVoiceCall@2x.png in Resources */,
+				289C7EC71F284A5500C7924D /* connecting.m4r in Resources */,
 				2821C1D21F1F5E0F0034FDAA /* voice_red@2x.png in Resources */,
 				281B1EE11F25D9260004178B /* CCMPVCallViewController.xib in Resources */,
 				2821C1A01F1F5E0F0034FDAA /* camera_close@2x.png in Resources */,
 				2848D5641F270E60003BB0E9 /* mpv_setting_icon@2x.png in Resources */,
+				289C7ECA1F284A5500C7924D /* ringtone.m4r in Resources */,
 				2821C19D1F1F5E0F0034FDAA /* call_action_accept@2x.png in Resources */,
 				2821C19E1F1F5E0F0034FDAA /* call_action_hold@2x.png in Resources */,
 				2821C1D31F1F5E0F0034FDAA /* VoipVideoCall@2x.png in Resources */,
-				2821C2451F1F75300034FDAA /* busytone.m4r in Resources */,
 				2848D5621F270D40003BB0E9 /* mpv_setting_close@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -694,9 +702,9 @@
 				281B1EC91F25BCED0004178B /* CCMPVInviteViewController.m in Sources */,
 				2821C23E1F1F75300034FDAA /* MBProgressHUD+Add.m in Sources */,
 				2821C2591F1F75FF0034FDAA /* SupportViewController.m in Sources */,
-				2821C2481F1F75300034FDAA /* TonePlayer.m in Sources */,
 				2821C1D81F1F5F320034FDAA /* CCBasicViewController.m in Sources */,
 				2821C24E1F1F75300034FDAA /* UIAlertUtil.m in Sources */,
+				289C7ECB1F284A5500C7924D /* TonePlayer.m in Sources */,
 				2848D5601F26EDC0003BB0E9 /* BasicNavViewController.m in Sources */,
 				281B1EF31F25F59C0004178B /* CCMPVSettingCallViewController.m in Sources */,
 				2821C2431F1F75300034FDAA /* CallModule.m in Sources */,
