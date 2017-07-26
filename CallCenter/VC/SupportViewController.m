@@ -33,7 +33,8 @@
 
 -(IBAction)onclickCall:(id)sender
 {
-    [CCKitManger callWithIsPstn:NO
+    [CCKitManger
+     callWithIsPstn:NO
      isWithVideo:self.switchVideo.isOn
      callee:self.iphoneTxt.text
      callback:^(NSError *error) {

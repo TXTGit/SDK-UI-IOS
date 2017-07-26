@@ -102,6 +102,8 @@
 //MPV的流程和CALL流程相比，MPV流程是在Call的流程上加入房间管理的功能
 //及call这个会议前需要join这个房间，挂断需要leave这个房间
 
+
+//创建房间和邀请成员
 +(void)createRoomAndInvite:(NSArray *)inviteeArr callback:(KandyCallback)callback;
 {
     [[ConferenceModule shareInstance]
@@ -110,6 +112,21 @@
          if (callback) {
              callback(error);
          }
+    }];
+}
+
+
+//接受会议
+//error 为nil 请在 callback 中执行跳转到
+//参考 -(void)onInviteReceived:(KandyMultiPartyConferenceInvite*)inviteEvent;
+//实现逻辑
+
++(void)conferenceAccept:(KandyCallback)callback;
+{
+    [[ConferenceModule shareInstance] acceptConference:^(NSError *error) {
+        if (callback) {
+            callback(error);
+        }
     }];
 }
 
@@ -126,7 +143,6 @@
         }
     }];
 }
-
 
 //挂断会议
 +(void)conferenceHangup:(KandyCallback)callback;

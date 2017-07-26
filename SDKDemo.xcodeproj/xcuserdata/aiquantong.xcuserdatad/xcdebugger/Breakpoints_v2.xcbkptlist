@@ -170,7 +170,7 @@
                   moduleName = "SDKDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/aiquantong/Documents/genband/code/sdkDemo/CallCenter/CCKit/MPVVc/CCMPVSettingCallViewController.m"
-                  timestampString = "522675097.519467"
+                  timestampString = "522676331.930607"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
@@ -185,7 +185,7 @@
                   moduleName = "SDKDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/aiquantong/Documents/genband/code/sdkDemo/CallCenter/CCKit/MPVVc/CCMPVSettingCallViewController.m"
-                  timestampString = "522675097.520954"
+                  timestampString = "522676331.935289"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
@@ -266,7 +266,7 @@
                   moduleName = "SDKDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/aiquantong/Documents/genband/code/sdkDemo/CallCenter/CCKit/MPVVc/CCMPVCallViewController.m"
-                  timestampString = "522675097.489992"
+                  timestampString = "522676331.963612"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "292"
@@ -281,7 +281,7 @@
                   moduleName = "SDKDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/aiquantong/Documents/genband/code/sdkDemo/CallCenter/CCKit/MPVVc/CCMPVCallViewController.m"
-                  timestampString = "522675097.491519"
+                  timestampString = "522676331.966431"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "292"
@@ -289,6 +289,22 @@
                   offsetFromSymbolStart = "21">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CallCenter/CCKit/Utils/UIAlertUtil.m"
+            timestampString = "522676164.060443"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "+showAlertWithPersentViewController:alertCallBack:title:message:cancelButtonTitle:otherButtonTitles:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

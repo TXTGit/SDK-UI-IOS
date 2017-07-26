@@ -46,8 +46,10 @@
 #pragma mark MPV
 //MPV的流程和CALL流程相比，MPV流程是在Call的流程上加入房间管理的功能
 //及call这个会议前需要join这个房间，挂断需要leave这个房间
-
 +(void)createRoomAndInvite:(NSArray *)inviteeArr callback:(KandyCallback)callback;
+
+//接受会议
++(void)conferenceAccept:(KandyCallback)callback;
 
 //拒绝会议
 +(void)conferenceReject:(KandyCallback)callback;

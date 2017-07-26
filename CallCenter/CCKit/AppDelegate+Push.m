@@ -41,7 +41,7 @@ static char Object_NotificationsList;
 {
     [self willChangeValueForKey:@"notificationsList"];
     objc_setAssociatedObject(self, &Object_NotificationsList, notificationsList, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    [self didChangeValueForKey:@"pushRegistry"];
+    [self didChangeValueForKey:@"notificationsList"];
 }
 
 
