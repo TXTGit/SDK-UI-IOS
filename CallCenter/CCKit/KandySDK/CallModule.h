@@ -26,6 +26,8 @@ typedef NS_ENUM(NSInteger, CALLModuleState){
 
 -(void)callModuleStateChanged:(CALLModuleState)callState;
 
+-(void)callModuleVideoStateChanged:(BOOL)isReceiveVideo isSendVideo:(BOOL)isSendVideo;
+
 @end
 
 @interface CallModule : NSObject

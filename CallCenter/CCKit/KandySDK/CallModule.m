@@ -151,9 +151,13 @@
     KDALog(@"participantsChanged");
 }
 
+
 -(void) videoStateChangedForCall:(id<KandyCallProtocol>)call {
     KDALog(@"videoStateChangedForCall");
     
+    if (self.delegate && [self.delegate respondsToSelector:@selector(callModuleVideoStateChanged:isSendVideo:)]) {
+        [self.delegate callModuleVideoStateChanged:call.isReceivingVideo isSendVideo:call.isSendingVideo];
+    }
 }
 
 
@@ -164,6 +168,7 @@
 -(void) videoCallImageOrientationChanged:(EKandyVideoCallImageOrientation)newImageOrientation forCall:(id<KandyCallProtocol>)call {
     KDALog(@"videoCallImageOrientationChanged");
 }
+
 
 -(void) availableAudioOutputChanged:(NSArray*)updatedAvailableAudioOutputs {
     KDALog(@"availableAudioOutputChanged");
@@ -507,6 +512,9 @@ static CallModule *shareInstance = nil;
  */
 -(void)reject:(KandyCallback)callback
 {
+    [TonePlayer stopTonePlayer];
+    [TonePlayer stopRingSound];
+    [TonePlayer startOverSound:RING_TYPE_OVER_HANGUP];
     
     if (!self.currentIncomingCall) {
         if(callback){

@@ -10,7 +10,10 @@
 #import "../KandySDK/CallModule.h"
 #import "CCKitManger.h"
 
-@interface CCCallViewController ()<CallModuleDelagate>
+#define smallView_Width  150
+#define smallView_Height 150
+
+@interface CCCallViewController ()<CallModuleDelagate, UIGestureRecognizerDelegate>
 {
     NSDate *startDate;
     NSTimer *timer;
@@ -20,6 +23,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *callTypeLabel;
 @property (nonatomic, strong) IBOutlet UILabel *callStateLabel;
 @property (nonatomic, strong) IBOutlet UILabel *callSourceLabel;
+@property(nonatomic, strong) IBOutlet UIView *localView;
 
 @property(nonatomic, strong) IBOutlet UIView *receiveCallActionView;
 @property(nonatomic, strong) IBOutlet UIButton *recceptButton;
@@ -37,7 +41,16 @@
 
 @property(nonatomic, strong) IBOutlet UIView *callView;
 @property(nonatomic, strong) IBOutlet UIView *callRemoteView;
+@property(nonatomic, strong) IBOutlet NSLayoutConstraint *callRemoteTop;
+@property(nonatomic, strong) IBOutlet NSLayoutConstraint *callRemoteRight;
+@property(nonatomic, strong) IBOutlet NSLayoutConstraint *callRemoteWidth;
+@property(nonatomic, strong) IBOutlet NSLayoutConstraint *callRemoteHeight;
+
 @property(nonatomic, strong) IBOutlet UIView *callLocalView;
+@property(nonatomic, strong) IBOutlet NSLayoutConstraint *callLocalTop;
+@property(nonatomic, strong) IBOutlet NSLayoutConstraint *calllLocalRight;
+@property(nonatomic, strong) IBOutlet NSLayoutConstraint *calllLocalWidth;
+@property(nonatomic, strong) IBOutlet NSLayoutConstraint *calllLocalHeight;
 
 @property (nonatomic, strong) IBOutlet UILabel *callVideoCallSourceLabel;
 @property(nonatomic, strong) IBOutlet UILabel *callVideoTimeLabel;
@@ -85,8 +98,10 @@
     
     [CallModule shareInstance].delegate = self;
     if (currentCall.isIncomingCall) {
+        self.callStateLabel.text = @"响铃中";
         [self.receiveCallActionView setHidden:NO];
         [self.sendCallActionView setHidden:YES];
+        
     }else{
         self.callStateLabel.text = @"正在接通中";
         [self.receiveCallActionView setHidden:YES];
@@ -107,12 +122,17 @@
             }
         }];
     }
+
+    UITapGestureRecognizer *callLocalGestrue = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchVideoView:)];
+    [self.callLocalView addGestureRecognizer:callLocalGestrue];
+    
+    UITapGestureRecognizer *callRemoteGestrue = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchVideoView:)];
+    [self.callRemoteView addGestureRecognizer:callRemoteGestrue];
     
     if ([[CallModule shareInstance] checkCurrentCallIsVideo]) {
-        [[CallModule shareInstance] getCurrentCall].localVideoView = self.callLocalView;
-        [[CallModule shareInstance] getCurrentCall].remoteVideoView = self.callRemoteView;
+        [[CallModule shareInstance] getCurrentCall].localVideoView = self.localView;
     }
-
+    
 }
 
 
@@ -204,6 +224,83 @@
 }
 
 
+-(void)setBigView:(UIView *)view
+{
+    if (view == self.callRemoteView) {
+        self.callRemoteTop.constant = 0;
+        self.callRemoteRight.constant = 0;
+        self.callRemoteWidth.constant = self.view.bounds.size.width;
+        self.callRemoteHeight.constant = self.view.bounds.size.height;
+    }else if(view == self.callLocalView){
+        self.callLocalTop.constant = 0;
+        self.calllLocalRight.constant = 0;
+        self.calllLocalWidth.constant = self.view.bounds.size.width;
+        self.calllLocalHeight.constant = self.view.bounds.size.height;
+    }else{
+    
+    }
+    [self.callView sendSubviewToBack:view];
+}
+
+
+-(void)setSmallView:(UIView *)view
+{
+    if (view == self.callRemoteView) {
+        self.callRemoteTop.constant = 23;
+        self.callRemoteRight.constant = 0;
+        self.callRemoteWidth.constant = smallView_Width;
+        self.callRemoteHeight.constant = smallView_Height;
+    }else if(view == self.callLocalView){
+        self.callLocalTop.constant = 23;
+        self.calllLocalRight.constant = 0;
+        self.calllLocalWidth.constant = smallView_Width;
+        self.calllLocalHeight.constant = smallView_Height;
+    }else{
+        
+    }
+    [self.callView bringSubviewToFront:view];
+}
+
+
+-(void)callModuleVideoStateChanged:(BOOL)isReceiveVideo isSendVideo:(BOOL)isSendVideo;
+{
+    if (isReceiveVideo && isSendVideo) {
+        [self setBigView:self.callRemoteView];
+        [self.callRemoteView setHidden:NO];
+        [self setSmallView:self.callLocalView];
+        [self.callLocalView setHidden:NO];
+
+    }else if(isReceiveVideo){
+        [self.callRemoteView setHidden:NO];
+        [self setBigView:self.callRemoteView];
+        [self.callLocalView setHidden:YES];
+    }else if(isSendVideo){
+        [self.callRemoteView setHidden:YES];
+        [self setBigView:self.callLocalView];
+        [self.callLocalView setHidden:NO];
+    }else{
+        
+    }
+}
+
+static int i1ndex = 0;
+-(IBAction)touchVideoView:(id)sender
+{
+    if ([[CallModule shareInstance] getCurrentCall].isReceivingVideo &&
+        [[CallModule shareInstance] getCurrentCall].isSendingVideo) {
+        i1ndex++;
+        if( i1ndex % 2 ==0){
+            [self setBigView:self.callRemoteView];
+            [self setSmallView:self.callLocalView];
+        }else {
+            [self setBigView:self.callLocalView];
+            [self setSmallView:self.callRemoteView];
+        }
+    }
+}
+
+
+
 -(void)callModuleStateChanged:(CALLModuleState)callState
 {
     __weak typeof(self) weekself = self;
@@ -216,18 +313,24 @@
             
             break;
             
-            
-        case CALLModuleState_dialing:
-            
-            break;
-            
         case CALLModuleState_sessionProgress:
             
             break;
             
+        case CALLModuleState_dialing:
+        {
+            if ([[CallModule shareInstance] checkCurrentCallIsVideo]) {
+                [[CallModule shareInstance] getCurrentCall].localVideoView = self.localView;
+            }
+        }
+            break;
             
         case CALLModuleState_ringing:
-            
+        {
+            if ([[CallModule shareInstance] checkCurrentCallIsVideo]) {
+                [[CallModule shareInstance] getCurrentCall].localVideoView = self.localView;
+            }
+        }
             break;
             
             
@@ -247,6 +350,9 @@
                         self.callView.frame = self.view.frame;
                         [self.view addSubview:self.callView];
                         [blockself initVideoCallButtonImage];
+                        
+                        [[CallModule shareInstance] getCurrentCall].localVideoView = self.callLocalView;
+                        [[CallModule shareInstance] getCurrentCall].remoteVideoView = self.callRemoteView;
                     }else{
                         self.callAudioView.frame = self.view.frame;
                         [self.view addSubview:self.callAudioView];
@@ -282,6 +388,7 @@
 
 -(IBAction)onclickAccept:(id)sender
 {
+    [(UIButton *)sender setEnabled:NO];
     [CCKitManger accept:^(NSError *error) {
         
     }];
@@ -429,3 +536,6 @@
 */
 
 @end
+
+
+
