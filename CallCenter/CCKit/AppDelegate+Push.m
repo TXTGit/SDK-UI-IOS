@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate+Push.h"
+#import "SessionMangementModule.h"
 
 
 @implementation AppDelegate(Push)
@@ -147,7 +148,7 @@ static char Object_NotificationsList;
 
 - (void)pushRegistry:(PKPushRegistry *)registry didInvalidatePushTokenForType:(NSString *)type;
 {
-    KDALog(@"didInvalidatePushTokenForType type == %@", type);
+    NSLog(@"didInvalidatePushTokenForType type == %@", type);
     [AccessModule disableKandyPushNotification];
 }
 
@@ -162,8 +163,20 @@ static char Object_NotificationsList;
 }
 
 
--(void)createLocalNotificaion:(NSDictionary *)dic
+//匹配不同的来源信息的推送
+-(BOOL)createLocalNotificaion:(NSDictionary *)dic
 {
+    NSString *destination = [dic objectForKey:@"destination"];
+    if (destination && [destination isKindOfClass:[NSString class]]) {
+        NSString *ksuserId = [SessionMangementModule getSavedSessionData].currentUser.userId;
+        KDALog(@"destination === %@  ksuserId === %@ ", destination, ksuserId);
+        if (!destination || !ksuserId || ![ksuserId isEqualToString:destination]) {
+            return NO;
+        }
+    }else{
+        return NO;
+    }
+    
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     notification.fireDate = [NSDate date];
     notification.timeZone = [NSTimeZone defaultTimeZone];
@@ -181,8 +194,6 @@ static char Object_NotificationsList;
     }
     
     if (messageType && [messageType isEqualToString:@"incomingCall"]) {
-        [TonePlayer startTonePlayerWithOneTime];
-        
         NSString *alertBodyStr = @"你有一个来电：";
         NSDictionary *senderDic = [dic objectForKey:@"sender"];
         if (senderDic) {
@@ -196,11 +207,14 @@ static char Object_NotificationsList;
                 alertBodyStr = [NSString stringWithFormat:@"%@ %@", alertBodyStr, userId];
             }
         }
-
+        
         notification.alertBody = alertBodyStr;
         notification.category = @"comingCall";
         notification.userInfo = dic;
         
+        if (applicationState != UIApplicationStateActive) {
+            [TonePlayer startTonePlayerWithOneTime];
+        }
     }else if(messageType && [messageType isEqualToString:@"chat"]){
         notification.alertBody = [aps objectForKey:@"alert"];
         notification.soundName = [aps objectForKey:@"sound"];
@@ -209,21 +223,23 @@ static char Object_NotificationsList;
         notification.alertBody = @"你有一个会议邀请";
         notification.soundName = [aps objectForKey:@"sound"];
         notification.userInfo = dic;
-    }else if(messageType && [messageType isEqualToString:@"private"]){
-        notification.alertBody = [NSString stringWithFormat:@"私有消息:%@",[dic description]];
-        return;
     }else if (messageType && [messageType isEqualToString:@"groupChat"]){
         notification.alertBody = [aps objectForKey:@"你有一个群组消息"];
         notification.soundName = [aps objectForKey:@"sound"];
         notification.userInfo = dic;
-        
-    }else{
+    }else if(messageType && [messageType isEqualToString:@"private"]){
+        notification.alertBody = [NSString stringWithFormat:@"私有消息:%@",[dic description]];
+        return YES;
+    }
+    else{
         notification.alertBody = [NSString stringWithFormat:@"未知消息:%@",[dic description]];
     }
     
     if (applicationState != UIApplicationStateActive) {
         [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
     }
+    
+    return YES;
 }
 
 
@@ -265,6 +281,26 @@ static char Object_NotificationsList;
         });
     }
     
+}
+
++(void)showCallPushNotification:(id<KandyCallProtocol>)call;
+{
+    
+    UIApplicationState applicationState = [UIApplication sharedApplication].applicationState;
+    if (applicationState == UIApplicationStateBackground) {
+        UILocalNotification *notification = [[UILocalNotification alloc] init];
+        notification.fireDate = [NSDate date];
+        notification.timeZone = [NSTimeZone defaultTimeZone];
+        notification.repeatInterval =  kCFCalendarUnitEra;
+        notification.soundName = UILocalNotificationDefaultSoundName;
+        
+        NSString *alertBodyStr = @"你有一个来电";
+        alertBodyStr = [NSString stringWithFormat:@"%@:%@", alertBodyStr, call.remoteRecord.uri];
+        notification.alertBody = alertBodyStr;
+        notification.category = @"comingCall";
+        
+        [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+    }
 }
 
 @end

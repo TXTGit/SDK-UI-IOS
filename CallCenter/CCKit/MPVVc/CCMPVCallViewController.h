@@ -11,5 +11,6 @@
 @interface CCMPVCallViewController : CCBasicViewController
 
 @property (nonatomic, strong) NSString *roomNumber;
+@property (nonatomic, assign) BOOL isVideo;
 
 @end

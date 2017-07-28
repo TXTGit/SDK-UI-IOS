@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28138D0C1F2AF361003FD944 /* CallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28138D0B1F2AF361003FD944 /* CallKit.framework */; };
+		28138D1E1F2B155E003FD944 /* SessionMangementModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 28138D1D1F2B155E003FD944 /* SessionMangementModule.m */; };
 		281B1EC31F25BC350004178B /* CCCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 281B1EC11F25BC350004178B /* CCCallViewController.m */; };
 		281B1EC41F25BC350004178B /* CCCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281B1EC21F25BC350004178B /* CCCallViewController.xib */; };
 		281B1EC91F25BCED0004178B /* CCMPVInviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 281B1EC71F25BCED0004178B /* CCMPVInviteViewController.m */; };
@@ -55,6 +57,8 @@
 		2821C2591F1F75FF0034FDAA /* SupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821C2551F1F75FF0034FDAA /* SupportViewController.m */; };
 		2821C25A1F1F75FF0034FDAA /* SupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2821C2561F1F75FF0034FDAA /* SupportViewController.xib */; };
 		2821C25D1F1F793A0034FDAA /* CCKitManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821C25C1F1F793A0034FDAA /* CCKitManger.m */; };
+		282E8FD71F2B3B6800832978 /* CustomLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 282E8FD51F2B3B6800832978 /* CustomLogViewController.m */; };
+		282E8FD81F2B3B6800832978 /* CustomLogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282E8FD61F2B3B6800832978 /* CustomLogViewController.xib */; };
 		2848D5601F26EDC0003BB0E9 /* BasicNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2848D55F1F26EDC0003BB0E9 /* BasicNavViewController.m */; };
 		2848D5621F270D40003BB0E9 /* mpv_setting_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2848D5611F270D40003BB0E9 /* mpv_setting_close@2x.png */; };
 		2848D5641F270E60003BB0E9 /* mpv_setting_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2848D5631F270E60003BB0E9 /* mpv_setting_icon@2x.png */; };
@@ -110,6 +114,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28138CFB1F2AE56F003FD944 /* SDKDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SDKDemo.entitlements; sourceTree = "<group>"; };
+		28138D0B1F2AF361003FD944 /* CallKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CallKit.framework; path = System/Library/Frameworks/CallKit.framework; sourceTree = SDKROOT; };
+		28138D1C1F2B155E003FD944 /* SessionMangementModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionMangementModule.h; sourceTree = "<group>"; };
+		28138D1D1F2B155E003FD944 /* SessionMangementModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionMangementModule.m; sourceTree = "<group>"; };
 		281B1EC01F25BC350004178B /* CCCallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCallViewController.h; sourceTree = "<group>"; };
 		281B1EC11F25BC350004178B /* CCCallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCCallViewController.m; sourceTree = "<group>"; };
 		281B1EC21F25BC350004178B /* CCCallViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCCallViewController.xib; sourceTree = "<group>"; };
@@ -180,6 +188,10 @@
 		2821C2561F1F75FF0034FDAA /* SupportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SupportViewController.xib; sourceTree = "<group>"; };
 		2821C25B1F1F793A0034FDAA /* CCKitManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCKitManger.h; sourceTree = "<group>"; };
 		2821C25C1F1F793A0034FDAA /* CCKitManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCKitManger.m; sourceTree = "<group>"; };
+		282E8FD41F2B3B6800832978 /* CustomLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLogViewController.h; sourceTree = "<group>"; };
+		282E8FD51F2B3B6800832978 /* CustomLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLogViewController.m; sourceTree = "<group>"; };
+		282E8FD61F2B3B6800832978 /* CustomLogViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomLogViewController.xib; sourceTree = "<group>"; };
+		282E8FD91F2B3C5D00832978 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		2848D55E1F26EDC0003BB0E9 /* BasicNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicNavViewController.h; sourceTree = "<group>"; };
 		2848D55F1F26EDC0003BB0E9 /* BasicNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicNavViewController.m; sourceTree = "<group>"; };
 		2848D5611F270D40003BB0E9 /* mpv_setting_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mpv_setting_close@2x.png"; sourceTree = "<group>"; };
@@ -249,6 +261,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				287694DE1D1A6E2200AEECB8 /* MessageUI.framework in Frameworks */,
+				28138D0C1F2AF361003FD944 /* CallKit.framework in Frameworks */,
 				286E4DAE1F204C7100E5765D /* PushKit.framework in Frameworks */,
 				287694D71D1A6E2200AEECB8 /* CoreAudio.framework in Frameworks */,
 				287694DC1D1A6E2200AEECB8 /* CoreLocation.framework in Frameworks */,
@@ -280,7 +294,6 @@
 				287694C51D1A6E2200AEECB8 /* libicucore.A.tbd in Frameworks */,
 				287694DA1D1A6E2200AEECB8 /* MobileCoreServices.framework in Frameworks */,
 				287694D21D1A6E2200AEECB8 /* CoreTelephony.framework in Frameworks */,
-				287694DE1D1A6E2200AEECB8 /* MessageUI.framework in Frameworks */,
 				287694CD1D1A6E2200AEECB8 /* AVFoundation.framework in Frameworks */,
 				287694D91D1A6E2200AEECB8 /* CoreGraphics.framework in Frameworks */,
 				287694D81D1A6E2200AEECB8 /* CoreVideo.framework in Frameworks */,
@@ -415,6 +428,8 @@
 				2885F1E21F205AB3005F2E71 /* ConferenceModule.m */,
 				2821C2351F1F75300034FDAA /* ProvisionModule.h */,
 				2821C2361F1F75300034FDAA /* ProvisionModule.m */,
+				28138D1C1F2B155E003FD944 /* SessionMangementModule.h */,
+				28138D1D1F2B155E003FD944 /* SessionMangementModule.m */,
 				2821C2371F1F75300034FDAA /* SystemModule.h */,
 				2821C2381F1F75300034FDAA /* SystemModule.m */,
 				2821C2311F1F75300034FDAA /* KandySDK.framework */,
@@ -446,6 +461,9 @@
 		2821C2501F1F75FF0034FDAA /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				282E8FD41F2B3B6800832978 /* CustomLogViewController.h */,
+				282E8FD51F2B3B6800832978 /* CustomLogViewController.m */,
+				282E8FD61F2B3B6800832978 /* CustomLogViewController.xib */,
 				2821C2511F1F75FF0034FDAA /* LoginViewController.h */,
 				2821C2521F1F75FF0034FDAA /* LoginViewController.m */,
 				2821C2531F1F75FF0034FDAA /* LoginViewController.xib */,
@@ -489,6 +507,8 @@
 		286E4DAC1F204C7100E5765D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				282E8FD91F2B3C5D00832978 /* Messages.framework */,
+				28138D0B1F2AF361003FD944 /* CallKit.framework */,
 				286E4DAD1F204C7100E5765D /* PushKit.framework */,
 			);
 			name = Frameworks;
@@ -497,6 +517,7 @@
 		287694721D1A694400AEECB8 = {
 			isa = PBXGroup;
 			children = (
+				28138CFB1F2AE56F003FD944 /* SDKDemo.entitlements */,
 				2876949C1D1A6AFE00AEECB8 /* newFramework */,
 				2876947D1D1A694400AEECB8 /* CallCenter */,
 				286E4DAC1F204C7100E5765D /* Frameworks */,
@@ -621,6 +642,14 @@
 					2876947A1D1A694400AEECB8 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = S4HJG5CE5R;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -671,6 +700,7 @@
 				2821C1A11F1F5E0F0034FDAA /* camera_open@2x.png in Resources */,
 				2821C1CF1F1F5E0F0034FDAA /* speacker_open@2x.png in Resources */,
 				2848D56A1F271262003BB0E9 /* MPVMemTableViewCell.xib in Resources */,
+				282E8FD81F2B3B6800832978 /* CustomLogViewController.xib in Resources */,
 				2821C1D41F1F5E0F0034FDAA /* VoipVoiceCall@2x.png in Resources */,
 				289C7EC71F284A5500C7924D /* connecting.m4r in Resources */,
 				2821C1D21F1F5E0F0034FDAA /* voice_red@2x.png in Resources */,
@@ -708,8 +738,10 @@
 				2848D5601F26EDC0003BB0E9 /* BasicNavViewController.m in Sources */,
 				281B1EF31F25F59C0004178B /* CCMPVSettingCallViewController.m in Sources */,
 				2821C2431F1F75300034FDAA /* CallModule.m in Sources */,
+				282E8FD71F2B3B6800832978 /* CustomLogViewController.m in Sources */,
 				2821C24C1F1F75300034FDAA /* ProvisionModule.m in Sources */,
 				2848D5691F271262003BB0E9 /* MPVMemTableViewCell.m in Sources */,
+				28138D1E1F2B155E003FD944 /* SessionMangementModule.m in Sources */,
 				2821C24D1F1F75300034FDAA /* SystemModule.m in Sources */,
 				2848D56D1F27132B003BB0E9 /* MPVMemModel.m in Sources */,
 				2885F1F51F2088D7005F2E71 /* AppDelegate+Push.m in Sources */,
@@ -815,6 +847,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = SDKDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Feiyang Guo (265N83RDWJ)";
 				DEVELOPMENT_TEAM = S4HJG5CE5R;
 				ENABLE_BITCODE = NO;
@@ -825,14 +858,14 @@
 				);
 				GCC_PREFIX_HEADER = CallCenter/PrefixHeader.pch;
 				INFOPLIST_FILE = CallCenter/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pivos.sdkDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2efbe078-a744-4638-8dd6-ef882679afc9";
-				PROVISIONING_PROFILE_SPECIFIER = development_all;
+				PROVISIONING_PROFILE = "285ecec3-5406-4af3-b6c3-f8c8bb974605";
+				PROVISIONING_PROFILE_SPECIFIER = developmentSDKDemo;
 			};
 			name = Debug;
 		};
@@ -841,6 +874,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = SDKDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Pivos Technology Group Co., Ltd (S4HJG5CE5R)";
 				DEVELOPMENT_TEAM = S4HJG5CE5R;
 				ENABLE_BITCODE = NO;
@@ -851,14 +885,14 @@
 				);
 				GCC_PREFIX_HEADER = CallCenter/PrefixHeader.pch;
 				INFOPLIST_FILE = CallCenter/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pivos.sdkDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "80605ce2-068c-45e1-adc9-7e02cacf1227";
-				PROVISIONING_PROFILE_SPECIFIER = adhoc_all;
+				PROVISIONING_PROFILE = "70ce8f59-a0bb-478e-a30c-ca318c8ee225";
+				PROVISIONING_PROFILE_SPECIFIER = AdhocSDKDemo;
 			};
 			name = Release;
 		};

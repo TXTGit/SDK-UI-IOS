@@ -24,6 +24,8 @@ typedef NS_ENUM(NSInteger, CALLModuleState){
 
 @protocol CallModuleDelagate <NSObject>
 
+@optional
+
 -(void)callModuleStateChanged:(CALLModuleState)callState;
 
 -(void)callModuleVideoStateChanged:(BOOL)isReceiveVideo isSendVideo:(BOOL)isSendVideo;
@@ -67,7 +69,7 @@ typedef NS_ENUM(NSInteger, CALLModuleState){
 
 -(BOOL)checkCurrentCallIsVideo;
 
--(void)establishMPVCall:(NSString *)roomNumber callback:(KandyCallback)callback;
+-(void)establishMPVCall:(NSString *)roomNumber isVideo:(BOOL)isVieo callback:(KandyCallback)callback;
 
 @end
 

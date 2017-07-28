@@ -31,7 +31,7 @@
 
 @property (nonatomic, strong) IBOutlet UIView *section1Footer;
 @property (nonatomic, strong) IBOutlet UITextField *nickNameTxt;
-
+@property (nonatomic, strong) IBOutlet UISwitch *videoSwith;
 @end
 
 @implementation CCMPVInviteViewController
@@ -100,7 +100,7 @@
     if (section == 0) {
         return 60;
     }else if(section == 1){
-        return 110;
+        return 160;
     }else{
         return 0;
     }
@@ -210,6 +210,7 @@ static MBProgressHUD *phud = nil;
                   if (error == nil) {
                       CCMPVCallViewController *cccall = [[CCMPVCallViewController alloc] initWithNibName:@"CCMPVCallViewController" bundle:nil];
                       cccall.roomNumber = roomId;
+                      cccall.isVideo = self.videoSwith.isOn;
                       AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
                       [ad.rootNv presentViewController:cccall animated:YES completion:NULL];
                   }else{

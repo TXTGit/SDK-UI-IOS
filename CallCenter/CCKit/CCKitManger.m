@@ -20,8 +20,7 @@
 //登陆kandy
 +(void)loginKandyWithUserName:(NSString *)userName password:(NSString *)password callback:(KandyCallback)callback;
 {
-    [[ProvisionModule shareInstance]
-     directLogin:userName
+    [AccessModule loginRN:userName
      password:password
      callback:^(NSError *error) {
          if (callback) {
@@ -29,6 +28,17 @@
          }
      }];
 }
+
+//登出kandy
++(void)loginoutCallback:(KandyCallback)callback;
+{
+    [AccessModule logout:^(NSError *error) {
+         if (callback) {
+             callback(error);
+         }
+     }];
+}
+
 
 //拨打电话
 +(void)callWithIsPstn:(BOOL)isPstn isWithVideo:(BOOL)isVideo callee:(NSString *)Callee callback:(KandyCallback)callback;

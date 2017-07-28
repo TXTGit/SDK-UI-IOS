@@ -15,7 +15,6 @@
 
 -(void)requestCodeBySMSCN:(NSString *)phoneNumber callback:(KandyCallback)callback;
 
--(void)directLogin:(NSString *)userId password:(NSString *)password callback:(KandyCallback)callback;
 
 -(void)validate:(NSString *)txtOTP phoneNumber:(NSString *)phoneNumber callback:(KandyCallback)callback;
 

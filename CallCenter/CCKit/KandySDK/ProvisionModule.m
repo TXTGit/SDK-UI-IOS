@@ -81,35 +81,13 @@ static ProvisionModule *shareInstance = nil;
              NSString *userId = provisionedUserInfo.userId;
              NSString *password = provisionedUserInfo.password;
              
-             [KandyAdpter saveKey:Us_Kandy_userId Value:userId];
-             [KandyAdpter saveKey:Us_Kandy_password Value:password];
-             
-             [self directLogin:userId password:password callback:callback];
+             [AccessModule loginRN:userId password:password callback:callback];
          }else{
-             [KandyAdpter saveKey:Us_Kandy_userId Value:@""];
-             [KandyAdpter saveKey:Us_Kandy_password Value:@""];
-             
+            
              if(callback) callback(error);
              isActionLogining = NO;
          }
      }];
-}
-
-
--(void)directLogin:(NSString *)userId password:(NSString *)password callback:(KandyCallback)callback
-{
-  KandyUserInfo *kandyUserInfo = [[KandyUserInfo alloc] initWithUserId:userId password:password];
-  [[Kandy sharedInstance].access
-   login:kandyUserInfo
-   responseCallback:^(NSError *error) {
-     KDALog(@"error === %@ ", [error description]);
-       if (callback) callback(error);
-       isActionLogining = NO;
-       
-       [AccessModule enableKandyPushNotification];
-       AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
-       [ad doRemoteNotifications];
-   }];
 }
 
 

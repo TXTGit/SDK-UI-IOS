@@ -26,6 +26,7 @@
 
 
 @property(nonatomic, strong) IBOutlet UIView *callAudioView;
+@property(nonatomic, strong) IBOutlet UIView *callAudioRemoteView;
 @property (nonatomic, strong) IBOutlet UIImageView *callAudioImageView;
 @property (nonatomic, strong) IBOutlet UILabel *callAudioCallSourceLabel;
 @property(nonatomic, strong) IBOutlet UILabel *callAudioTimeLabel;
@@ -54,7 +55,10 @@
     self.callStateLabel.text = @"正在接通中";
     
     __weak typeof(self) weekself = self;
-    [[CallModule shareInstance] establishMPVCall:self.roomNumber callback:^(NSError *error) {
+    [[CallModule shareInstance]
+     establishMPVCall:self.roomNumber
+     isVideo:self.isVideo
+     callback:^(NSError *error) {
         KDALog(@"establishCallWithResponseBlock error == %@", [error description]);
         typeof(self) blockself = weekself;
         if (blockself) {
@@ -89,10 +93,10 @@
     
     id<KandyCallProtocol> currentCall = [[CallModule shareInstance] getCurrentCall];
     
-    BOOL isVideo = [[CallModule shareInstance] checkCurrentCallIsVideo];
+    BOOL isVideoM = [[CallModule shareInstance] checkCurrentCallIsVideo];
     
     if (currentCall.callType == EKandyCallType_voip) {
-        if (isVideo) {
+        if (isVideoM) {
             self.callAudioImageView.image = [UIImage imageNamed:@"voice_red@2x.png"];
         }else{
             self.callAudioImageView.image = [UIImage imageNamed:@"voice_blue@2x.png"];
@@ -198,18 +202,17 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 typeof(self) blockself = weekself;
                 if (blockself) {
-                    BOOL isVideo = [[CallModule shareInstance] checkCurrentCallIsVideo];
                     
-                    if (isVideo) {
+                    if (self.isVideo) {
                         self.callVideoView.frame = self.view.frame;
                         [self.view addSubview:self.callVideoView];
                         [blockself initVideoCallButtonImage];
                         [[CallModule shareInstance] getCurrentCall].remoteVideoView = self.callRemoteView;
-                        
                     }else{
                         self.callAudioView.frame = self.view.frame;
                         [self.view addSubview:self.callAudioView];
                         [blockself initCallAudioButtonImage];
+                        [[CallModule shareInstance] getCurrentCall].remoteVideoView = self.callAudioRemoteView;
                     }
                     [blockself startTimer];
                 }
@@ -235,6 +238,19 @@
             
         default:
             break;
+    }
+}
+
+- (IBAction)sendDTMF:(id)sender
+{
+    NSString *pinCode = [NSString stringWithFormat:@"%@#",[ConferenceModule shareInstance].curPinCode];
+    if (!pinCode || [pinCode length] == 0) {
+        return;
+    }
+    
+    for (NSUInteger i = 0; i < pinCode.length; i++) {
+        const char *cCharArr = [[pinCode substringWithRange:NSMakeRange(i, 1)] UTF8String];
+        [[[CallModule shareInstance] getCurrentCall] sendDTMF:cCharArr[0]];
     }
 }
 

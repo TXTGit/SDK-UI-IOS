@@ -27,6 +27,7 @@
 @implementation ConferenceModule
 
 @synthesize curConferenceId,curRoomNumber;
+@synthesize curPSTNRoomNumber,curPinCode;
 
 
 static ConferenceModule *shareInstance = nil;
@@ -90,13 +91,17 @@ static ConferenceModule *shareInstance = nil;
      typeof (self) blockself = weekself;
      
      if (blockself) {
-       if (!error) {
-         blockself.curConferenceId = conferenceRoomDetails.conferenceID;
-         blockself.curRoomNumber = conferenceRoomDetails.roomNumber;
-       }else{
-         blockself.curConferenceId = nil;
-         blockself.curRoomNumber = nil;
-       }
+         if (!error) {
+             blockself.curConferenceId = conferenceRoomDetails.conferenceID;
+             blockself.curRoomNumber = conferenceRoomDetails.roomNumber;
+             blockself.curPSTNRoomNumber = conferenceRoomDetails.roomPSTNNumber;
+             blockself.curPinCode = conferenceRoomDetails.pinCode;
+         }else{
+             blockself.curConferenceId = nil;
+             blockself.curRoomNumber = nil;
+             blockself.curPSTNRoomNumber = nil;
+             blockself.curPinCode = nil;
+         }
      }
        if (callback) {
            callback(error);

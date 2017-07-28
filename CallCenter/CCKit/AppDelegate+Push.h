@@ -27,6 +27,9 @@
 
 -(void)doRemoteNotifications;
 
++(void)showCallPushNotification:(id<KandyCallProtocol>)call;
+
+
 @end
 
 

@@ -208,23 +208,74 @@
                         <action selector="onclickMPVStart:" destination="-1" eventType="touchUpInside" id="dhp-jT-sZ5"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7w-v2-SXj">
+                    <rect key="frame" x="20" y="427" width="280" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="CbZ-Bj-a3s"/>
+                        <constraint firstAttribute="height" constant="40" id="Rzv-a1-hcK"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="msm-tz-BtK"/>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="ufp-6t-Nqn"/>
+                    </constraints>
+                    <state key="normal" title="退出">
+                        <color key="titleColor" red="0.0" green="0.70588235290000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="6"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="onclickLogout:" destination="-1" eventType="touchUpInside" id="LGB-fZ-Zw2"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0f7-sF-8vJ">
+                    <rect key="frame" x="20" y="379" width="280" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="4Qg-Ma-cCb"/>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="4jI-0g-fFC"/>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="OAz-bf-fJG"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="PGu-Pb-YW9"/>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="lbN-fe-uE0"/>
+                    </constraints>
+                    <state key="normal" title="LOG">
+                        <color key="titleColor" red="0.0" green="0.70588235290000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="6"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="onclickLog:" destination="-1" eventType="touchUpInside" id="A76-Zg-eI5"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.70588235290000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="l8E-3d-Ghm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="05E-tW-Odl"/>
+                <constraint firstItem="M7w-v2-SXj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="2rc-Ng-SjL"/>
+                <constraint firstItem="0f7-sF-8vJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="40f-Vo-dNQ"/>
                 <constraint firstItem="LT0-lA-adw" firstAttribute="top" secondItem="l8E-3d-Ghm" secondAttribute="bottom" constant="9" id="8b8-ad-agH"/>
                 <constraint firstAttribute="trailing" secondItem="LT0-lA-adw" secondAttribute="trailing" constant="20" id="8t9-kv-L5u"/>
+                <constraint firstItem="M7w-v2-SXj" firstAttribute="top" secondItem="0f7-sF-8vJ" secondAttribute="bottom" constant="8" id="GNe-J9-nId"/>
                 <constraint firstItem="l8E-3d-Ghm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="23" id="RsY-si-azT"/>
                 <constraint firstAttribute="trailing" secondItem="l8E-3d-Ghm" secondAttribute="trailing" constant="20" id="SMo-c5-UU4"/>
                 <constraint firstItem="LT0-lA-adw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Vv1-J0-Gms"/>
                 <constraint firstItem="DQV-sk-hFj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="XoB-Jg-wOU"/>
                 <constraint firstItem="TI3-IA-HwG" firstAttribute="top" secondItem="DQV-sk-hFj" secondAttribute="bottom" constant="66" id="Y6x-dX-sYf"/>
+                <constraint firstAttribute="trailing" secondItem="M7w-v2-SXj" secondAttribute="trailing" constant="20" id="bQ1-Ye-62v"/>
                 <constraint firstItem="DQV-sk-hFj" firstAttribute="top" secondItem="LT0-lA-adw" secondAttribute="bottom" constant="8" id="bvh-fG-Yrc"/>
                 <constraint firstAttribute="trailing" secondItem="DQV-sk-hFj" secondAttribute="trailing" constant="20" id="cEb-1H-rH7"/>
+                <constraint firstAttribute="trailing" secondItem="0f7-sF-8vJ" secondAttribute="trailing" constant="20" id="cM9-50-Deq"/>
                 <constraint firstAttribute="trailing" secondItem="DQV-sk-hFj" secondAttribute="trailing" constant="20" id="obX-5K-Dh9"/>
                 <constraint firstItem="DQV-sk-hFj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="rHJ-lS-IwD"/>
                 <constraint firstAttribute="trailing" secondItem="TI3-IA-HwG" secondAttribute="trailing" constant="20" id="rzC-7U-rHo"/>
                 <constraint firstItem="TI3-IA-HwG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="si4-kA-t84"/>
+                <constraint firstAttribute="bottom" secondItem="M7w-v2-SXj" secondAttribute="bottom" constant="13" id="wSn-N5-0rQ"/>
             </constraints>
             <point key="canvasLocation" x="6.5" y="-7.5"/>
         </view>

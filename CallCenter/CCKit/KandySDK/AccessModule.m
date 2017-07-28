@@ -7,6 +7,8 @@
 //
 
 #import "AccessModule.h"
+#import "AppDelegate+Push.h"
+#import "SessionMangementModule.h"
 
 static BOOL isHaveLogin = NO;
 
@@ -26,6 +28,7 @@ static BOOL isHaveLogin = NO;
     return isHaveLogin;
 }
 
+
 +(void)loginRN:(NSString *)name password:(NSString *)password callback:(KandyCallback)callback
 {
   KandyUserInfo *kandyUserInfo = [[KandyUserInfo alloc] initWithUserId:name password:password];
@@ -36,6 +39,14 @@ static BOOL isHaveLogin = NO;
        if (callback) {
            callback(error);
        }
+       
+       if (!error) {
+           [SessionMangementModule saveCurrentSession];
+       }
+       
+       [AccessModule enableKandyPushNotification];
+       AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
+       [ad doRemoteNotifications];
    }];
 }
 
@@ -75,6 +86,9 @@ static BOOL isHaveLogin = NO;
      KDALog(@"error === %@ ", [error description]);
        if (callback) {
            callback(error);
+       }
+       if (!error) {
+           [SessionMangementModule removeSaveSession];
        }
    }];
 }

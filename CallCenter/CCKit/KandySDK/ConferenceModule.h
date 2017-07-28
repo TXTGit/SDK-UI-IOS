@@ -16,6 +16,8 @@ typedef void(^KandyConferenceCallback)(NSError *error, id<KandyMultiPartyConfere
 
 @property(nonatomic, strong) NSString *curConferenceId;
 @property(nonatomic, strong) NSString *curRoomNumber;
+@property(nonatomic, strong) NSString *curPSTNRoomNumber;
+@property(nonatomic, strong) NSString *curPinCode;
 
 @property(nonatomic, assign) BOOL mIsVideo;
 @property(nonatomic, assign) BOOL mIsAudio;

@@ -17,6 +17,9 @@
 #import "AppDelegate+Push.h"
 #import "BasicNavViewController.h"
 
+#import "CCKitManger.h"
+#import "SessionMangementModule.h"
+
 
 @interface AppDelegate ()
 {
@@ -50,11 +53,10 @@
     self.window.rootViewController = self.rootNv;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSString *userid = [KandyAdpter getValFormKey:Us_Kandy_userId];
-        NSString *password = [KandyAdpter getValFormKey:Us_Kandy_password];
-        if (userid && password && [userid length] > 0 && password.length > 0 ) {
+        KandySession *sk = [SessionMangementModule getSavedSessionData];
+        if (sk && sk.currentUser) {
             [Utils showHUDOnWindowWithText:@"正在登录.."];
-            [[ProvisionModule shareInstance]directLogin:userid password:password callback:^(NSError *error) {
+            [CCKitManger loginKandyWithUserName:sk.currentUser.userId password:sk.currentUser.password callback:^(NSError *error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [Utils hideHUDForWindow];
                     if (error) {

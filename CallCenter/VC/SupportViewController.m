@@ -11,6 +11,11 @@
 #import "CCKitManger.h"
 
 #import "CCMPVRoomListViewController.h"
+#import "LoginViewController.h"
+#import "AppDelegate.h"
+
+#import "CustomLogViewController.h"
+
 
 @interface SupportViewController ()
 
@@ -55,6 +60,27 @@
     CCMPVRoomListViewController *cccall = [[CCMPVRoomListViewController alloc] initWithNibName:@"CCMPVRoomListViewController" bundle:nil];
     [self.navigationController pushViewController:cccall animated:YES];
 }
+
+-(IBAction)onclickLogout:(id)sender
+{
+    [CCKitManger loginoutCallback:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+            [ad.rootNv  pushViewController:login animated:NO];
+        });
+    }];
+}
+
+-(IBAction)onclickLog:(id)sender
+{
+    CustomLogViewController *cccall = [[CustomLogViewController alloc] initWithNibName:@"CustomLogViewController" bundle:nil];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:cccall];
+    [self.navigationController presentViewController:nc animated:YES completion:^{
+        
+    }];
+}
+
 
 /*
 #pragma mark - Navigation

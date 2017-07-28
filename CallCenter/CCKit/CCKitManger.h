@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "KandyAdpter.h"
+#import "AccessModule.h"
 #import "ProvisionModule.h"
 #import "CallModule.h"
 #import "ConferenceModule.h"
@@ -20,6 +21,8 @@
 
 //登陆kandy
 +(void)loginKandyWithUserName:(NSString *)userName password:(NSString *)password callback:(KandyCallback)callback;
+
++(void)loginoutCallback:(KandyCallback)callback;
 
 #pragma mark 本sdk 中 采用 CCCallViewController为 call处理委托控制器
 //拨打电话

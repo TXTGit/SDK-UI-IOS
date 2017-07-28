@@ -12,15 +12,12 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
+BOOL const is_kandy_console_debug = YES;
 
-#define IS_DEBUG_CONSOLE NO
-
-#define KDALog(fmt, ...) if([KandyAdpter isEnableDebug]){ NSLog((@"%s [Line %d]" fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);}
+#define KDALog(fmt, ...) if(is_kandy_console_debug){ NSLog((@"%s [Line %d]" fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);}   [[Kandy sharedInstance].loggingInterface logWithLevel:EKandyLogLevel_info andLogString:[[NSString alloc] initWithFormat:(@"AppLog %@ %s [Line %d]" fmt), [KandyAdpter getDateFromate:[NSDate date] dateFromat:@"YYYY-MM-DD HH:MM:SS"], __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__]];
 
 #define Kandy_Host_Url  @"https://api.kandycn.com"
 
-#define Us_Kandy_userId @"Us_Kandy_userId"
-#define Us_Kandy_password @"Us_Kandy_password"
 
 typedef void(^KandyCallback)(NSError *error);
 typedef void(^KandyArrCallback)(NSError *error, NSArray *arr);
@@ -33,9 +30,6 @@ typedef void(^KandyArrCallback)(NSError *error, NSArray *arr);
 
 -(void)initKandySDKWithKey:(NSString *)key secret:(NSString *)secret;
 
-+(BOOL)isEnableDebug;
-
-+(void)setEnableDebug:(BOOL)isEnableDebug;
 
 +(UIViewController *)getRootViewController;
 

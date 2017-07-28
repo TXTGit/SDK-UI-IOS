@@ -91,6 +91,8 @@ static KandyAdpter *shareInstance = nil;
     //xbsx.txtechnology.com.cn
     [self initKandySDKWithKey:@"DAK858161e538ed4802896ad0f1520f9118"
                        secret:@"DAS96c8a0f63f0f42a4917871967a27e098"];
+    
+    
 }
 
 
@@ -103,9 +105,9 @@ static KandyAdpter *shareInstance = nil;
     //kandycn
     [Kandy sharedInstance].globalSettings.kandyServiceHost = Kandy_Host_Url;
     [Kandy sharedInstance].globalSettings.kandyServiceTimeout = 30;
-    
-    is_debug_console = YES;
+    [Kandy sharedInstance].globalSettings.isAutoRenewSession = YES;
     [Kandy sharedInstance].globalSettings.isPrintRTCCallLogs = NO;
+    is_debug_console = YES;
     
     CustomSDKLogger * customSDKLogger = [[CustomSDKLogger alloc] initWithFormatter:[Kandy sharedInstance].loggingInterface.loggingFormatter];
     [Kandy sharedInstance].loggingInterface = customSDKLogger;

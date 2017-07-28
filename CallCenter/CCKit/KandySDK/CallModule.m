@@ -10,6 +10,7 @@
 #import "TonePlayer.h"
 #import <AVFoundation/AVFoundation.h>
 #import "../../AppDelegate.h"
+#import "../../CCKit/AppDelegate+Push.h"
 #import "../CallVc/CCCallViewController.h"
 
 @interface CallModule()<KandyCallServiceNotificationDelegate>
@@ -214,6 +215,8 @@
         }];
         return;
     }
+    
+  [AppDelegate showCallPushNotification:call];
     
     switch ([call incomingCallAnswerType]) {
         case EKandyIncomingCallAnswerType_none:
@@ -832,7 +835,7 @@ static CallModule *shareInstance = nil;
 }
 
 
--(void)establishMPVCall:(NSString *)roomNumber callback:(KandyCallback)callback
+-(void)establishMPVCall:(NSString *)roomNumber isVideo:(BOOL)isVieo callback:(KandyCallback)callback
 {
     NSString * domain = [Kandy sharedInstance].sessionManagement.session.kandyDomain.name;
     
@@ -847,7 +850,9 @@ static CallModule *shareInstance = nil;
     }
     
     KandyRecord * initiator = [Kandy sharedInstance].sessionManagement.session.currentUser.record;
-    EKandyOutgingVoIPCallOptions options = EKandyOutgingVoIPCallOptions_startCallWithVideo;
+    EKandyOutgingVoIPCallOptions options = isVieo?EKandyOutgingVoIPCallOptions_startCallWithVideo:
+    EKandyOutgingVoIPCallOptions_audioOnlyCall;
+    
     
     typeof(self) __weak weakSelf = self;
     [[Kandy sharedInstance].services.call
@@ -884,7 +889,6 @@ static CallModule *shareInstance = nil;
          }
      }];
 }
-
 
 @end
 
