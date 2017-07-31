@@ -51,7 +51,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="aiiphone6p@xbsx.txtechnology.com.cn" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rDw-PH-xIS">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="aiiphone6p@sdkdemo.txtechnology.com.cn" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rDw-PH-xIS">
                     <rect key="frame" x="16" y="13" width="286" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="xUz-jW-pvT"/>

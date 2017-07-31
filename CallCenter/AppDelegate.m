@@ -32,8 +32,8 @@
 
 -(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [CCKitManger registerWithKey:@"DAK858161e538ed4802896ad0f1520f9118"
-                          secret:@"DAS96c8a0f63f0f42a4917871967a27e098"];
+    [CCKitManger registerWithKey:@"DAK2af7fc60b41b407d9fbd49ec4226e1a0"
+                          secret:@"DAS67fd493180d049948e17789776d5f480"];
     return YES;
 }
 

@@ -26,10 +26,7 @@ typedef void(^KandyArrCallback)(NSError *error, NSArray *arr);
 
 + (KandyAdpter *)shareInstance;
 
--(void)initKandySDK;
-
 -(void)initKandySDKWithKey:(NSString *)key secret:(NSString *)secret;
-
 
 +(UIViewController *)getRootViewController;
 

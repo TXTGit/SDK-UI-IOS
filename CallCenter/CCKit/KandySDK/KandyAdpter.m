@@ -85,16 +85,6 @@ static KandyAdpter *shareInstance = nil;
 }
 
 
--(void)initKandySDK;
-{
-  //register it in kandycn  first！
-    //xbsx.txtechnology.com.cn
-    [self initKandySDKWithKey:@"DAK858161e538ed4802896ad0f1520f9118"
-                       secret:@"DAS96c8a0f63f0f42a4917871967a27e098"];
-    
-    
-}
-
 
 -(void)initKandySDKWithKey:(NSString *)key secret:(NSString *)secret;
 {
