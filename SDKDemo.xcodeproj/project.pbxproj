@@ -244,8 +244,8 @@
 		287694C01D1A6E2200AEECB8 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		2885F1E11F205AB3005F2E71 /* ConferenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConferenceModule.h; sourceTree = "<group>"; };
 		2885F1E21F205AB3005F2E71 /* ConferenceModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConferenceModule.m; sourceTree = "<group>"; };
-		2885F1F31F2088D7005F2E71 /* AppDelegate+Push.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Push.h"; sourceTree = "<group>"; };
-		2885F1F41F2088D7005F2E71 /* AppDelegate+Push.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Push.m"; sourceTree = "<group>"; };
+		2885F1F31F2088D7005F2E71 /* AppDelegate+Push.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AppDelegate+Push.h"; path = "CCKit/AppDelegate+Push.h"; sourceTree = "<group>"; };
+		2885F1F41F2088D7005F2E71 /* AppDelegate+Push.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AppDelegate+Push.m"; path = "CCKit/AppDelegate+Push.m"; sourceTree = "<group>"; };
 		289C7EBF1F284A5500C7924D /* busytone.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = busytone.m4r; sourceTree = "<group>"; };
 		289C7EC01F284A5500C7924D /* connecting.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = connecting.m4r; sourceTree = "<group>"; };
 		289C7EC11F284A5500C7924D /* hangup.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = hangup.m4r; sourceTree = "<group>"; };
@@ -491,8 +491,6 @@
 			children = (
 				2821C25B1F1F793A0034FDAA /* CCKitManger.h */,
 				2821C25C1F1F793A0034FDAA /* CCKitManger.m */,
-				2885F1F31F2088D7005F2E71 /* AppDelegate+Push.h */,
-				2885F1F41F2088D7005F2E71 /* AppDelegate+Push.m */,
 				2821C1D51F1F5F320034FDAA /* BasicVC */,
 				281B1EBF1F25BC350004178B /* CallVc */,
 				281B1EC51F25BC620004178B /* MPVVc */,
@@ -540,6 +538,8 @@
 				285E59251D2A5B63009435AB /* CCKit */,
 				287694811D1A694400AEECB8 /* AppDelegate.h */,
 				287694821D1A694400AEECB8 /* AppDelegate.m */,
+				2885F1F31F2088D7005F2E71 /* AppDelegate+Push.h */,
+				2885F1F41F2088D7005F2E71 /* AppDelegate+Push.m */,
 				28AB39E11E77DB1900A04FDD /* LaunchScreen.xib */,
 				2876948A1D1A694500AEECB8 /* Assets.xcassets */,
 				2876948F1D1A694500AEECB8 /* Info.plist */,
