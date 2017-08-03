@@ -121,6 +121,7 @@ static MBProgressHUD *phud = nil;
                  AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
                  CCMPVCallViewController *cccall = [[CCMPVCallViewController alloc] initWithNibName:@"CCMPVCallViewController" bundle:nil];
                  cccall.roomNumber = mv.roomId;
+                 cccall.isVideo = YES;
                  [ad.rootNv presentViewController:cccall animated:YES completion:NULL];
              }else{
                  if ([[error description] rangeOfString:@"Conference not active"].location != NSNotFound){

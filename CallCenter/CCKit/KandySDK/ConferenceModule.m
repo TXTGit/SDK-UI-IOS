@@ -315,6 +315,7 @@ static MBProgressHUD *phud = nil;
                               AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
                               CCMPVCallViewController *cccall = [[CCMPVCallViewController alloc] initWithNibName:@"CCMPVCallViewController" bundle:nil];
                               cccall.roomNumber = self.curRoomNumber;
+                              cccall.isVideo = YES;
                               [ad.rootNv presentViewController:cccall animated:YES completion:NULL];
                           }else{
                               KDALog(@"establishCallWithResponseBlock error = %@", [error description]);
