@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
-BOOL const is_kandy_console_debug = YES;
+static BOOL is_kandy_console_debug = YES;
 
 #define KDALog(fmt, ...) if(is_kandy_console_debug){ NSLog((@"%s [Line %d]" fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);}   [[Kandy sharedInstance].loggingInterface logWithLevel:EKandyLogLevel_info andLogString:[[NSString alloc] initWithFormat:(@"AppLog %@ %s [Line %d]" fmt), [KandyAdpter getDateFromate:[NSDate date] dateFromat:@"YYYY-MM-DD HH:MM:SS"], __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__]];
 

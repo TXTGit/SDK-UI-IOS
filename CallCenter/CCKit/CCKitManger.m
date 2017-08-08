@@ -10,6 +10,7 @@
 
 @implementation CCKitManger
 
+
 //注册kandy
 +(void)registerWithKey:(NSString *)key secret:(NSString *)secret;
 {
@@ -40,6 +41,7 @@
 }
 
 
+#pragma mark 本sdk中采用CCCallViewController为call处理委托控制器并将细节逻辑进行包装
 //拨打电话
 +(void)callWithIsPstn:(BOOL)isPstn isWithVideo:(BOOL)isVideo callee:(NSString *)Callee callback:(KandyCallback)callback;
 {
@@ -55,7 +57,6 @@
 }
 
 
-#pragma mark 在有来电来的时候有效
 //接收来电
 +(void)accept:(KandyCallback)callback;
 {
@@ -75,9 +76,7 @@
     }];
 }
 
-
-#pragma mark 接通后有效
-//挂断来电
+//挂断通话
 +(void)hangup:(KandyCallback)callback;
 {
     [[CallModule shareInstance] hangup:^(NSError *error) {
@@ -108,12 +107,29 @@
 }
 
 
++(void)switchSpeakerAndReceiver:(KandyCallback)callback;
+{
+    [[CallModule shareInstance]
+     changeAudioRoute:[[CallModule shareInstance] getCurrentCall].audioRoute == EKandyCallAudioRoute_speaker?EKandyCallAudioRoute_receiver:EKandyCallAudioRoute_speaker
+     Callback:^(NSError *error) {
+         if (callback) {
+             callback(error);
+         }
+     }];
+}
+
+
++(void)switchFontAndBackCamera:(KandyCallback)callback;
+{
+    [[CallModule shareInstance] switchFBCamera:^(NSError *error) {
+        if (callback) {
+            callback(error);
+        }
+    }];
+}
+
+
 #pragma mark MPV
-//MPV的流程和CALL流程相比，MPV流程是在Call的流程上加入房间管理的功能
-//及call这个会议前需要join这个房间，挂断需要leave这个房间
-
-
-//创建房间和邀请成员
 +(void)createRoomAndInvite:(NSArray *)inviteeArr callback:(KandyCallback)callback;
 {
     [[ConferenceModule shareInstance]
@@ -126,10 +142,16 @@
 }
 
 
-//接受会议
-//error 为nil 请在 callback 中执行跳转到
-//参考 -(void)onInviteReceived:(KandyMultiPartyConferenceInvite*)inviteEvent;
-//实现逻辑
++(void)inviteWithInviteeArr:(NSArray *)inviteeArr callback:(KandyCallback)callback;
+{
+    [[ConferenceModule shareInstance]
+     inviteWithInviteeArr:inviteeArr
+     callback:^(NSError *error) {
+         if (callback) {
+             callback(error);
+         }
+     }];
+}
 
 +(void)conferenceAccept:(KandyCallback)callback;
 {
@@ -140,7 +162,6 @@
     }];
 }
 
-//拒绝会议
 +(void)conferenceReject:(KandyCallback)callback;
 {
     [[CallModule shareInstance] reject:^(NSError *error) {
@@ -154,7 +175,6 @@
     }];
 }
 
-//挂断会议
 +(void)conferenceHangup:(KandyCallback)callback;
 {
     [[CallModule shareInstance] hangup:^(NSError *error) {

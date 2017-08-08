@@ -33,7 +33,7 @@
     // Do any additional setup after loading the view from its nib.
     
     mtableArr = [[NSMutableArray alloc] initWithCapacity:10];
-    [[ConferenceModule shareInstance]getConferenceDetail:^(NSError *error, id<KandyMultiPartyConferenceCallDetailsProtocol> conferenceCallDetails) {
+    [[ConferenceModule shareInstance] getConferenceDetail:^(NSError *error, id<KandyMultiPartyConferenceCallDetailsProtocol> conferenceCallDetails) {
         KDALog(@"error == %@, conferenceCallDetails == %@", [error description], [conferenceCallDetails description]);
         
         [mtableArr removeAllObjects];

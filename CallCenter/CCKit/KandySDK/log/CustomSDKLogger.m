@@ -36,6 +36,13 @@
 #import "CustomSDKLogger.h"
 #import "KandyAdpter.h"
 
+
+@interface CustomSDKLogger()
+{
+    dispatch_queue_t logqueue;
+}
+@end
+
 @implementation CustomSDKLogger
 
 #define kLogFilderName @"log"
@@ -48,13 +55,15 @@
 
 -(id)initWithFormatter:(id<KandyLoggingFormatterProtocol>)formatter
 {
-  self = [super init];
-  if (self)
-  {
-    [self resetLogFile];
-    self.loggingFormatter = formatter;
-  }
-  return self;
+    self = [super init];
+    if (self)
+    {
+        logqueue = dispatch_queue_create("com.mcc.logQueue", DISPATCH_QUEUE_SERIAL);
+        dispatch_set_target_queue(logqueue, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0));
+        [self resetLogFile];
+        self.loggingFormatter = formatter;
+    }
+    return self;
 }
 
 
@@ -62,112 +71,114 @@
 
 -(NSString *)getRootLogPath
 {
-  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-  NSString *documentsDirectory = [paths objectAtIndex:0];
-  NSString *rootLogPath = [documentsDirectory stringByAppendingPathComponent:kLogFilderName];
-  
-  BOOL isDir = NO;
-  NSError *error = nil;
-  BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:rootLogPath isDirectory:&isDir];
-  if (isExist && isDir) {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *rootLogPath = [documentsDirectory stringByAppendingPathComponent:kLogFilderName];
     
-  }else{
-    BOOL isCreate = [[NSFileManager defaultManager] createDirectoryAtPath:rootLogPath withIntermediateDirectories:YES attributes:nil error:&error];
-    if (isCreate) {
-      NSLog(@"create root log  error === %@", [error description]);
+    BOOL isDir = NO;
+    NSError *error = nil;
+    BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:rootLogPath isDirectory:&isDir];
+    if (isExist && isDir) {
+        
+    }else{
+        BOOL isCreate = [[NSFileManager defaultManager] createDirectoryAtPath:rootLogPath withIntermediateDirectories:YES attributes:nil error:&error];
+        if (isCreate) {
+            NSLog(@"create root log  error === %@", [error description]);
+        }
     }
-  }
-  return rootLogPath;
+    return rootLogPath;
 }
 
 
 -(void)resetLogFile
 {
-  NSString *rootLogPath = [self getRootLogPath];
-  KDALog(@"rootLogPath === %@", rootLogPath);
-  NSString *filePath = [NSString stringWithFormat:@"%@/%@",rootLogPath, kLogFileName];
-  
-  BOOL isDir = NO;
-  NSError *error = nil;
-  BOOL isExit = [[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:&isDir];
-  
-  if (isExit && !isDir) {
-    unsigned long long fileSize = [[[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:&error] fileSize];
-    
-    if (error!= nil) {
-      NSLog(@"%s [Line %d] error %@", __PRETTY_FUNCTION__, __LINE__, [error description]);
-      return;
-    }
-    
-    if (fileSize > kSwapFileSize) {
-      NSString *oldFilePath = [NSString stringWithFormat:@"%@/%@",rootLogPath, kOldLogFileName];
-      BOOL isOldDir = NO;
-      
-      if ([[NSFileManager defaultManager] fileExistsAtPath:oldFilePath isDirectory:&isOldDir]){
-        if (!isDir) {
-          [[NSFileManager defaultManager] removeItemAtPath:oldFilePath error:&error];
-          
-          if (error!= nil) {
-            NSLog(@"%s [Line %d] error %@", __PRETTY_FUNCTION__, __LINE__, [error description]);
-            return;
-          }
+    NSString *rootLogPath = [self getRootLogPath];
+    dispatch_async(logqueue, ^{
+        NSString *filePath = [NSString stringWithFormat:@"%@/%@",rootLogPath, kLogFileName];
+        
+        BOOL isDir = NO;
+        NSError *error = nil;
+        BOOL isExit = [[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:&isDir];
+        
+        if (isExit && !isDir) {
+            unsigned long long fileSize = [[[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:&error] fileSize];
+            
+            if (error!= nil) {
+                NSLog(@"%s [Line %d] error %@", __PRETTY_FUNCTION__, __LINE__, [error description]);
+                return;
+            }
+            
+            if (fileSize > kSwapFileSize) {
+                NSString *oldFilePath = [NSString stringWithFormat:@"%@/%@",rootLogPath, kOldLogFileName];
+                BOOL isOldDir = NO;
+                
+                if ([[NSFileManager defaultManager] fileExistsAtPath:oldFilePath isDirectory:&isOldDir]){
+                    if (!isDir) {
+                        [[NSFileManager defaultManager] removeItemAtPath:oldFilePath error:&error];
+                        
+                        if (error!= nil) {
+                            NSLog(@"%s [Line %d] error %@", __PRETTY_FUNCTION__, __LINE__, [error description]);
+                            return;
+                        }
+                    }
+                }
+                [[NSFileManager defaultManager] moveItemAtPath:filePath toPath:oldFilePath error:&error];
+                if (error!= nil) {
+                    NSLog(@"%s [Line %d] error %@", __PRETTY_FUNCTION__, __LINE__, [error description]);
+                    return;
+                }
+            }else{
+                
+            }
+        }else{
+            
         }
-      }
-      [[NSFileManager defaultManager] moveItemAtPath:filePath toPath:oldFilePath error:&error];
-      if (error!= nil) {
-        NSLog(@"%s [Line %d] error %@", __PRETTY_FUNCTION__, __LINE__, [error description]);
-        return;
-      }
-    }else{
-      
-    }
-  }else{
-
-  }
-  
-  NSString *startContents = @"\n\n\n===startLogFile===\n";
-  [self logWithLevel:EKandyLogLevel_info andLogString:startContents];
+    });
+    
+    KDALog(@"rootLogPath === %@", rootLogPath);
+    NSString *startContents = @"\n\n\n===startLogFile===\n";
+    [self logWithLevel:EKandyLogLevel_info andLogString:startContents];
 }
 
 
 -(NSData*)getLogFileData{
-  NSString *rootLogPath = [self getRootLogPath];
-  NSString *txtFilePath = [rootLogPath stringByAppendingPathComponent:kLogFileName];
-  NSData *logData = [NSData dataWithContentsOfFile:txtFilePath];
-  return logData;
+    NSString *rootLogPath = [self getRootLogPath];
+    NSString *txtFilePath = [rootLogPath stringByAppendingPathComponent:kLogFileName];
+    NSData *logData = [NSData dataWithContentsOfFile:txtFilePath];
+    return logData;
 }
 
 
 -(NSData*)getOldLogFileData{
-  NSString *rootLogPath = [self getRootLogPath];
-  NSString *txtFilePath = [rootLogPath stringByAppendingPathComponent:kOldLogFileName];
-  NSData *logData = [NSData dataWithContentsOfFile:txtFilePath];
-  return logData;
+    NSString *rootLogPath = [self getRootLogPath];
+    NSString *txtFilePath = [rootLogPath stringByAppendingPathComponent:kOldLogFileName];
+    NSData *logData = [NSData dataWithContentsOfFile:txtFilePath];
+    return logData;
 }
 
 
 -(void)cleanLogFile
 {
-  NSString *rootLogPath = [self getRootLogPath];
-  NSString *fileName = [NSString stringWithFormat:@"%@/%@",rootLogPath, kLogFileName];
-  
-  NSError *error = nil;
-  if([[NSFileManager defaultManager] fileExistsAtPath:fileName]){
-    BOOL isOk = [[NSFileManager defaultManager] removeItemAtPath:fileName error:&error];
-    NSLog(@"cleanLogFile path == %@  error == %@", fileName, [error description]);
-    if (isOk) {
-      NSString *fileContent = [NSString stringWithFormat:@"===cleanLogFile===\nkandy version === %@\n\n", [Kandy sharedInstance].version];
-      [self logWithLevel:EKandyLogLevel_info andLogString:fileContent];
+    NSString *rootLogPath = [self getRootLogPath];
+    NSString *fileName = [NSString stringWithFormat:@"%@/%@",rootLogPath, kLogFileName];
+    
+    NSError *error = nil;
+    if([[NSFileManager defaultManager] fileExistsAtPath:fileName]){
+        BOOL isOk = [[NSFileManager defaultManager] removeItemAtPath:fileName error:&error];
+        NSLog(@"cleanLogFile path == %@  error == %@", fileName, [error description]);
+        if (isOk) {
+            NSString *fileContent = [NSString stringWithFormat:@"===cleanLogFile===\nkandy version === %@\n\n", [Kandy sharedInstance].version];
+            [self logWithLevel:EKandyLogLevel_info andLogString:fileContent];
+        }
     }
-  }
-  
-  NSString *oldfileName = [NSString stringWithFormat:@"%@/%@",rootLogPath, kOldLogFileName];
-  
-  if([[NSFileManager defaultManager] fileExistsAtPath:oldfileName]){
-    [[NSFileManager defaultManager] removeItemAtPath:oldfileName error:&error];
-      NSLog(@"cleanLogFile oldfileName == %@  error == %@", oldfileName, [error description]);
-  }
-  
+    
+    NSString *oldfileName = [NSString stringWithFormat:@"%@/%@",rootLogPath, kOldLogFileName];
+    
+    if([[NSFileManager defaultManager] fileExistsAtPath:oldfileName]){
+        [[NSFileManager defaultManager] removeItemAtPath:oldfileName error:&error];
+        NSLog(@"cleanLogFile oldfileName == %@  error == %@", oldfileName, [error description]);
+    }
+    
 }
 
 
@@ -175,29 +186,40 @@
 #pragma mark - KandyLoggerProtocol
 
 -(void)logWithLevel:(EKandyLogLevel)level andLogString:(NSString *)logString{
-  
-  NSString *rootLogPath = [self getRootLogPath];
-  NSString *fileName = [rootLogPath stringByAppendingPathComponent:kLogFileName];
+    
+    dispatch_async(logqueue, ^{
+        
+        NSString *rootLogPath = [self getRootLogPath];
+        NSString *fileName = [rootLogPath stringByAppendingPathComponent:kLogFileName];
+        
+        BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:fileName];
+        if (!isExist) {
+            NSError *error = nil;
+            [logString writeToFile:fileName atomically:NO encoding:NSASCIIStringEncoding error:&error];
+            
+            if (error!= nil) {
+                NSLog(@"%s [Line %d] error %@", __PRETTY_FUNCTION__, __LINE__, [error description]);
+                return;
+            }
+        }else{
+            NSFileHandle *fh = [NSFileHandle fileHandleForUpdatingAtPath:fileName];
+            [fh seekToEndOfFile];
+            NSString *logContact = [NSString stringWithFormat:@"%@\n", logString];
+            NSData *logdata = [logContact dataUsingEncoding:NSASCIIStringEncoding];
+            [fh writeData:logdata];
+            [fh synchronizeFile];
+            [fh closeFile];
+        }
+    });
+}
 
-  BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:fileName];
-  if (!isExist) {
-    NSError *error = nil;
-    [logString writeToFile:fileName atomically:NO encoding:NSUTF8StringEncoding error:&error];
-    
-    if (error!= nil) {
-      NSLog(@"%s [Line %d] error %@", __PRETTY_FUNCTION__, __LINE__, [error description]);
-      return;
+-(void)testPerformance
+{
+    int max  = 1024*64;
+    for (int i = 0 ; i < max; i++) {
+        KDALog(@"%d - %.5f",i, [[NSDate date] timeIntervalSince1970]);
     }
-  }else{
-    NSFileHandle *fh = [NSFileHandle fileHandleForUpdatingAtPath:fileName];
-    [fh seekToEndOfFile];
-    
-    NSString *logContact = [NSString stringWithFormat:@"%@\n", logString];
-    NSData *logdata = [logContact dataUsingEncoding:NSUTF8StringEncoding];
-    [fh writeData:logdata];
-    [fh synchronizeFile];
-    [fh closeFile];
-  }
+    KDALog(@"end log");
 }
 
 @end

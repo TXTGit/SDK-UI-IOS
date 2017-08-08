@@ -138,12 +138,12 @@
                   moduleName = "SDKDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/aiquantong/Documents/genband/code/sdkDemo/CallCenter/CCKit/MPVVc/CCMPVSettingCallViewController.m"
-                  timestampString = "522920066.539726"
+                  timestampString = "523884309.584669"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
                   endingLineNumber = "57"
-                  offsetFromSymbolStart = "1572">
+                  offsetFromSymbolStart = "1884">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -153,12 +153,12 @@
                   moduleName = "SDKDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/aiquantong/Documents/genband/code/sdkDemo/CallCenter/CCKit/MPVVc/CCMPVSettingCallViewController.m"
-                  timestampString = "522920066.542712"
+                  timestampString = "523884309.586096"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
                   endingLineNumber = "57"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -337,6 +337,18 @@
             endingLineNumber = "43"
             landmarkName = "+loginRN:password:callback:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            symbolName = ""
+            moduleName = "">
+            <Locations>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

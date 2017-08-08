@@ -190,7 +190,7 @@ static AccessModule *shareInstance = nil;
 
 -(void) registrationStatusChanged:(EKandyRegistrationState)registrationState;
 {
-  KDALog(@"registrationStatusChanged === %d", registrationState);
+  KDALog(@"registrationStatusChanged === %lu", (unsigned long)registrationState);
   
   switch (registrationState) {
     case EKandyRegistrationState_registered:

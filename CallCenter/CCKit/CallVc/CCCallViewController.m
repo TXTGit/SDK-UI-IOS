@@ -427,7 +427,7 @@ static int i1ndex = 0;
 {
     [self.switchFBCameraButton setEnabled:NO];
     __weak typeof(self) weekself = self;
-    [[CallModule shareInstance] switchFBCamera:^(NSError *error) {
+    [CCKitManger switchFontAndBackCamera:^(NSError *error) {
         typeof(self) blockself = weekself;
         if (blockself) {
             
@@ -464,9 +464,7 @@ static int i1ndex = 0;
     [self.switchSpeakerButton setEnabled:NO];
     [self.callAudioSwitchSpeakerButton setEnabled:NO];
     __weak typeof(self) weekself = self;
-    [[CallModule shareInstance]
-     changeAudioRoute:[[CallModule shareInstance] getCurrentCall].audioRoute == EKandyCallAudioRoute_speaker?EKandyCallAudioRoute_receiver:EKandyCallAudioRoute_speaker
-     Callback:^(NSError *error) {
+    [CCKitManger switchSpeakerAndReceiver:^(NSError *error) {
          typeof(self) blockself = weekself;
          if (blockself) {
              

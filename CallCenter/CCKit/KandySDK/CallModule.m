@@ -60,7 +60,7 @@
  */
 
 -(void) stateChanged:(EKandyCallState)callState forCall:(id<KandyCallProtocol>)call {
-    KDALog(@"stateChanged callState  === %d", call.callState);
+    KDALog(@"stateChanged callState  === %ld", (long)call.callState);
     CALLModuleState callModuleState = 0;
     
     if (call == nil) {
