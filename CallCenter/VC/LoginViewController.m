@@ -75,16 +75,16 @@
 {
     [Utils showHUDOnWindowWithText:@"正在登录.."];
     [CCKitManger loginKandyWithUserName:self.phoneTextField.text
-     password:self.smsTextField.text
-     callback:^(NSError *error) {
-         [Utils hideHUDForWindow];
-         if (error) {
-             [self.view makeToast:[error description]];
-         }else{
-            [self.navigationController popViewControllerAnimated:YES];
-            [self.navigationController setNavigationBarHidden:NO];
-         }
-     }];
+                               password:self.smsTextField.text
+                               callback:^(NSError *error) {
+                                   [Utils hideHUDForWindow];
+                                   if (error) {
+                                       [self.view makeToast:[error description]];
+                                   }else{
+                                       [self.navigationController popViewControllerAnimated:YES];
+                                       [self.navigationController setNavigationBarHidden:NO];
+                                   }
+                               }];
 }
 
 /*
