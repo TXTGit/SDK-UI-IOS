@@ -51,13 +51,6 @@
 -(id)initWithFormatter:(id<KandyLoggingFormatterProtocol>)formatter;
 
 
--(NSString *)getRootLogPath;
-
-/**
- *  Deletes the Log File
- */
--(void)resetLogFile;
-
 
 -(void)cleanLogFile;
 
@@ -68,8 +61,9 @@
  */
 -(NSData*)getLogFileData;
 
-
 -(NSData*)getOldLogFileData;
+
+-(void)testPerformance;
 
 @end
 

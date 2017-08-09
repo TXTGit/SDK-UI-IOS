@@ -288,6 +288,7 @@ static MBProgressHUD *phud = nil;
     [UIAlertUtil
      showAlertWithPersentViewController:ad.rootNv
      alertCallBack:^(NSInteger index) {
+         [TonePlayer stopTonePlayer];
          if (index == 0) {
              
          }else if(index == 1 || index == 2){

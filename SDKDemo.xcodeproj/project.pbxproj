@@ -47,7 +47,6 @@
 		2821C2431F1F75300034FDAA /* CallModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821C2261F1F75300034FDAA /* CallModule.m */; };
 		2821C2491F1F75300034FDAA /* KandyAdpter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821C2301F1F75300034FDAA /* KandyAdpter.m */; };
 		2821C24A1F1F75300034FDAA /* KandySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2821C2311F1F75300034FDAA /* KandySDK.framework */; };
-		2821C24B1F1F75300034FDAA /* CustomSDKLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821C2341F1F75300034FDAA /* CustomSDKLogger.m */; };
 		2821C24C1F1F75300034FDAA /* ProvisionModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821C2361F1F75300034FDAA /* ProvisionModule.m */; };
 		2821C24D1F1F75300034FDAA /* SystemModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821C2381F1F75300034FDAA /* SystemModule.m */; };
 		2821C24E1F1F75300034FDAA /* UIAlertUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821C23B1F1F75300034FDAA /* UIAlertUtil.m */; };
@@ -101,6 +100,9 @@
 		287694DF1D1A6E2200AEECB8 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287694C01D1A6E2200AEECB8 /* VideoToolbox.framework */; };
 		2885F1E31F205AB3005F2E71 /* ConferenceModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 2885F1E21F205AB3005F2E71 /* ConferenceModule.m */; };
 		2885F1F51F2088D7005F2E71 /* AppDelegate+Push.m in Sources */ = {isa = PBXBuildFile; fileRef = 2885F1F41F2088D7005F2E71 /* AppDelegate+Push.m */; };
+		288955C21F3B2B1C00C615E1 /* CustomLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 288955BE1F3B2B1C00C615E1 /* CustomLogViewController.m */; };
+		288955C31F3B2B1C00C615E1 /* CustomLogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 288955BF1F3B2B1C00C615E1 /* CustomLogViewController.xib */; };
+		288955C41F3B2B1C00C615E1 /* CustomSDKLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 288955C11F3B2B1C00C615E1 /* CustomSDKLogger.m */; };
 		289C7EC61F284A5500C7924D /* busytone.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 289C7EBF1F284A5500C7924D /* busytone.m4r */; };
 		289C7EC71F284A5500C7924D /* connecting.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 289C7EC01F284A5500C7924D /* connecting.m4r */; };
 		289C7EC81F284A5500C7924D /* hangup.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 289C7EC11F284A5500C7924D /* hangup.m4r */; };
@@ -108,8 +110,6 @@
 		289C7ECA1F284A5500C7924D /* ringtone.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 289C7EC31F284A5500C7924D /* ringtone.m4r */; };
 		289C7ECB1F284A5500C7924D /* TonePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 289C7EC51F284A5500C7924D /* TonePlayer.m */; };
 		28AB39E21E77DB1900A04FDD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AB39E11E77DB1900A04FDD /* LaunchScreen.xib */; };
-		28FF7B241F39D704006B949A /* CustomLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FF7B221F39D704006B949A /* CustomLogViewController.m */; };
-		28FF7B251F39D704006B949A /* CustomLogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FF7B231F39D704006B949A /* CustomLogViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -169,8 +169,6 @@
 		2821C22F1F1F75300034FDAA /* KandyAdpter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KandyAdpter.h; sourceTree = "<group>"; };
 		2821C2301F1F75300034FDAA /* KandyAdpter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KandyAdpter.m; sourceTree = "<group>"; };
 		2821C2311F1F75300034FDAA /* KandySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KandySDK.framework; sourceTree = "<group>"; };
-		2821C2331F1F75300034FDAA /* CustomSDKLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSDKLogger.h; sourceTree = "<group>"; };
-		2821C2341F1F75300034FDAA /* CustomSDKLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSDKLogger.m; sourceTree = "<group>"; };
 		2821C2351F1F75300034FDAA /* ProvisionModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvisionModule.h; sourceTree = "<group>"; };
 		2821C2361F1F75300034FDAA /* ProvisionModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvisionModule.m; sourceTree = "<group>"; };
 		2821C2371F1F75300034FDAA /* SystemModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemModule.h; sourceTree = "<group>"; };
@@ -241,6 +239,11 @@
 		2885F1E21F205AB3005F2E71 /* ConferenceModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConferenceModule.m; sourceTree = "<group>"; };
 		2885F1F31F2088D7005F2E71 /* AppDelegate+Push.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Push.h"; sourceTree = "<group>"; };
 		2885F1F41F2088D7005F2E71 /* AppDelegate+Push.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Push.m"; sourceTree = "<group>"; };
+		288955BD1F3B2B1C00C615E1 /* CustomLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLogViewController.h; sourceTree = "<group>"; };
+		288955BE1F3B2B1C00C615E1 /* CustomLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLogViewController.m; sourceTree = "<group>"; };
+		288955BF1F3B2B1C00C615E1 /* CustomLogViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomLogViewController.xib; sourceTree = "<group>"; };
+		288955C01F3B2B1C00C615E1 /* CustomSDKLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSDKLogger.h; sourceTree = "<group>"; };
+		288955C11F3B2B1C00C615E1 /* CustomSDKLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSDKLogger.m; sourceTree = "<group>"; };
 		289C7EBF1F284A5500C7924D /* busytone.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = busytone.m4r; sourceTree = "<group>"; };
 		289C7EC01F284A5500C7924D /* connecting.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = connecting.m4r; sourceTree = "<group>"; };
 		289C7EC11F284A5500C7924D /* hangup.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = hangup.m4r; sourceTree = "<group>"; };
@@ -249,9 +252,6 @@
 		289C7EC41F284A5500C7924D /* TonePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TonePlayer.h; sourceTree = "<group>"; };
 		289C7EC51F284A5500C7924D /* TonePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TonePlayer.m; sourceTree = "<group>"; };
 		28AB39E11E77DB1900A04FDD /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		28FF7B211F39D704006B949A /* CustomLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLogViewController.h; sourceTree = "<group>"; };
-		28FF7B221F39D704006B949A /* CustomLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLogViewController.m; sourceTree = "<group>"; };
-		28FF7B231F39D704006B949A /* CustomLogViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomLogViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,6 +412,7 @@
 		2821C2201F1F75300034FDAA /* KandySDK */ = {
 			isa = PBXGroup;
 			children = (
+				288955BC1F3B2B1C00C615E1 /* log */,
 				289C7EBE1F284A5500C7924D /* Data */,
 				289C7EC41F284A5500C7924D /* TonePlayer.h */,
 				289C7EC51F284A5500C7924D /* TonePlayer.m */,
@@ -430,21 +431,8 @@
 				2821C2371F1F75300034FDAA /* SystemModule.h */,
 				2821C2381F1F75300034FDAA /* SystemModule.m */,
 				2821C2311F1F75300034FDAA /* KandySDK.framework */,
-				2821C2321F1F75300034FDAA /* log */,
 			);
 			path = KandySDK;
-			sourceTree = "<group>";
-		};
-		2821C2321F1F75300034FDAA /* log */ = {
-			isa = PBXGroup;
-			children = (
-				28FF7B211F39D704006B949A /* CustomLogViewController.h */,
-				28FF7B221F39D704006B949A /* CustomLogViewController.m */,
-				28FF7B231F39D704006B949A /* CustomLogViewController.xib */,
-				2821C2331F1F75300034FDAA /* CustomSDKLogger.h */,
-				2821C2341F1F75300034FDAA /* CustomSDKLogger.m */,
-			);
-			path = log;
 			sourceTree = "<group>";
 		};
 		2821C2391F1F75300034FDAA /* Utils */ = {
@@ -594,6 +582,18 @@
 			name = newFramework;
 			sourceTree = "<group>";
 		};
+		288955BC1F3B2B1C00C615E1 /* log */ = {
+			isa = PBXGroup;
+			children = (
+				288955BD1F3B2B1C00C615E1 /* CustomLogViewController.h */,
+				288955BE1F3B2B1C00C615E1 /* CustomLogViewController.m */,
+				288955BF1F3B2B1C00C615E1 /* CustomLogViewController.xib */,
+				288955C01F3B2B1C00C615E1 /* CustomSDKLogger.h */,
+				288955C11F3B2B1C00C615E1 /* CustomSDKLogger.m */,
+			);
+			path = log;
+			sourceTree = "<group>";
+		};
 		289C7EBE1F284A5500C7924D /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -696,7 +696,7 @@
 				2821C1A11F1F5E0F0034FDAA /* camera_open@2x.png in Resources */,
 				2821C1CF1F1F5E0F0034FDAA /* speacker_open@2x.png in Resources */,
 				2848D56A1F271262003BB0E9 /* MPVMemTableViewCell.xib in Resources */,
-				28FF7B251F39D704006B949A /* CustomLogViewController.xib in Resources */,
+				288955C31F3B2B1C00C615E1 /* CustomLogViewController.xib in Resources */,
 				2821C1D41F1F5E0F0034FDAA /* VoipVoiceCall@2x.png in Resources */,
 				289C7EC71F284A5500C7924D /* connecting.m4r in Resources */,
 				2821C1D21F1F5E0F0034FDAA /* voice_red@2x.png in Resources */,
@@ -727,6 +727,7 @@
 				281B1EC31F25BC350004178B /* CCCallViewController.m in Sources */,
 				281B1EC91F25BCED0004178B /* CCMPVInviteViewController.m in Sources */,
 				2821C23E1F1F75300034FDAA /* MBProgressHUD+Add.m in Sources */,
+				288955C41F3B2B1C00C615E1 /* CustomSDKLogger.m in Sources */,
 				2821C2591F1F75FF0034FDAA /* SupportViewController.m in Sources */,
 				2821C1D81F1F5F320034FDAA /* CCBasicViewController.m in Sources */,
 				2821C24E1F1F75300034FDAA /* UIAlertUtil.m in Sources */,
@@ -734,14 +735,12 @@
 				2848D5601F26EDC0003BB0E9 /* BasicNavViewController.m in Sources */,
 				281B1EF31F25F59C0004178B /* CCMPVSettingCallViewController.m in Sources */,
 				2821C2431F1F75300034FDAA /* CallModule.m in Sources */,
-				28FF7B241F39D704006B949A /* CustomLogViewController.m in Sources */,
 				2821C24C1F1F75300034FDAA /* ProvisionModule.m in Sources */,
 				2848D5691F271262003BB0E9 /* MPVMemTableViewCell.m in Sources */,
 				28138D1E1F2B155E003FD944 /* SessionMangementModule.m in Sources */,
 				2821C24D1F1F75300034FDAA /* SystemModule.m in Sources */,
 				2848D56D1F27132B003BB0E9 /* MPVMemModel.m in Sources */,
 				2885F1F51F2088D7005F2E71 /* AppDelegate+Push.m in Sources */,
-				2821C24B1F1F75300034FDAA /* CustomSDKLogger.m in Sources */,
 				281B1EED1F25E83A0004178B /* MPVRoomModel.m in Sources */,
 				287694831D1A694400AEECB8 /* AppDelegate.m in Sources */,
 				2885F1E31F205AB3005F2E71 /* ConferenceModule.m in Sources */,
@@ -749,6 +748,7 @@
 				2821C2571F1F75FF0034FDAA /* LoginViewController.m in Sources */,
 				2821C2411F1F75300034FDAA /* AccessModule.m in Sources */,
 				287694801D1A694400AEECB8 /* main.m in Sources */,
+				288955C21F3B2B1C00C615E1 /* CustomLogViewController.m in Sources */,
 				2821C23F1F1F75300034FDAA /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

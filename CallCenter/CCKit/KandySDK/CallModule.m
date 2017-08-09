@@ -100,16 +100,24 @@
             break;
             
         case EKandyCallState_talking:
+        {
             KDALog(@"EKandyCallState_talking");
             callModuleState = CALLModuleState_talking;
             [TonePlayer stopTonePlayer];
             [TonePlayer stopRingSound];
             [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW,(int64_t)(2.0 * NSEC_PER_SEC)),
+                           dispatch_get_main_queue(), ^{
+                               BOOL isCommingWithVideo = [self checkCurrentCallIsVideo];
+                               [self changeAudioRoute:isCommingWithVideo?2:1 Callback:nil];
+                           });
+        }
             break;
             
         case EKandyCallState_terminated:
         {
-            KDALog(@"EKandyCallState_terminated reason:%zd %@",[call.terminationReason reasonCode], [call.terminationReason reason]);
+            KDALog(@"EKandyCallState_terminated reason: %zd  %@",[call.terminationReason reasonCode], [call.terminationReason reason]);
             callModuleState = CALLModuleState_terminated;
             [TonePlayer stopTonePlayer];
             [TonePlayer stopRingSound];
@@ -358,11 +366,13 @@ static CallModule *shareInstance = nil;
 {
     self = [super init];
     if (self) {
-
         isWithVideo = YES;
+        [Kandy sharedInstance].services.call.settings.cameraOrientationSupport = EKandyCameraOrientationSupport_device;
+        [Kandy sharedInstance].services.call.settings.audioSessionMode = AVAudioSessionModeVoiceChat;
     }
     return self;
 }
+
 
 -(void)registerKandyNotification
 {
@@ -842,12 +852,6 @@ static CallModule *shareInstance = nil;
     NSString * fullRoomNumber = [NSString stringWithFormat:@"%@@%@", roomNumber, domain];
     
     KandyRecord * roomRecord = [[KandyRecord alloc] initWithURI:fullRoomNumber type:EKandyRecordType_contact associationType:EKandyRecordAssociationType_community];
-    
-    if ([Kandy sharedInstance].services.call.settings) {
-        [Kandy sharedInstance].services.call.settings.cameraOrientationSupport = EKandyCameraOrientationSupport_device;
-        
-        [Kandy sharedInstance].services.call.settings.audioSessionMode = AVAudioSessionModeVideoChat;
-    }
     
     KandyRecord * initiator = [Kandy sharedInstance].sessionManagement.session.currentUser.record;
     EKandyOutgingVoIPCallOptions options = isVieo?EKandyOutgingVoIPCallOptions_startCallWithVideo:

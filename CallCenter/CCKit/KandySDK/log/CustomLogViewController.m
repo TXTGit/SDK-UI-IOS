@@ -53,10 +53,18 @@
         [[Kandy sharedInstance].loggingInterface respondsToSelector:@selector(getLogFileData)]) {
         
         NSData *dt = [(CustomSDKLogger *)[Kandy sharedInstance].loggingInterface getLogFileData];
-        self.txtView.text = [[NSString alloc] initWithData:dt encoding:NSUTF8StringEncoding];
+        self.txtView.text = [[NSString alloc] initWithData:dt encoding:NSASCIIStringEncoding];
     };
 }
 
+
+-(IBAction)onclickPerformance:(id)sender
+{
+    [(CustomSDKLogger *)[Kandy sharedInstance].loggingInterface testPerformance];
+    [UIAlertUtil showAlertWithTitle:@"提示"
+                            message:@"测试已经完成"
+              persentViewController:self];
+}
 
 -(IBAction)clear:(id)sender
 {
@@ -71,7 +79,7 @@
             [[Kandy sharedInstance].loggingInterface respondsToSelector:@selector(getLogFileData)]) {
             
             NSData *dt = [(CustomSDKLogger *)[Kandy sharedInstance].loggingInterface getLogFileData];
-            self.txtView.text = [[NSString alloc] initWithData:dt encoding:NSUTF8StringEncoding];
+            self.txtView.text = [[NSString alloc] initWithData:dt encoding:NSASCIIStringEncoding];
         };
         
     });

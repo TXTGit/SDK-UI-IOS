@@ -43,7 +43,7 @@ static BOOL isHaveLogin = NO;
        if (!error) {
            [SessionMangementModule saveCurrentSession];
        }
-       
+        
        [AccessModule enableKandyPushNotification];
        AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
        [ad doRemoteNotifications];
@@ -68,6 +68,12 @@ static BOOL isHaveLogin = NO;
        if (callback) {
            callback(error);
        }
+       if (!error) {
+           [SessionMangementModule saveCurrentSession];
+       }
+       [AccessModule enableKandyPushNotification];
+       AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
+       [ad doRemoteNotifications];
    }];
 }
 
@@ -87,9 +93,7 @@ static BOOL isHaveLogin = NO;
        if (callback) {
            callback(error);
        }
-       if (!error) {
-           [SessionMangementModule removeSaveSession];
-       }
+        [SessionMangementModule removeSaveSession];
    }];
 }
 

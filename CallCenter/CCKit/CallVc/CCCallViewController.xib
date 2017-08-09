@@ -39,7 +39,7 @@
                 <outlet property="sendCallActionView" destination="SFx-wZ-IaL" id="S0O-K1-LP6"/>
                 <outlet property="switchCameraButton" destination="ifE-rR-eSm" id="4J1-fn-dei"/>
                 <outlet property="switchFBCameraButton" destination="ZJm-ri-L76" id="MTo-su-zsn"/>
-                <outlet property="switchSpeakerButton" destination="SbC-8J-u4o" id="OSn-Oh-HW9"/>
+                <outlet property="switchMuteButton" destination="SbC-8J-u4o" id="RDq-FZ-97W"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -203,16 +203,22 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlz-AA-Bae">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlz-AA-Bae">
                     <rect key="frame" x="20" y="43" width="335" height="28"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="335" id="32S-um-gE2"/>
+                        <constraint firstAttribute="height" constant="28" id="bu2-nJ-ypz"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNw-Gb-9FK">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNw-Gb-9FK">
                     <rect key="frame" x="112" y="78" width="150" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="150" id="Vyg-Vf-77S"/>
+                        <constraint firstAttribute="height" constant="20" id="X3C-Nz-k0D"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -240,7 +246,7 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
-                                        <action selector="onclickSwitchSpeaker:" destination="-1" eventType="touchUpInside" id="PSv-yR-XFh"/>
+                                        <action selector="onclickSwitchMute:" destination="-1" eventType="touchUpInside" id="yaz-Oz-X25"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -333,7 +339,11 @@
             <color key="backgroundColor" red="0.91299623249999995" green="0.92831248040000003" blue="0.99467796090000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="ijX-cK-Bot" secondAttribute="trailing" id="BlL-o5-2TS"/>
+                <constraint firstItem="UNw-Gb-9FK" firstAttribute="top" secondItem="vlz-AA-Bae" secondAttribute="bottom" constant="7" id="EAX-eR-KR6"/>
+                <constraint firstItem="vlz-AA-Bae" firstAttribute="top" secondItem="uLP-FA-s1f" secondAttribute="top" constant="43" id="Q6Z-gB-nk5"/>
                 <constraint firstAttribute="bottom" secondItem="ijX-cK-Bot" secondAttribute="bottom" id="Sfi-1P-d1w"/>
+                <constraint firstItem="UNw-Gb-9FK" firstAttribute="centerX" secondItem="uLP-FA-s1f" secondAttribute="centerX" id="WYD-91-E2d"/>
+                <constraint firstItem="vlz-AA-Bae" firstAttribute="centerX" secondItem="uLP-FA-s1f" secondAttribute="centerX" id="gmG-FA-f5K"/>
                 <constraint firstItem="ijX-cK-Bot" firstAttribute="leading" secondItem="uLP-FA-s1f" secondAttribute="leading" id="u3c-BL-cpr"/>
             </constraints>
             <point key="canvasLocation" x="1107.5" y="317.5"/>
@@ -443,7 +453,7 @@
                                         <constraint firstAttribute="width" constant="53" id="C2X-Wn-7Uq"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" image="speacker_open.png">
+                                    <state key="normal" image="mic_close.png">
                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <userDefinedRuntimeAttributes>
@@ -452,7 +462,7 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
-                                        <action selector="onclickSwitchSpeaker:" destination="-1" eventType="touchUpInside" id="bIH-dA-6Zz"/>
+                                        <action selector="onclickSwitchMute:" destination="-1" eventType="touchUpInside" id="8ob-1n-ftb"/>
                                     </connections>
                                 </button>
                             </subviews>

@@ -96,7 +96,8 @@ static KandyAdpter *shareInstance = nil;
     [Kandy sharedInstance].globalSettings.kandyServiceHost = Kandy_Host_Url;
     [Kandy sharedInstance].globalSettings.kandyServiceTimeout = 30;
     [Kandy sharedInstance].globalSettings.isAutoRenewSession = YES;
-    [Kandy sharedInstance].globalSettings.isPrintRTCCallLogs = NO;
+    [Kandy sharedInstance].globalSettings.isPrintRTCCallLogs = YES;
+    [Kandy sharedInstance].globalSettings.shouldWakeupDestinationBeforeCall = YES;
     is_debug_console = YES;
     
     CustomSDKLogger * customSDKLogger = [[CustomSDKLogger alloc] initWithFormatter:[Kandy sharedInstance].loggingInterface.loggingFormatter];
