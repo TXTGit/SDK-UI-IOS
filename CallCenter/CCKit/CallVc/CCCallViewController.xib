@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CCCallViewController">
             <connections>
                 <outlet property="callAudioCallSourceLabel" destination="vlz-AA-Bae" id="pmJ-Z5-KIY"/>
+                <outlet property="callAudioControlView" destination="ijX-cK-Bot" id="Qjf-V4-pkh"/>
                 <outlet property="callAudioSwitchMuteButton" destination="uIj-Yn-fWR" id="WZD-cI-Rj4"/>
                 <outlet property="callAudioSwitchSpeakerButton" destination="rnd-ox-IFB" id="Vyo-I6-h20"/>
                 <outlet property="callAudioTimeLabel" destination="CfS-bb-mQE" id="OJP-sj-bbO"/>
@@ -27,6 +28,7 @@
                 <outlet property="callStateLabel" destination="Lj6-qr-fCI" id="7lS-iN-oeP"/>
                 <outlet property="callTypeLabel" destination="NFW-tz-enC" id="GqB-Qx-AJC"/>
                 <outlet property="callVideoCallSourceLabel" destination="Bvi-Z2-UwL" id="4jS-fv-2nH"/>
+                <outlet property="callVideoControlView" destination="3nW-zN-ULr" id="Bo2-rW-PLp"/>
                 <outlet property="callVideoTimeLabel" destination="UNw-Gb-9FK" id="kxe-5z-uU9"/>
                 <outlet property="callView" destination="84G-uq-ac3" id="cFG-5P-cd2"/>
                 <outlet property="calllLocalHeight" destination="Drg-XL-biY" id="1PM-g2-bIs"/>
@@ -379,6 +381,7 @@
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="10z-q1-Bqb">
                     <rect key="frame" x="255" y="23" width="120" height="150"/>
+                    <color key="backgroundColor" white="0.89070161459999997" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="150" id="Drg-XL-biY"/>
                         <constraint firstAttribute="width" constant="120" id="Jil-n6-CVV"/>

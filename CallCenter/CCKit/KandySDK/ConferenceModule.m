@@ -313,11 +313,10 @@ static MBProgressHUD *phud = nil;
                               phud = nil;
                           }
                           if(error == nil){
-                              AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
                               CCMPVCallViewController *cccall = [[CCMPVCallViewController alloc] initWithNibName:@"CCMPVCallViewController" bundle:nil];
                               cccall.roomNumber = self.curRoomNumber;
                               cccall.isVideo = YES;
-                              [ad.rootNv presentViewController:cccall animated:YES completion:NULL];
+                              [cccall showInWindow];
                           }else{
                               KDALog(@"establishCallWithResponseBlock error = %@", [error description]);
                               [MBProgressHUD showError:@"加入会议失败" toView:ad.rootNv.view];

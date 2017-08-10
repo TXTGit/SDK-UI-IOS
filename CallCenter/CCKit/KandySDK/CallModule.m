@@ -217,14 +217,14 @@
     
     KDALog(@"gotIncomingCall %@  %@", [self description], [call description]);
     
-    if (self.outgoingCall != nil || self.currentIncomingCall != nil) {
+    if ([self getCurrentCall]) {
         [call rejectWithResponseBlock:^(NSError *error) {
             KDALog(@"gotIncomingCall rejectWithResponseBlock error === %@ ", [error description]);
         }];
         return;
     }
     
-  [AppDelegate showCallPushNotification:call];
+  //[AppDelegate showCallPushNotification:call];
     
     switch ([call incomingCallAnswerType]) {
         case EKandyIncomingCallAnswerType_none:
@@ -243,11 +243,8 @@
         {
             [TonePlayer startTonePlayer];
             self.currentIncomingCall = call;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                CCCallViewController *cccall = [[CCCallViewController alloc] initWithNibName:@"CCCallViewController" bundle:nil];
-                [ad.rootNv presentViewController:cccall animated:YES completion:NULL];
-            });
+            CCCallViewController *cccall = [[CCCallViewController alloc] initWithNibName:@"CCCallViewController" bundle:nil];
+            [cccall showInWindow];
         }
             break;
             
@@ -382,7 +379,10 @@ static CallModule *shareInstance = nil;
 
 -(void)callWithIsPstn:(BOOL)isPstn isWithVideo:(BOOL)isVideo Callee:(NSString *)Callee Callback:(KandyCallback)callback
 {
-    if (self.outgoingCall) {
+    if ([self getCurrentCall]) {
+        if (callback) {
+            callback([[NSError alloc] initWithDomain:@"正在通话中" code:-100 userInfo:nil]);
+        }
         return;
     }
     
@@ -580,6 +580,9 @@ static CallModule *shareInstance = nil;
  */
 -(void)hangup:(KandyCallback)callback
 {
+    self.currentIncomingCall = nil;
+    self.outgoingCall = nil;
+    
     NSString *callUri = nil;
     if (callUri == nil || [callUri isEqualToString:@""]) {
         NSArray <id<KandyCallProtocol>> * activeCalls = [Kandy sharedInstance].services.call.callsInProgress;
@@ -847,6 +850,14 @@ static CallModule *shareInstance = nil;
 
 -(void)establishMPVCall:(NSString *)roomNumber isVideo:(BOOL)isVieo callback:(KandyCallback)callback
 {
+    
+    if ([self getCurrentCall]) {
+        if (callback) {
+            callback([[NSError alloc] initWithDomain:@"正在通话中" code:-100 userInfo:nil]);
+        }
+        return;
+    }
+
     NSString * domain = [Kandy sharedInstance].sessionManagement.session.kandyDomain.name;
     
     NSString * fullRoomNumber = [NSString stringWithFormat:@"%@@%@", roomNumber, domain];

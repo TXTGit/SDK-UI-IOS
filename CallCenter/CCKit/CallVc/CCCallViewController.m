@@ -15,6 +15,7 @@
 
 @interface CCCallViewController ()<CallModuleDelagate, UIGestureRecognizerDelegate>
 {
+    UIWindow *showWindow;
     NSDate *startDate;
     NSTimer *timer;
 }
@@ -36,8 +37,10 @@
 @property (nonatomic, strong) IBOutlet UIImageView *callAudioImageView;
 @property (nonatomic, strong) IBOutlet UILabel *callAudioCallSourceLabel;
 @property(nonatomic, strong) IBOutlet UILabel *callAudioTimeLabel;
+@property(nonatomic, strong) IBOutlet UIView *callAudioControlView;
 @property(nonatomic, strong) IBOutlet UIButton *callAudioSwitchMuteButton;
 @property(nonatomic, strong) IBOutlet UIButton *callAudioSwitchSpeakerButton;
+
 
 @property(nonatomic, strong) IBOutlet UIView *callView;
 @property(nonatomic, strong) IBOutlet UIView *callRemoteView;
@@ -54,6 +57,7 @@
 
 @property (nonatomic, strong) IBOutlet UILabel *callVideoCallSourceLabel;
 @property(nonatomic, strong) IBOutlet UILabel *callVideoTimeLabel;
+@property(nonatomic, strong) IBOutlet UIView *callVideoControlView;
 @property(nonatomic, strong) IBOutlet UIButton *switchFBCameraButton;
 @property(nonatomic, strong) IBOutlet UIButton *switchMuteButton;
 @property(nonatomic, strong) IBOutlet UIButton *switchCameraButton;
@@ -190,6 +194,102 @@
 }
 
 
+static BOOL isHiddenInWindow = YES;
+
+-(void)showInWindow
+{
+    dispatch_after(
+                   dispatch_time(DISPATCH_TIME_NOW,(int64_t)(0.05 * NSEC_PER_SEC)),
+                   dispatch_get_main_queue(),
+                   ^{
+                       CGRect screenRect = [UIScreen mainScreen].bounds;
+                       CGRect startFrame = CGRectMake(0,
+                                                      -screenRect.size.height,
+                                                      screenRect.size.width,
+                                                      screenRect.size.height);
+                       
+                       CGRect endFrame = CGRectMake(0,
+                                                    0,
+                                                    screenRect.size.width,
+                                                    screenRect.size.height);
+                       
+                       showWindow = [[UIWindow alloc] initWithFrame:startFrame];
+                       showWindow.windowLevel = UIWindowLevelAlert;
+                       showWindow.rootViewController = self;
+                       [showWindow makeKeyAndVisible];
+                       
+                       [UIView
+                        animateWithDuration:0.3
+                        animations:^{
+                            showWindow.frame = endFrame;
+                        }
+                        completion:^(BOOL finished) {
+                            isHiddenInWindow = NO;
+                        }];
+                   });
+}
+
+-(void)hiddenInWindow;
+{
+    if (isHiddenInWindow == NO) {
+        isHiddenInWindow = YES;
+    }else{
+        return;
+    }
+    
+    [[UIDevice currentDevice] setValue:@(UIDeviceOrientationPortrait) forKey:@"orientation"];
+    [UIViewController attemptRotationToDeviceOrientation];
+    
+    CGRect startFrame = showWindow.frame;
+    CGRect screenRect = [UIScreen mainScreen].bounds;
+    
+    CGRect endFrame = CGRectMake(0,
+                                 -screenRect.size.height,
+                                 screenRect.size.width,
+                                 screenRect.size.height);
+    
+    [UIView animateWithDuration:0.1
+                     animations:^{
+                        showWindow.frame = endFrame;
+                     }
+                     completion:^(BOOL finished) {
+                         [showWindow setHidden:YES];
+                     }];
+}
+
+
+-(void)dealloc
+{
+    if (timer) {
+        [timer invalidate];
+        timer = nil;
+    }
+}
+
+
+-(IBAction)onclickMIN:(id)sender
+{
+    CGRect startFrame = showWindow.frame;
+    
+    CGRect endFrame = CGRectMake(20,
+                                 20,
+                                 startFrame.size.width * 0.2,
+                                 startFrame.size.height * 0.2);
+    showWindow.frame = endFrame;
+    self.view.frame = endFrame;
+    self.callView.frame = endFrame;
+    self.callAudioView.frame = endFrame;
+//    [showWindow setNeedsDisplay];
+//    [UIView animateWithDuration:0.3
+//                     animations:^{
+//                         showWindow.frame = endFrame;
+//                     }
+//                     completion:^(BOOL finished) {
+//                         [showWindow setNeedsDisplay];
+//                     }];
+}
+
+
 -(void)startTimer
 {
     startDate = [NSDate date];
@@ -283,19 +383,30 @@
     }
 }
 
-static int i1ndex = 0;
 -(IBAction)touchVideoView:(id)sender
 {
     if ([[CallModule shareInstance] getCurrentCall].isReceivingVideo &&
-        [[CallModule shareInstance] getCurrentCall].isSendingVideo) {
-        i1ndex++;
-        if( i1ndex % 2 ==0){
-            [self setBigView:self.callRemoteView];
-            [self setSmallView:self.callLocalView];
-        }else {
-            [self setBigView:self.callLocalView];
-            [self setSmallView:self.callRemoteView];
+        [[CallModule shareInstance] getCurrentCall].isSendingVideo &&
+        [sender isKindOfClass:[UITapGestureRecognizer class]]) {
+        UIView *view = ((UITapGestureRecognizer *)sender).view;
+        if (view == self.callRemoteView ||
+            view == self.callLocalView) {
+            if(view.frame.size.width > smallView_Width * 2){
+                [self.callVideoControlView setHidden:!self.callVideoControlView.hidden];
+            }else{
+                if (view == self.callRemoteView) {
+                    [self setBigView:self.callRemoteView];
+                    [self setSmallView:self.callLocalView];
+                }else if(view == self.callLocalView){
+                    [self setBigView:self.callLocalView];
+                    [self setSmallView:self.callRemoteView];
+                }else{
+                
+                }
+            }
         }
+    }else{
+        [self.callVideoControlView setHidden:!self.callVideoControlView.hidden];
     }
 }
 
@@ -407,7 +518,7 @@ static int i1ndex = 0;
     [CCKitManger reject:^(NSError *error) {
 
     }];
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self hiddenInWindow];
 }
 
 
@@ -419,7 +530,7 @@ static int i1ndex = 0;
     [CCKitManger hangup:^(NSError *error) {
 
     }];
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self hiddenInWindow];
 }
 
 
@@ -522,6 +633,7 @@ static int i1ndex = 0;
 {
     return UIInterfaceOrientationPortrait;
 }
+
 
 /*
 #pragma mark - Navigation

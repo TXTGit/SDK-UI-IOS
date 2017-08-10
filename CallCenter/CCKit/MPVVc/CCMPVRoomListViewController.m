@@ -122,7 +122,7 @@ static MBProgressHUD *phud = nil;
                  CCMPVCallViewController *cccall = [[CCMPVCallViewController alloc] initWithNibName:@"CCMPVCallViewController" bundle:nil];
                  cccall.roomNumber = mv.roomId;
                  cccall.isVideo = YES;
-                 [ad.rootNv presentViewController:cccall animated:YES completion:NULL];
+                 [cccall showInWindow];
              }else{
                  if ([[error description] rangeOfString:@"Conference not active"].location != NSNotFound){
                      mv.roomState = RoomState_Over;

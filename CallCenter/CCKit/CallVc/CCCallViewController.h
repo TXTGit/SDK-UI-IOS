@@ -10,4 +10,8 @@
 
 @interface CCCallViewController : CCBasicViewController
 
+-(void)showInWindow;
+
+-(void)hiddenInWindow;
+
 @end

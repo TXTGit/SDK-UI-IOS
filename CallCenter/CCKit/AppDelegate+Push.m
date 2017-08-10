@@ -167,17 +167,6 @@ static char Object_NotificationsList;
 //匹配不同的来源信息的推送
 -(BOOL)createLocalNotificaion:(NSDictionary *)dic
 {
-    NSString *destination = [dic objectForKey:@"destination"];
-    if (destination && [destination isKindOfClass:[NSString class]]) {
-        NSString *ksuserId = [SessionMangementModule getSavedSessionData].currentUser.userId;
-        KDALog(@"destination === %@  ksuserId === %@ ", destination, ksuserId);
-        if (!destination || !ksuserId || ![ksuserId isEqualToString:destination]) {
-            return NO;
-        }
-    }else{
-        return NO;
-    }
-    
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     notification.fireDate = [NSDate date];
     notification.timeZone = [NSTimeZone defaultTimeZone];
@@ -217,6 +206,19 @@ static char Object_NotificationsList;
             [TonePlayer startTonePlayerWithOneTime];
         }
     }else if(messageType && [messageType isEqualToString:@"chat"]){
+        
+        //暂时仅仅判断chat 消息
+        NSString *destination = [dic objectForKey:@"destination"];
+        if (destination && [destination isKindOfClass:[NSString class]]) {
+            NSString *ksuserId = [SessionMangementModule getSavedSessionData].currentUser.userId;
+            KDALog(@"destination === %@  ksuserId === %@ ", destination, ksuserId);
+            if (!destination || !ksuserId || ![ksuserId isEqualToString:destination]) {
+                return NO;
+            }
+        }else{
+            return NO;
+        }
+        
         notification.alertBody = [aps objectForKey:@"alert"];
         notification.soundName = [aps objectForKey:@"sound"];
         notification.userInfo = dic;

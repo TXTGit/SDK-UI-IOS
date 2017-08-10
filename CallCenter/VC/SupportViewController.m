@@ -43,14 +43,11 @@
      isWithVideo:self.switchVideo.isOn
      callee:self.iphoneTxt.text
      callback:^(NSError *error) {
-         dispatch_async(dispatch_get_main_queue(), ^{
-             if (!error) {
-                 CCCallViewController *cccall = [[CCCallViewController alloc] initWithNibName:@"CCCallViewController" bundle:nil];
-                 [self.navigationController presentViewController:cccall animated:YES completion:NULL];
-             }else{
-                 
-             }
-         });
+         if (!error) {
+             CCCallViewController *cccall = [[CCCallViewController alloc] initWithNibName:@"CCCallViewController" bundle:nil];
+             [cccall showInWindow];
+         }
+         
      }];
 }
 

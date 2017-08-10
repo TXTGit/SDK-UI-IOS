@@ -17,6 +17,7 @@
 
 @interface CCMPVCallViewController ()<CallModuleDelagate>
 {
+    UIWindow *showWindow;
     NSDate *startDate;
     NSTimer *timer;
 }
@@ -128,6 +129,79 @@
         [self.switchCameraButton setImage:[UIImage imageNamed:@"camera_open@2x.png"] forState:UIControlStateNormal];
     }
     self.callVideoCallSourceLabel.text = [[CallModule shareInstance] getCurrentCall].remoteRecord.uri;
+}
+
+
+static BOOL isHiddenInWindow = YES;
+
+-(void)showInWindow
+{
+    dispatch_after(
+                   dispatch_time(DISPATCH_TIME_NOW,(int64_t)(0.05 * NSEC_PER_SEC)),
+                   dispatch_get_main_queue(),
+                   ^{
+                       CGRect screenRect = [UIScreen mainScreen].bounds;
+                       CGRect startFrame = CGRectMake(0,
+                                                      -screenRect.size.height,
+                                                      screenRect.size.width,
+                                                      screenRect.size.height);
+                       
+                       CGRect endFrame = CGRectMake(0,
+                                                    0,
+                                                    screenRect.size.width,
+                                                    screenRect.size.height);
+                       
+                       showWindow = [[UIWindow alloc] initWithFrame:startFrame];
+                       showWindow.windowLevel = UIWindowLevelAlert;
+                       showWindow.rootViewController = self;
+                       [showWindow makeKeyAndVisible];
+                       
+                       [UIView
+                        animateWithDuration:0.3
+                        animations:^{
+                            showWindow.frame = endFrame;
+                        }
+                        completion:^(BOOL finished) {
+                            isHiddenInWindow = NO;
+                        }];
+                   });
+}
+
+-(void)hiddenInWindow;
+{
+    if (isHiddenInWindow == NO) {
+        isHiddenInWindow = YES;
+    }else{
+        return;
+    }
+    
+    [[UIDevice currentDevice] setValue:@(UIDeviceOrientationPortrait) forKey:@"orientation"];
+    [UIViewController attemptRotationToDeviceOrientation];
+    
+    CGRect startFrame = showWindow.frame;
+    CGRect screenRect = [UIScreen mainScreen].bounds;
+    
+    CGRect endFrame = CGRectMake(0,
+                                 -screenRect.size.height,
+                                 screenRect.size.width,
+                                 screenRect.size.height);
+    
+    [UIView animateWithDuration:0.1
+                     animations:^{
+                         showWindow.frame = endFrame;
+                     }
+                     completion:^(BOOL finished) {
+                         [showWindow setHidden:YES];
+                     }];
+}
+
+
+-(void)dealloc
+{
+    if (timer) {
+        [timer invalidate];
+        timer = nil;
+    }
 }
 
 
@@ -283,7 +357,7 @@
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self dismissViewControllerAnimated:YES completion:NULL];
+            [self hiddenInWindow];
         });
     }];
 
@@ -306,7 +380,7 @@
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self dismissViewControllerAnimated:YES completion:NULL];
+            [self hiddenInWindow];
         });
     }];
 }
