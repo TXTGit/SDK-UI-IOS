@@ -229,6 +229,7 @@ static BOOL isHiddenInWindow = YES;
                    });
 }
 
+
 -(void)hiddenInWindow;
 {
     if (isHiddenInWindow == NO) {
@@ -620,11 +621,9 @@ static BOOL isHiddenInWindow = YES;
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     if ([[CallModule shareInstance] checkCurrentCallIsVideo]) {
-        self.callView.frame = self.view.frame;
         return (UIInterfaceOrientationMaskPortrait |
                 UIInterfaceOrientationMaskLandscapeRight);
     }else{
-        self.callAudioView.frame = self.view.frame;
         return (UIInterfaceOrientationMaskPortrait);
     }
 }
@@ -634,6 +633,25 @@ static BOOL isHiddenInWindow = YES;
     return UIInterfaceOrientationPortrait;
 }
 
+-(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    
+    NSLog(@"viewWillTransitionToSize size == %@", NSStringFromCGSize(size));
+    
+    CGFloat duration = [coordinator transitionDuration];
+    [UIView animateWithDuration:duration
+                     animations:^{
+                         
+                     }
+                     completion:^(BOOL finished) {
+                         if ([[CallModule shareInstance] checkCurrentCallIsVideo]) {
+                             self.callView.frame = self.view.frame;
+                         }else{
+                             self.callAudioView.frame = self.view.frame;
+                         }
+                     }];
+}
 
 /*
 #pragma mark - Navigation

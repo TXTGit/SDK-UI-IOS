@@ -379,6 +379,13 @@ static CallModule *shareInstance = nil;
 
 -(void)callWithIsPstn:(BOOL)isPstn isWithVideo:(BOOL)isVideo Callee:(NSString *)Callee Callback:(KandyCallback)callback
 {
+    if ([Kandy sharedInstance].access.connectionState != EKandyRegistrationState_registered) {
+        if (callback) {
+            callback([[NSError alloc] initWithDomain:@"正在连接中" code:-101 userInfo:nil]);
+        }
+        return;
+    }
+    
     if ([self getCurrentCall]) {
         if (callback) {
             callback([[NSError alloc] initWithDomain:@"正在通话中" code:-100 userInfo:nil]);
@@ -850,6 +857,12 @@ static CallModule *shareInstance = nil;
 
 -(void)establishMPVCall:(NSString *)roomNumber isVideo:(BOOL)isVieo callback:(KandyCallback)callback
 {
+    if ([Kandy sharedInstance].access.connectionState != EKandyRegistrationState_registered) {
+        if (callback) {
+            callback([[NSError alloc] initWithDomain:@"正在连接中" code:-101 userInfo:nil]);
+        }
+        return;
+    }
     
     if ([self getCurrentCall]) {
         if (callback) {

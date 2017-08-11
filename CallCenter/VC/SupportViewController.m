@@ -15,6 +15,7 @@
 #import "AppDelegate.h"
 
 #import "CustomLogViewController.h"
+#import "UIView+Toast.h"
 
 
 @interface SupportViewController ()
@@ -43,11 +44,14 @@
      isWithVideo:self.switchVideo.isOn
      callee:self.iphoneTxt.text
      callback:^(NSError *error) {
-         if (!error) {
-             CCCallViewController *cccall = [[CCCallViewController alloc] initWithNibName:@"CCCallViewController" bundle:nil];
-             [cccall showInWindow];
-         }
-         
+         dispatch_async(dispatch_get_main_queue(), ^{
+             if (!error) {
+                 CCCallViewController *cccall = [[CCCallViewController alloc] initWithNibName:@"CCCallViewController" bundle:nil];
+                 [cccall showInWindow];
+             }else{
+                 [self.view makeToast:[error description]];
+             }
+         });
      }];
 }
 

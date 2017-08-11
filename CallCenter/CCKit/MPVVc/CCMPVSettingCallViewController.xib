@@ -44,7 +44,7 @@
                     </connections>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.67174122431506844" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="F71-WB-zXC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="BTJ-gH-Sep"/>
                 <constraint firstItem="F71-WB-zXC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="J6f-xG-uoj"/>
@@ -65,7 +65,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPn-G9-zzf">
-                    <rect key="frame" x="46" y="10" width="202" height="21"/>
+                    <rect key="frame" x="46" y="15" width="202" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="1AE-7K-0JJ"/>
                     </constraints>
@@ -74,17 +74,17 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mpv_setting_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="dWw-Uf-KMv">
-                    <rect key="frame" x="11" y="8" width="27" height="23"/>
+                    <rect key="frame" x="11" y="15" width="27" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="cY6-sK-9TR"/>
                         <constraint firstAttribute="width" constant="27" id="clQ-CI-LeA"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jL7-hK-E1T">
-                    <rect key="frame" x="256" y="6" width="64" height="28"/>
+                    <rect key="frame" x="256" y="6" width="64" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="64" id="HVV-0x-qN4"/>
-                        <constraint firstAttribute="height" constant="28" id="kWX-ps-yul"/>
+                        <constraint firstAttribute="height" constant="40" id="kWX-ps-yul"/>
                     </constraints>
                     <state key="normal" image="mpv_setting_close.png"/>
                     <connections>
@@ -94,12 +94,12 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="bPn-G9-zzf" firstAttribute="top" secondItem="P8L-qO-oii" secondAttribute="top" constant="10" id="8qZ-t2-X4f"/>
+                <constraint firstItem="bPn-G9-zzf" firstAttribute="top" secondItem="P8L-qO-oii" secondAttribute="top" constant="15" id="8qZ-t2-X4f"/>
                 <constraint firstItem="jL7-hK-E1T" firstAttribute="top" secondItem="P8L-qO-oii" secondAttribute="top" constant="6" id="CGQ-pY-nrN"/>
                 <constraint firstItem="jL7-hK-E1T" firstAttribute="leading" secondItem="bPn-G9-zzf" secondAttribute="trailing" constant="8" id="Efh-Qh-AFT"/>
                 <constraint firstItem="bPn-G9-zzf" firstAttribute="leading" secondItem="dWw-Uf-KMv" secondAttribute="trailing" constant="8" id="Jb3-bb-0z3"/>
                 <constraint firstItem="dWw-Uf-KMv" firstAttribute="leading" secondItem="P8L-qO-oii" secondAttribute="leading" constant="11" id="Ps3-ag-TK1"/>
-                <constraint firstItem="dWw-Uf-KMv" firstAttribute="top" secondItem="P8L-qO-oii" secondAttribute="top" constant="8" id="YsQ-2z-fyB"/>
+                <constraint firstItem="dWw-Uf-KMv" firstAttribute="top" secondItem="P8L-qO-oii" secondAttribute="top" constant="15" id="YsQ-2z-fyB"/>
                 <constraint firstAttribute="trailing" secondItem="jL7-hK-E1T" secondAttribute="trailing" id="Zkx-Jc-8uC"/>
             </constraints>
             <point key="canvasLocation" x="476.5" y="149.5"/>

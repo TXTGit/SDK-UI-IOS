@@ -64,7 +64,6 @@
     self.mtableView.tableHeaderView = self.mtableHeader;
     self.mtableHeader.frame = CGRectMake(0, 0, self.mtableView.frame.size.width, 40);
     self.mtableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
 }
 
 
@@ -94,7 +93,7 @@ static NSString *tableCellName = @"MPVMemTableViewCellId";
 {
     MPVMemModel *mmm = [mtableArr objectAtIndex:[indexPath row]];
     if (mmm.isShowOp) {
-        return 77;
+        return 90;
     }else{
         return 44;
     }
@@ -130,6 +129,7 @@ static NSString *tableCellName = @"MPVMemTableViewCellId";
     
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField){
         textField.placeholder = @"输入用户ID";
+        textField.text = @"10001@sdkdemo.txtechnology.com.cn";
     }];
     
     UIAlertAction *cancelAction = [UIAlertAction

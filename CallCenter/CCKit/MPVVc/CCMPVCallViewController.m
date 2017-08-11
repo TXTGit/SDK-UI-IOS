@@ -14,6 +14,7 @@
 
 #import "ConferenceModule.h"
 #import "MPVRoomArchive.h"
+#import "UIView+Toast.h"
 
 
 @interface CCMPVCallViewController ()<CallModuleDelagate>
@@ -71,6 +72,7 @@
                     blockself.callStateLabel.text = @"等待响应中";
                 }else{
                     [blockself onclickHangup:nil];
+                    [self.view makeToast:[error description]];
                 }
             });
         }
