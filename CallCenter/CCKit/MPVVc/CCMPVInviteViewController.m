@@ -193,31 +193,22 @@ static MBProgressHUD *phud = nil;
          mv.roomState = RoomState_Run;
          [MPVRoomArchive appendSave:mv];
          
-         if (phud) {
-             phud.labelText = @"正在加入会议";
-         }
-         
-         [[ConferenceModule shareInstance]
-          joinWithnickName:self.nickNameTxt.text
-          callback:^(NSError *error) {
-              KDALog(@"joinWithnickName error == %@", [error description]);
+         dispatch_async(dispatch_get_main_queue(), ^{
+             if (phud) {
+                 [phud hide:YES];
+             }
 
-              dispatch_async(dispatch_get_main_queue(), ^{
-                  if (phud) {
-                      [phud hide:YES];
-                  }
-                  
-                  if (error == nil) {
-                      CCMPVCallViewController *cccall = [[CCMPVCallViewController alloc] initWithNibName:@"CCMPVCallViewController" bundle:nil];
-                      cccall.roomNumber = roomId;
-                      cccall.isVideo = self.videoSwith.isOn;
-                      AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                      [ad.rootNv presentViewController:cccall animated:YES completion:NULL];
-                  }else{
-                      [MBProgressHUD showError:@"加入会议失败" toView:self.view];
-                  }
-              });
-          }];
+             if (error == nil) {
+                 CCMPVCallViewController *cccall = [[CCMPVCallViewController alloc] initWithNibName:@"CCMPVCallViewController" bundle:nil];
+                 cccall.roomNumber = roomId;
+                 cccall.isVideo = self.videoSwith.isOn;
+                 cccall.nickName = self.nickNameTxt.text;
+                 
+                 [cccall showInWindow];
+             }else{
+                 [MBProgressHUD showError:@"加入会议失败" toView:self.view];
+             }
+         });
     }];
 }
 

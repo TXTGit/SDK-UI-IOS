@@ -68,9 +68,9 @@ static NSString *tableCellName = @"listCellIdentifier";
     tableCell.textLabel.textColor = [UIColor darkTextColor];
     tableCell.textLabel.text = mp.roomId;
     
-    tableCell.detailTextLabel.textColor = [UIColor colorWithRed:101/225.f green:128/225.f blue:255/255.f alpha:1.000];
-    tableCell.detailTextLabel.text = [mp roomStateStr];
-    tableCell.detailTextLabel.font = [UIFont systemFontOfSize:12];
+//    tableCell.detailTextLabel.textColor = [UIColor colorWithRed:101/225.f green:128/225.f blue:255/255.f alpha:1.000];
+//    tableCell.detailTextLabel.text = [mp roomStateStr];
+//    tableCell.detailTextLabel.font = [UIFont systemFontOfSize:12];
     
     return tableCell;
 }
@@ -105,35 +105,10 @@ static MBProgressHUD *phud = nil;
         return;
     }
     
-    AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    phud = [MBProgressHUD showMessag:@"正在加入会议" toView:ad.rootNv.view];
-    
     [ConferenceModule shareInstance].curRoomNumber = mv.roomId;
     [ConferenceModule shareInstance].curConferenceId = mv.conferenceId;
-    [[ConferenceModule shareInstance]
-     acceptConference:^(NSError *error) {
-         dispatch_async(dispatch_get_main_queue(), ^{
-             if (phud) {
-                 [phud hide:YES];
-                 phud = nil;
-             }
-             if(error == nil){
-                 AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                 CCMPVCallViewController *cccall = [[CCMPVCallViewController alloc] initWithNibName:@"CCMPVCallViewController" bundle:nil];
-                 cccall.roomNumber = mv.roomId;
-                 cccall.isVideo = YES;
-                 [cccall showInWindow];
-             }else{
-                 if ([[error description] rangeOfString:@"Conference not active"].location != NSNotFound){
-                     mv.roomState = RoomState_Over;
-                     [MPVRoomArchive appendSave:mv];
-                     [self.mtableView reloadData];
-                 }
-                 
-                 KDALog(@"establishCallWithResponseBlock error = %@", [error description]);
-                 [MBProgressHUD showError:@"会议已结束" toView:ad.rootNv.view];
-             }
-         });
+    [[ConferenceModule shareInstance] acceptConference:^(NSError *error) {
+
      }];
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];

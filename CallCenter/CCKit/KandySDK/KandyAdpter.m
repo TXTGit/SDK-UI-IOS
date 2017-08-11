@@ -22,7 +22,10 @@ static KandyAdpter *shareInstance = nil;
 
 
 @interface KandyAdpter()
-
+{
+    NSString *apiKey;
+    NSString *apiSecert;
+}
 @end
 
 @implementation KandyAdpter
@@ -85,12 +88,14 @@ static KandyAdpter *shareInstance = nil;
 }
 
 
-
 -(void)initKandySDKWithKey:(NSString *)key secret:(NSString *)secret;
 {
     //register it in kandycn  first！
     //xbsx.txtechnology.com.cn
     [Kandy initializeSDKWithDomainKey:key domainSecret:secret];
+    
+    apiKey = key;
+    apiSecert = secret;
     
     //kandycn
     [Kandy sharedInstance].globalSettings.kandyServiceHost = Kandy_Host_Url;
@@ -112,6 +117,34 @@ static KandyAdpter *shareInstance = nil;
     [[ConferenceModule shareInstance] registerKandyNotification];
 }
 
+
+-(void)reinitKandySDK;
+{
+    if (apiKey && [apiKey length] > 0 &&
+        apiSecert && [apiSecert length] > 0) {
+        [Kandy initializeSDKWithDomainKey:apiKey domainSecret:apiSecert];
+
+        //kandycn
+        [Kandy sharedInstance].globalSettings.kandyServiceHost = Kandy_Host_Url;
+        [Kandy sharedInstance].globalSettings.kandyServiceTimeout = 30;
+        [Kandy sharedInstance].globalSettings.isAutoRenewSession = YES;
+        [Kandy sharedInstance].globalSettings.isPrintRTCCallLogs = YES;
+        [Kandy sharedInstance].globalSettings.shouldWakeupDestinationBeforeCall = YES;
+        is_debug_console = YES;
+        
+        CustomSDKLogger * customSDKLogger = [[CustomSDKLogger alloc] initWithFormatter:[Kandy sharedInstance].loggingInterface.loggingFormatter];
+        [Kandy sharedInstance].loggingInterface = customSDKLogger;
+        
+        KDALog(@"kandysdk version === %@", [Kandy sharedInstance].version);
+        [[Kandy sharedInstance].loggingInterface logWithLevel:EKandyLogLevel_info
+                                                 andLogString:[[NSString alloc] initWithFormat:@"kandy version === %@", [Kandy sharedInstance].version]];
+        
+        [[AccessModule shareInstance] registerKandyNotification];
+        [[CallModule shareInstance] registerKandyNotification];
+        [[ConferenceModule shareInstance] registerKandyNotification];
+    }
+    
+}
 
 
 -(void)dealloc

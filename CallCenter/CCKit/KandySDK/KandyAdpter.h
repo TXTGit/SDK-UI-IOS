@@ -28,6 +28,8 @@ typedef void(^KandyArrCallback)(NSError *error, NSArray *arr);
 
 -(void)initKandySDKWithKey:(NSString *)key secret:(NSString *)secret;
 
+-(void)reinitKandySDK;
+
 +(UIViewController *)getRootViewController;
 
 +(void) saveKey:(NSString *)key Value:(NSString*)val;

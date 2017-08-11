@@ -9,6 +9,7 @@
 #import "ProvisionModule.h"
 #import "KandyAdpter.h"
 #import "AccessModule.h"
+#import "SessionMangementModule.h"
 
 #import "../AppDelegate+Push.h"
 #import "../../AppDelegate.h"
@@ -56,7 +57,9 @@ static ProvisionModule *shareInstance = nil;
    codeRetrivalMethod:EKandyValidationMethod_sms
    responseCallback:^(NSError *error, NSString *destinationToValidate) {
      KDALog(@"error === %@ destinationToValidate == %@", [error description], destinationToValidate);
-       if(callback) callback(error);
+       if(callback) {
+           callback(error);
+       }
    }];
 }
 
@@ -64,7 +67,9 @@ static ProvisionModule *shareInstance = nil;
 -(void)validate:(NSString *)txtOTP phoneNumber:(NSString *)phoneNumber callback:(KandyCallback)callback
 {
   if (isActionLogining) {
-     if(callback) callback([[NSError alloc] initWithDomain:@"the login process is going on!" code:9666 userInfo:nil]);
+      if(callback) {
+          callback([[NSError alloc] initWithDomain:@"the login process is going on!" code:9666 userInfo:nil]);
+      }
     return;
   }else{
     isActionLogining = YES;
@@ -91,7 +96,7 @@ static ProvisionModule *shareInstance = nil;
 }
 
 
--(void) getUserDetails:(NSString *)userId callback:(KandyCallback)callback
++(void) getUserDetails:(NSString *)userId callback:(KandyCallback)callback
 {
   [[Kandy sharedInstance].provisioning
    getUserDetails:userId
@@ -101,6 +106,18 @@ static ProvisionModule *shareInstance = nil;
    }];
 }
 
+
++(void)deactivate:(KandyCallback)callback
+{
+      [[Kandy sharedInstance].provisioning deactivateWithResponseCallback:^(NSError *error) {
+          KDALog(@"error === %@ ", [error description]);
+          [SessionMangementModule removeSaveSession];
+          [[KandyAdpter shareInstance] reinitKandySDK];
+          if (callback) {
+              callback(error);
+          }
+      }];
+}
 
 @end
 

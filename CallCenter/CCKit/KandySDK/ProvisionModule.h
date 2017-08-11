@@ -15,10 +15,13 @@
 
 -(void)requestCodeBySMSCN:(NSString *)phoneNumber callback:(KandyCallback)callback;
 
-
 -(void)validate:(NSString *)txtOTP phoneNumber:(NSString *)phoneNumber callback:(KandyCallback)callback;
 
--(void) getUserDetails:(NSString *)userId callback:(KandyCallback)callback;
++(void) getUserDetails:(NSString *)userId callback:(KandyCallback)callback;
+
++(void)deactivate:(KandyCallback)callback;
 
 @end
+
+
 

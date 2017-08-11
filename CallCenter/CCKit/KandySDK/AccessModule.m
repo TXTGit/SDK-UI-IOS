@@ -90,10 +90,11 @@ static BOOL isHaveLogin = NO;
   [[Kandy sharedInstance].access
    logoutWithResponseCallback:^(NSError *error) {
      KDALog(@"error === %@ ", [error description]);
+       [SessionMangementModule removeSaveSession];
+       [[KandyAdpter shareInstance] reinitKandySDK];
        if (callback) {
            callback(error);
        }
-        [SessionMangementModule removeSaveSession];
    }];
 }
 

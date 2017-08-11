@@ -141,14 +141,21 @@ static ConferenceModule *shareInstance = nil;
 
 -(void)acceptConference:(KandyCallback)callback
 {
-  if (!self.curRoomNumber || !self.curConferenceId) {
-    callback([[NSError alloc] initWithDomain:@"curRoomNumber is null" code:-100 userInfo:nil]);
-    return;
-  }
-  
-  [TonePlayer stopTonePlayer];
-  NSString *nickName = [Kandy sharedInstance].sessionManagement.currentUser.record.uri;
-  [[ConferenceModule shareInstance] joinWithnickName:nickName callback:callback];
+    if (!self.curRoomNumber || !self.curConferenceId) {
+        callback([[NSError alloc] initWithDomain:@"curRoomNumber is null" code:-100 userInfo:nil]);
+        return;
+    }
+    
+    [TonePlayer stopTonePlayer];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CCMPVCallViewController *cccall = [[CCMPVCallViewController alloc] initWithNibName:@"CCMPVCallViewController" bundle:nil];
+        cccall.roomNumber = self.curRoomNumber;
+        cccall.isVideo = YES;
+        cccall.nickName = @"";
+        [cccall showInWindow];
+        
+    });
 }
 
 
@@ -261,8 +268,6 @@ static ConferenceModule *shareInstance = nil;
 
 #pragma mark KandyMultiPartyConferenceNotificationDelegate ------------------
 
-static MBProgressHUD *phud = nil;
-
 -(void)onInviteReceived:(KandyMultiPartyConferenceInvite*)inviteEvent;
 {
     KDALog(@"onInviteReceived inviteEvent == %@", [inviteEvent description]);
@@ -300,31 +305,12 @@ static MBProgressHUD *phud = nil;
              [MPVRoomArchive appendSave:mv];
              
              if (index == 2) {
-                  dispatch_async(dispatch_get_main_queue(), ^{
-                    AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                      phud = [MBProgressHUD showMessag:@"正在加入会议" toView:ad.rootNv.view];
-                  });
                  
                  [[ConferenceModule shareInstance]
                   acceptConference:^(NSError *error) {
-                      dispatch_async(dispatch_get_main_queue(), ^{
-                          if (phud) {
-                              [phud hide:YES];
-                              phud = nil;
-                          }
-                          if(error == nil){
-                              CCMPVCallViewController *cccall = [[CCMPVCallViewController alloc] initWithNibName:@"CCMPVCallViewController" bundle:nil];
-                              cccall.roomNumber = self.curRoomNumber;
-                              cccall.isVideo = YES;
-                              [cccall showInWindow];
-                          }else{
-                              KDALog(@"establishCallWithResponseBlock error = %@", [error description]);
-                              [MBProgressHUD showError:@"加入会议失败" toView:ad.rootNv.view];
-                          }
-                      });
+
                   }];
              }
-             
          }else{
              
          }

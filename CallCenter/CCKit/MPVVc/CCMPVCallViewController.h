@@ -13,6 +13,8 @@
 @property (nonatomic, strong) NSString *roomNumber;
 @property (nonatomic, assign) BOOL isVideo;
 
+@property (nonatomic, strong) NSString *nickName;
+
 -(void)showInWindow;
 
 -(void)hiddenInWindow;

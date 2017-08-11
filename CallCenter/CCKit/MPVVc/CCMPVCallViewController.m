@@ -8,6 +8,7 @@
 
 #import "CCMPVCallViewController.h"
 #import "../KandySDK/CallModule.h"
+
 #import "CCKitManger.h"
 #import "CCMPVSettingCallViewController.h"
 
@@ -28,6 +29,7 @@
 
 @property(nonatomic, strong) IBOutlet UIView *callAudioView;
 @property(nonatomic, strong) IBOutlet UIView *callAudioRemoteView;
+@property(nonatomic, strong) IBOutlet UIView *callAudioLocalView;
 @property (nonatomic, strong) IBOutlet UIImageView *callAudioImageView;
 @property (nonatomic, strong) IBOutlet UILabel *callAudioCallSourceLabel;
 @property(nonatomic, strong) IBOutlet UILabel *callAudioTimeLabel;
@@ -36,6 +38,7 @@
 
 @property(nonatomic, strong) IBOutlet UIView *callVideoView;
 @property(nonatomic, strong) IBOutlet UIView *callRemoteView;
+@property(nonatomic, strong) IBOutlet UIView *callLocalView;
 @property (nonatomic, strong) IBOutlet UILabel *callVideoCallSourceLabel;
 @property(nonatomic, strong) IBOutlet UILabel *callVideoTimeLabel;
 @property(nonatomic, strong) IBOutlet UIButton *switchFBCameraButton;
@@ -282,15 +285,23 @@ static BOOL isHiddenInWindow = YES;
                         [self.view addSubview:self.callVideoView];
                         [blockself initVideoCallButtonImage];
                         [[CallModule shareInstance] getCurrentCall].remoteVideoView = self.callRemoteView;
+                        [[CallModule shareInstance] getCurrentCall].localVideoView = self.callLocalView;
                     }else{
                         self.callAudioView.frame = self.view.frame;
                         [self.view addSubview:self.callAudioView];
                         [blockself initCallAudioButtonImage];
                         [[CallModule shareInstance] getCurrentCall].remoteVideoView = self.callAudioRemoteView;
+                        [[CallModule shareInstance] getCurrentCall].localVideoView = self.callAudioLocalView;
                     }
                     [blockself startTimer];
                 }
             });
+            
+            [[ConferenceModule shareInstance]
+             joinWithnickName:self.nickName==nil?@"":self.nickName
+             callback:^(NSError *error) {
+                 KDALog(@"joinWithnickName error == %@", [error description]);
+             }];
         }
             break;
             

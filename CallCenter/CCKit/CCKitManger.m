@@ -33,7 +33,7 @@
 //登出kandy
 +(void)loginoutCallback:(KandyCallback)callback;
 {
-    [AccessModule logout:^(NSError *error) {
+    [ProvisionModule deactivate:^(NSError *error) {
          if (callback) {
              callback(error);
          }
@@ -165,26 +165,26 @@
 +(void)conferenceReject:(KandyCallback)callback;
 {
     [[CallModule shareInstance] reject:^(NSError *error) {
-
-    }];
-    
-    [[ConferenceModule shareInstance] leave:^(NSError *error) {
         if (callback) {
             callback(error);
         }
     }];
+    
+    [[ConferenceModule shareInstance] leave:^(NSError *error) {
+
+    }];
+    
 }
 
 +(void)conferenceHangup:(KandyCallback)callback;
 {
     [[CallModule shareInstance] hangup:^(NSError *error) {
-
-    }];
-    
-    [[ConferenceModule shareInstance] leave:^(NSError *error) {
         if (callback) {
             callback(error);
         }
+    }];
+    
+    [[ConferenceModule shareInstance] leave:^(NSError *error) {
 
     }];
 }
