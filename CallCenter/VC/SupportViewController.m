@@ -37,6 +37,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+/**
+ 呼叫
+ 
+ @param sender xib指向
+ */
 -(IBAction)onclickCall:(id)sender
 {
     [CCKitManger
@@ -56,12 +61,23 @@
 }
 
 
+/**
+ 开始多人会议
+ 
+ @param sender xib指向
+ */
 -(IBAction)onclickMPVStart:(id)sender
 {
     CCMPVRoomListViewController *cccall = [[CCMPVRoomListViewController alloc] initWithNibName:@"CCMPVRoomListViewController" bundle:nil];
     [self.navigationController pushViewController:cccall animated:YES];
 }
 
+
+/**
+ 退出
+ 
+ @param sender xib指向
+ */
 -(IBAction)onclickLogout:(id)sender
 {
     [CCKitManger loginoutCallback:^(NSError *error) {
@@ -73,6 +89,11 @@
     }];
 }
 
+/**
+ 显示日志
+ 
+ @param sender xib指向
+ */
 -(IBAction)onclickLog:(id)sender
 {
     CustomLogViewController *cccall = [[CustomLogViewController alloc] initWithNibName:@"CustomLogViewController" bundle:nil];

@@ -196,6 +196,9 @@
 
 static BOOL isHiddenInWindow = YES;
 
+/**
+ 显示call view 在window中
+ */
 -(void)showInWindow
 {
     dispatch_after(
@@ -230,6 +233,9 @@ static BOOL isHiddenInWindow = YES;
 }
 
 
+/**
+ 隐藏call view 在window中
+ */
 -(void)hiddenInWindow;
 {
     if (isHiddenInWindow == NO) {
@@ -291,6 +297,10 @@ static BOOL isHiddenInWindow = YES;
 }
 
 
+
+/**
+ 计时器
+ */
 -(void)startTimer
 {
     startDate = [NSDate date];
@@ -363,6 +373,13 @@ static BOOL isHiddenInWindow = YES;
 }
 
 
+
+/**
+ call view状态调用的函数
+
+ @param isReceiveVideo 是否接受远程试图
+ @param isSendVideo 是否发送本地试图
+ */
 -(void)callModuleVideoStateChanged:(BOOL)isReceiveVideo isSendVideo:(BOOL)isSendVideo;
 {
     if (isReceiveVideo && isSendVideo) {
@@ -384,6 +401,13 @@ static BOOL isHiddenInWindow = YES;
     }
 }
 
+
+
+/**
+ 大小屏幕切换的函数
+
+ @param sender xib
+ */
 -(IBAction)touchVideoView:(id)sender
 {
     if ([[CallModule shareInstance] getCurrentCall].isReceivingVideo &&
@@ -412,7 +436,11 @@ static BOOL isHiddenInWindow = YES;
 }
 
 
+/**
+ call状态代理函数
 
+ @param callState call状态
+ */
 -(void)callModuleStateChanged:(CALLModuleState)callState
 {
     __weak typeof(self) weekself = self;
@@ -498,6 +526,11 @@ static BOOL isHiddenInWindow = YES;
 }
 
 
+/**
+ 接受call
+
+ @param sender xib
+ */
 -(IBAction)onclickAccept:(id)sender
 {
     [(UIButton *)sender setEnabled:NO];
@@ -506,13 +539,24 @@ static BOOL isHiddenInWindow = YES;
     }];
 }
 
--(IBAction)onclickHold:(id)sender
+/**
+ 忽略call
+ 
+ @param sender xib
+ */
+-(IBAction)onclickIgnore:(id)sender
 {
     [[CallModule shareInstance] ignore:^(NSError *error) {
 
     }];
 }
 
+
+/**
+ 拒接Call
+
+ @param sender xib
+ */
 -(IBAction)onclickRefuse:(id)sender
 {
     [(UIButton *)sender setEnabled:NO];
@@ -523,6 +567,11 @@ static BOOL isHiddenInWindow = YES;
 }
 
 
+/**
+ 挂断
+
+ @param sender xib
+ */
 -(IBAction)onclickHangup:(id)sender
 {
     [self stopTimer];
@@ -535,6 +584,11 @@ static BOOL isHiddenInWindow = YES;
 }
 
 
+/**
+ 切换前后摄像头
+
+ @param sender xib
+ */
 -(IBAction)onclickSwitchFBCamera:(id)sender
 {
     [self.switchFBCameraButton setEnabled:NO];
@@ -550,7 +604,11 @@ static BOOL isHiddenInWindow = YES;
     }];
 }
 
-
+/**
+ 开关mic
+ 
+ @param sender xib
+ */
 -(IBAction)onclickSwitchMute:(id)sender
 {
     [self.switchMuteButton setEnabled:NO];
@@ -570,7 +628,11 @@ static BOOL isHiddenInWindow = YES;
     }];
 }
 
-
+/**
+ 切换扬声器和听筒
+ 
+ @param sender xib
+ */
 -(IBAction)onclickSwitchSpeaker:(id)sender
 {
     [self.switchSpeakerButton setEnabled:NO];
@@ -590,7 +652,11 @@ static BOOL isHiddenInWindow = YES;
      }];
 }
 
-
+/**
+ 开关摄像头
+ 
+ @param sender xib
+ */
 -(IBAction)onclickSwitchCamera:(id)sender
 {
     [self.switchCameraButton setEnabled:NO];
@@ -613,6 +679,11 @@ static BOOL isHiddenInWindow = YES;
 }
 
 
+/**
+ 支持屏幕旋转函数
+
+ @return YES 是  NO 否
+ */
 - (BOOL)shouldAutorotate
 {
     return YES;
@@ -633,12 +704,11 @@ static BOOL isHiddenInWindow = YES;
     return UIInterfaceOrientationPortrait;
 }
 
+
 -(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    
-    NSLog(@"viewWillTransitionToSize size == %@", NSStringFromCGSize(size));
-    
+
     CGFloat duration = [coordinator transitionDuration];
     [UIView animateWithDuration:duration
                      animations:^{

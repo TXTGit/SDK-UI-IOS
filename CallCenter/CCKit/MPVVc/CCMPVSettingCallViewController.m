@@ -56,7 +56,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.mtableView reloadData];
-            self.mtableHeaderLabel.text = [NSString stringWithFormat:@"所有成员(%ld)", conferenceCallDetails.participants.count];
+            self.mtableHeaderLabel.text = [NSString stringWithFormat:@"所有成员(%ud)", (int)conferenceCallDetails.participants.count];
         });
         
     }];
@@ -120,6 +120,11 @@ static NSString *tableCellName = @"MPVMemTableViewCellId";
 }
 
 
+/**
+ 邀请
+
+ @param sender XIB
+ */
 -(IBAction)onclickInviteMore:(id)sender
 {
     UIAlertController *alertController = [UIAlertController

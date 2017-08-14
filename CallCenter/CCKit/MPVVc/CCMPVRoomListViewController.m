@@ -97,6 +97,13 @@ static NSString *tableCellName = @"listCellIdentifier";
 }
 
 static MBProgressHUD *phud = nil;
+
+/**
+ 点击进入会议室
+
+ @param tableView delegate
+ @param indexPath delegate
+ */
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MPVRoomModel *mv = [mtableArr objectAtIndex:[indexPath row]];
@@ -115,6 +122,12 @@ static MBProgressHUD *phud = nil;
 }
 
 
+
+/**
+ 跳转创建会议室
+
+ @param sender xib
+ */
 -(void)onclickCreate:(id)sender
 {
     CCMPVInviteViewController *cccall = [[CCMPVInviteViewController alloc] initWithNibName:@"CCMPVInviteViewController" bundle:nil];

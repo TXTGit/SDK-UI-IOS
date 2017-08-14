@@ -68,7 +68,7 @@
                             </constraints>
                             <state key="normal" image="call_action_refuse.png"/>
                             <connections>
-                                <action selector="onclickRefuse:" destination="-1" eventType="touchUpInside" id="QAi-fB-d8V"/>
+                                <action selector="onclickHangup:" destination="-1" eventType="touchUpInside" id="ISd-vW-cve"/>
                             </connections>
                         </button>
                     </subviews>

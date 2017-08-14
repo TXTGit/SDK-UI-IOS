@@ -66,6 +66,7 @@
         }
     }];
 }
+
 //拒绝来电
 +(void)reject:(KandyCallback)callback;
 {

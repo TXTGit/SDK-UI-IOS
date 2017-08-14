@@ -162,6 +162,11 @@ static NSString *tableCellName = @"listCellIdentifier";
 }
 
 
+/**
+ 添加邀请成员
+
+ @param sender xib
+ */
 -(IBAction)onclickAddMum:(id)sender
 {
     NSString *mumId = self.addMunberTxt.text;
@@ -174,6 +179,11 @@ static NSString *tableCellName = @"listCellIdentifier";
     }
 }
 
+/**
+ 创建会议室并发送邀请
+ 
+ @param sender xib
+ */
 static MBProgressHUD *phud = nil;
 -(IBAction)onclickCreateMPV:(id)sender
 {
@@ -216,8 +226,6 @@ static MBProgressHUD *phud = nil;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 
 /*

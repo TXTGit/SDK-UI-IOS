@@ -64,6 +64,11 @@
 }
 
 
+/**
+ 主持人强制设置成员离开
+
+ @param sender XIB
+ */
 -(IBAction)onclickLeave:(id)sender
 {
     if (memM && memM.participant.participantID && memM.participant.participantID.length > 0) {
@@ -79,6 +84,12 @@
     }
 }
 
+
+/**
+ 主持人设置成员关闭麦克风
+ 
+ @param sender XIB
+ */
 -(IBAction)onclickMute:(id)sender
 {
     if (memM && memM.participant.participantID && memM.participant.participantID.length > 0) {
@@ -94,6 +105,11 @@
     }
 }
 
+/**
+ 主持人设置成员关闭摄像头
+ 
+ @param sender XIB
+ */
 -(IBAction)onclickCamera:(id)sender
 {
     if (memM && memM.participant.participantID && memM.participant.participantID.length > 0) {

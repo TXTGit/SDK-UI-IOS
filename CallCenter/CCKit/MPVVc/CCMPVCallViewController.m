@@ -139,6 +139,10 @@
 
 static BOOL isHiddenInWindow = YES;
 
+
+/**
+ 在windows中显示MPV接通界面
+ */
 -(void)showInWindow
 {
     dispatch_after(
@@ -172,6 +176,9 @@ static BOOL isHiddenInWindow = YES;
                    });
 }
 
+/**
+ 在windows中吟唱MPV界面
+ */
 -(void)hiddenInWindow;
 {
     if (isHiddenInWindow == NO) {
@@ -210,6 +217,9 @@ static BOOL isHiddenInWindow = YES;
 }
 
 
+/**
+ 开始计时函数
+ */
 -(void)startTimer
 {
     startDate = [NSDate date];
@@ -244,6 +254,11 @@ static BOOL isHiddenInWindow = YES;
 }
 
 
+/**
+ call状态代理函数
+ 
+ @param callState call状态
+ */
 -(void)callModuleStateChanged:(CALLModuleState)callState
 {
     __weak typeof(self) weekself = self;
@@ -328,6 +343,12 @@ static BOOL isHiddenInWindow = YES;
     }
 }
 
+
+/**
+ DTMF 输入码 尽在语音接入需要输入
+
+ @param sender XIB
+ */
 - (IBAction)sendDTMF:(id)sender
 {
     NSString *pinCode = [NSString stringWithFormat:@"%@#",[ConferenceModule shareInstance].curPinCode];
@@ -342,41 +363,11 @@ static BOOL isHiddenInWindow = YES;
 }
 
 
--(IBAction)onclickAccept:(id)sender
-{
-    [CCKitManger accept:^(NSError *error) {
-        
-    }];
-}
-
--(IBAction)onclickHold:(id)sender
-{
-    [[CallModule shareInstance] ignore:^(NSError *error) {
-        
-    }];
-}
-
--(IBAction)onclickRefuse:(id)sender
-{
-    [CCKitManger conferenceReject:^(NSError *error) {
-    
-        KDALog(@"leave error == %@", [error description]);
-        if (error &&
-            [[error description] rangeOfString:@"Conference not active"].location != NSNotFound) {
-            MPVRoomModel *mv = [[MPVRoomModel alloc] init];
-            mv.roomId = self.roomNumber;
-            mv.roomState = RoomState_Over;
-            [MPVRoomArchive appendSave:mv];
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self hiddenInWindow];
-        });
-    }];
-
-}
-
-
+/**
+ 挂断 会议的Call
+ 
+ @param sender XIB
+ */
 -(IBAction)onclickHangup:(id)sender
 {
     [self stopTimer];
@@ -399,6 +390,11 @@ static BOOL isHiddenInWindow = YES;
 }
 
 
+/**
+ 切换前后摄像头
+ 
+ @param sender XIB
+ */
 -(IBAction)onclickSwitchFBCamera:(id)sender
 {
     [self.switchFBCameraButton setEnabled:NO];
@@ -414,7 +410,11 @@ static BOOL isHiddenInWindow = YES;
     }];
 }
 
-
+/**
+ 开关麦克风
+ 
+ @param sender XIB
+ */
 -(IBAction)onclickSwitchMute:(id)sender
 {
     [self.switchMuteButton setEnabled:NO];
@@ -435,6 +435,11 @@ static BOOL isHiddenInWindow = YES;
 }
 
 
+/**
+ 切换 扬声器和听筒输出
+ 
+ @param sender XIB
+ */
 -(IBAction)onclickSwitchSpeaker:(id)sender
 {
     [self.switchSpeakerButton setEnabled:NO];
@@ -456,7 +461,11 @@ static BOOL isHiddenInWindow = YES;
      }];
 }
 
-
+/**
+ 开关摄像头
+ 
+ @param sender XIB
+ */
 -(IBAction)onclickSwitchCamera:(id)sender
 {
     [self.switchCameraButton setEnabled:NO];
@@ -473,6 +482,11 @@ static BOOL isHiddenInWindow = YES;
 }
 
 
+/**
+ 会议设置界面
+ 
+ @param sender XIB
+ */
 -(IBAction)onclickSetting:(id)sender
 {
     CCMPVSettingCallViewController *cccall = [[CCMPVSettingCallViewController alloc] initWithNibName:@"CCMPVSettingCallViewController" bundle:nil];

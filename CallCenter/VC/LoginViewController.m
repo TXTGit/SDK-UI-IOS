@@ -44,33 +44,11 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)startTimer
-{
-    startDate = [NSDate date];
-    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timeCallback:) userInfo:nil repeats:YES];
-    [timer fire];
-}
+/**
+ 登录
 
--(void)stopTimer
-{
-    if (timer) {
-        [timer invalidate];
-    }
-    timer = nil;
-}
-
--(void)timeCallback:(id)sender
-{
-    NSTimeInterval timeInterval = [[NSDate date] timeIntervalSinceDate:startDate];
-    
-    [self.sendSmsButton setTitle:[NSString stringWithFormat:@"%dS",(int)timeInterval] forState:UIControlStateNormal];
-    if (timeInterval > 60) {
-        [self stopTimer];
-        
-    }
-}
-
-
+ @param sender xib指向
+ */
 -(IBAction)login:(id)sender
 {
     [Utils showHUDOnWindowWithText:@"正在登录.."];
