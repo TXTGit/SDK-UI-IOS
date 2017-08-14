@@ -33,12 +33,34 @@
     // Do any additional setup after loading the view from its nib.
     
     mtableArr = [[NSMutableArray alloc] initWithCapacity:10];
+    
+    self.mtableView.tableHeaderView = self.mtableHeader;
+    self.mtableHeader.frame = CGRectMake(0, 0, self.mtableView.frame.size.width, 40);
+    self.mtableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadMPVDetail:)
+                                                 name:@"loadMPVDetail"
+                                               object:nil];
+    
+    [self loadMPVDetail:nil];
+}
+
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+-(void)loadMPVDetail:(id)notificaiton
+{
     [[ConferenceModule shareInstance] getConferenceDetail:^(NSError *error, id<KandyMultiPartyConferenceCallDetailsProtocol> conferenceCallDetails) {
         KDALog(@"error == %@, conferenceCallDetails == %@", [error description], [conferenceCallDetails description]);
         
         [mtableArr removeAllObjects];
         
-        NSString *adminStr = nil;
+        NSString *adminStr = @"";
         if (conferenceCallDetails.admins && conferenceCallDetails.admins.count > 0 ) {
             adminStr = conferenceCallDetails.admins.firstObject;
         }
@@ -46,26 +68,33 @@
         for(id<KandyMultiPartyConferenceParticipantProtocol> participant in conferenceCallDetails.participants){
             MPVMemModel *mmm = [[MPVMemModel alloc] init];
             mmm.participant = participant;
+            mmm.isCanOp = NO;
             mmm.isShowOp = NO;
             
-            if (participant.participantID && participant.participantID.length > 0) {
+            if (adminStr && [adminStr length] > 0 &&
+                participant.participantID && participant.participantID.length > 0) {
                 mmm.isAdmin = [participant.participantID hasSuffix:adminStr];
+                if ([adminStr hasSuffix:[Kandy sharedInstance].sessionManagement.currentUser.userId]) {
+                    mmm.isCanOp = YES;
+                }
             }
+            
+            if (participant.participantID && participant.participantID.length > 0 &&
+               [participant.participantID hasSuffix:[Kandy sharedInstance].sessionManagement.currentUser.userId]) {
+                mmm.isSelf = YES;
+            }
+            
             [mtableArr addObject:mmm];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.mtableView reloadData];
-            self.mtableHeaderLabel.text = [NSString stringWithFormat:@"所有成员(%ud)", (int)conferenceCallDetails.participants.count];
+            self.mtableHeaderLabel.text = [NSString stringWithFormat:@"所有成员(%u)", (int)conferenceCallDetails.participants.count];
         });
         
     }];
-    
-    self.mtableView.tableHeaderView = self.mtableHeader;
-    self.mtableHeader.frame = CGRectMake(0, 0, self.mtableView.frame.size.width, 40);
-    self.mtableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-}
 
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 {

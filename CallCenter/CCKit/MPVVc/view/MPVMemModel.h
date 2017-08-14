@@ -13,8 +13,12 @@
 
 @property (nonatomic, strong) id<KandyMultiPartyConferenceParticipantProtocol> participant;
 
+@property (nonatomic, assign) BOOL isCanOp;
+
 @property (nonatomic, assign) BOOL isShowOp;
 
 @property (nonatomic, assign) BOOL isAdmin;
+
+@property (nonatomic, assign) BOOL isSelf;
 
 @end

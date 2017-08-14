@@ -60,7 +60,29 @@
     }
     
     [self.opView setHidden:!mem.isShowOp];
-    [self.adminLabel setHidden:!mem.isAdmin];
+    if (mem.isAdmin) {
+        [self.adminLabel setHidden:NO];
+        [self.adminLabel setText:@"主持人"];
+    }else if(mem.isSelf){
+        [self.adminLabel setHidden:NO];
+        [self.adminLabel setText:@"自己"];
+    }else{
+        [self.adminLabel setHidden:YES];
+    }
+
+    if (!mem.isCanOp) {
+        [self.leaveBtn setEnabled:NO];
+        [self.micBtn setEnabled:NO];
+        [self.cameraBtn setEnabled:NO];
+    }else if (mem.isSelf) {
+        [self.leaveBtn setEnabled:NO];
+        [self.micBtn setEnabled:NO];
+        [self.cameraBtn setEnabled:NO];
+    }else{
+        [self.leaveBtn setEnabled:YES];
+        [self.micBtn setEnabled:YES];
+        [self.cameraBtn setEnabled:YES];
+    }
 }
 
 
@@ -80,6 +102,9 @@
          callback:^(NSError *error) {
              KDALog(@"error === %@" , [error description]);
              
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [[NSNotificationCenter defaultCenter] postNotificationName:@"loadMPVDetail" object:nil];
+             });
         }];
     }
 }
@@ -100,7 +125,10 @@
          participantID:memM.participant.participantID
          callback:^(NSError *error) {
              KDALog(@"error === %@" , [error description]);
-             [self.micBtn setEnabled:YES];
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [self.micBtn setEnabled:YES];
+                 [[NSNotificationCenter defaultCenter] postNotificationName:@"loadMPVDetail" object:nil];
+             });
          }];
     }
 }
@@ -120,7 +148,10 @@
          participantID:memM.participant.participantID
          callback:^(NSError *error) {
              KDALog(@"error === %@" , [error description]);
-             [self.cameraBtn setEnabled:YES];
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [self.cameraBtn setEnabled:YES];
+                 [[NSNotificationCenter defaultCenter] postNotificationName:@"loadMPVDetail" object:nil];
+             });
          }];
     }
 }

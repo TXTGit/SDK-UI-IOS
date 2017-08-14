@@ -47,7 +47,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="aiiphon5c@sdkdemo.txtechnology.com.cn" placeholder="输入用户名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KtK-qm-hJV">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10001@sdkdemo.txtechnology.com.cn" placeholder="输入用户名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KtK-qm-hJV">
                             <rect key="frame" x="81" y="6" width="254" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="4eH-78-c5n"/>

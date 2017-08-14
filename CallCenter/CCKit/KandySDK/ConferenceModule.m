@@ -20,7 +20,7 @@
 
 @interface ConferenceModule()<KandyMultiPartyConferenceNotificationDelegate>
 {
-  
+    
 }
 @end
 
@@ -44,11 +44,11 @@ static ConferenceModule *shareInstance = nil;
 
 - (instancetype)init
 {
-  self = [super init];
-  if (self) {
-    [self registerKandyNotification];
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        [self registerKandyNotification];
+    }
+    return self;
 }
 
 
@@ -60,82 +60,82 @@ static ConferenceModule *shareInstance = nil;
 
 -(void)dealloc
 {
-  KDALog(@"dealloc");
-  [[Kandy sharedInstance].services.multiPartyConference unregisterNotifications:self];
+    KDALog(@"dealloc");
+    [[Kandy sharedInstance].services.multiPartyConference unregisterNotifications:self];
 }
 
 
 -(void)createRoomAndInvite:(NSArray *)inviteeArr callback:(KandyCallback)callback
 {
-  
-  NSMutableArray * communityRecords = [[NSMutableArray alloc] init];
-  KandyRecord * record = nil;
-  
-  for (NSString * userID in inviteeArr) {
-    record = [[KandyRecord alloc] initWithURI:userID type:EKandyRecordType_contact associationType:EKandyRecordAssociationType_community];
-    [communityRecords addObject:record];
-  }
-  KandyMultiPartyConferenceInvitees *invitees = [[KandyMultiPartyConferenceInvitees alloc] initWithChatInvitees:communityRecords mailInvitees:nil SMSInvitees:nil];
-  
-  __weak typeof(self) weekself = self;
-  [[Kandy sharedInstance].services.multiPartyConference
-   createRoomAndInvite:invitees
-   annotation:EKandyMultiPartyConferenceAnnotation_nickname
-   responseCallback:^(NSError * error, id<KandyMultiPartyConferenceRoomProtocol> conferenceRoomDetails,
-                      id<KandyMultiPartyConferenceSuccessfulInviteesProtocol> succeedInvitees,
-                      id<KandyMultiPartyConferenceFailedInviteesProtocol> failedInvitees) {
-     
-     KDALog(@"conferenceRoomDetails === %@ %@ %@ %@ error === %@ ", conferenceRoomDetails.conferenceID, conferenceRoomDetails.roomNumber, conferenceRoomDetails.roomPSTNNumber, conferenceRoomDetails.pinCode,
-            [error description]);
-     
-     typeof (self) blockself = weekself;
-     
-     if (blockself) {
-         if (!error) {
-             blockself.curConferenceId = conferenceRoomDetails.conferenceID;
-             blockself.curRoomNumber = conferenceRoomDetails.roomNumber;
-             blockself.curPSTNRoomNumber = conferenceRoomDetails.roomPSTNNumber;
-             blockself.curPinCode = conferenceRoomDetails.pinCode;
-         }else{
-             blockself.curConferenceId = nil;
-             blockself.curRoomNumber = nil;
-             blockself.curPSTNRoomNumber = nil;
-             blockself.curPinCode = nil;
+    
+    NSMutableArray * communityRecords = [[NSMutableArray alloc] init];
+    KandyRecord * record = nil;
+    
+    for (NSString * userID in inviteeArr) {
+        record = [[KandyRecord alloc] initWithURI:userID type:EKandyRecordType_contact associationType:EKandyRecordAssociationType_community];
+        [communityRecords addObject:record];
+    }
+    KandyMultiPartyConferenceInvitees *invitees = [[KandyMultiPartyConferenceInvitees alloc] initWithChatInvitees:communityRecords mailInvitees:nil SMSInvitees:nil];
+    
+    __weak typeof(self) weekself = self;
+    [[Kandy sharedInstance].services.multiPartyConference
+     createRoomAndInvite:invitees
+     annotation:EKandyMultiPartyConferenceAnnotation_nickname
+     responseCallback:^(NSError * error, id<KandyMultiPartyConferenceRoomProtocol> conferenceRoomDetails,
+                        id<KandyMultiPartyConferenceSuccessfulInviteesProtocol> succeedInvitees,
+                        id<KandyMultiPartyConferenceFailedInviteesProtocol> failedInvitees) {
+         
+         KDALog(@"conferenceRoomDetails === %@ %@ %@ %@ error === %@ ", conferenceRoomDetails.conferenceID, conferenceRoomDetails.roomNumber, conferenceRoomDetails.roomPSTNNumber, conferenceRoomDetails.pinCode,
+                [error description]);
+         
+         typeof (self) blockself = weekself;
+         
+         if (blockself) {
+             if (!error) {
+                 blockself.curConferenceId = conferenceRoomDetails.conferenceID;
+                 blockself.curRoomNumber = conferenceRoomDetails.roomNumber;
+                 blockself.curPSTNRoomNumber = conferenceRoomDetails.roomPSTNNumber;
+                 blockself.curPinCode = conferenceRoomDetails.pinCode;
+             }else{
+                 blockself.curConferenceId = nil;
+                 blockself.curRoomNumber = nil;
+                 blockself.curPSTNRoomNumber = nil;
+                 blockself.curPinCode = nil;
+             }
          }
-     }
-       if (callback) {
-           callback(error);
-       }
-       
-   }];
+         if (callback) {
+             callback(error);
+         }
+         
+     }];
 }
 
 
 -(void)inviteWithInviteeArr:(NSArray *)inviteeArr callback:(KandyCallback)callback
 {
-  if (!curConferenceId && callback) {
-    callback([[NSError alloc] initWithDomain:@"curConferenceId should be not nul" code:-100 userInfo:nil]);
-    return;
-  }
-  
-  NSMutableArray * communityRecords = [[NSMutableArray alloc] init];
-  KandyRecord * record = nil;
-  
-  for (NSString * userID in inviteeArr) {
-    record = [[KandyRecord alloc] initWithURI:userID type:EKandyRecordType_contact associationType:EKandyRecordAssociationType_community];
-    [communityRecords addObject:record];
-  }
-  
-  KandyMultiPartyConferenceInvitees *invitees = [[KandyMultiPartyConferenceInvitees alloc] initWithChatInvitees:communityRecords mailInvitees:nil SMSInvitees:nil];
-  
-  [[Kandy sharedInstance].services.multiPartyConference
-   invite:invitees conferenceID:curConferenceId
-   responseCallback:^(NSError *error, id<KandyMultiPartyConferenceSuccessfulInviteesProtocol> successfulInvitees, id<KandyMultiPartyConferenceFailedInviteesProtocol> failedInvitees) {
-     KDALog(@"error === %@ ", [error description]);
-       if (callback) {
-           callback(error);
-       }
-   } ];
+    if (!curConferenceId && callback) {
+        callback([[NSError alloc] initWithDomain:@"curConferenceId should be not nul" code:-100 userInfo:nil]);
+        return;
+    }
+    
+    NSMutableArray * communityRecords = [[NSMutableArray alloc] init];
+    KandyRecord * record = nil;
+    
+    for (NSString * userID in inviteeArr) {
+        record = [[KandyRecord alloc] initWithURI:userID type:EKandyRecordType_contact associationType:EKandyRecordAssociationType_community];
+        [communityRecords addObject:record];
+    }
+    
+    KandyMultiPartyConferenceInvitees *invitees = [[KandyMultiPartyConferenceInvitees alloc] initWithChatInvitees:communityRecords mailInvitees:nil SMSInvitees:nil];
+    
+    [[Kandy sharedInstance].services.multiPartyConference
+     invite:invitees conferenceID:curConferenceId
+     responseCallback:^(NSError *error, id<KandyMultiPartyConferenceSuccessfulInviteesProtocol> successfulInvitees, id<KandyMultiPartyConferenceFailedInviteesProtocol> failedInvitees) {
+         KDALog(@"error === %@ ", [error description]);
+         if (callback) {
+             callback(error);
+         }
+     } ];
 }
 
 
@@ -152,7 +152,7 @@ static ConferenceModule *shareInstance = nil;
         CCMPVCallViewController *cccall = [[CCMPVCallViewController alloc] initWithNibName:@"CCMPVCallViewController" bundle:nil];
         cccall.roomNumber = self.curRoomNumber;
         cccall.isVideo = YES;
-        cccall.nickName = @"";
+        cccall.nickName = @" ";
         [cccall showInWindow];
         
     });
@@ -161,7 +161,7 @@ static ConferenceModule *shareInstance = nil;
 
 -(void)refuseConference:(KandyCallback)callback
 {
-  [TonePlayer stopTonePlayer];
+    [TonePlayer stopTonePlayer];
     if (callback) {
         callback(nil);
     }
@@ -170,20 +170,20 @@ static ConferenceModule *shareInstance = nil;
 
 -(void)joinWithnickName:(NSString *)nickName callback:(KandyCallback)callback
 {
-  if (!self.curConferenceId && callback) {
-    callback([[NSError alloc] initWithDomain:@"curConferenceId is null" code:-100 userInfo:nil]);
-    return;
-  }
-  
-  [[Kandy sharedInstance].services.multiPartyConference
-   join:self.curConferenceId
-   nickName:nickName
-   responseCallback:^(NSError *error) {
-     KDALog(@"error join === %@ ", [error description]);
-       if (callback) {
-           callback(error);
-       }
-   }];
+    if (!self.curConferenceId && callback) {
+        callback([[NSError alloc] initWithDomain:@"curConferenceId is null" code:-100 userInfo:nil]);
+        return;
+    }
+    
+    [[Kandy sharedInstance].services.multiPartyConference
+     join:self.curConferenceId
+     nickName:nickName
+     responseCallback:^(NSError *error) {
+         KDALog(@"error join === %@ ", [error description]);
+         if (callback) {
+             callback(error);
+         }
+     }];
 }
 
 
@@ -210,20 +210,20 @@ static ConferenceModule *shareInstance = nil;
 
 
 -(void)destroy:(KandyCallback)callback {
-  
-  if (!self.curRoomNumber && callback) {
-      callback([[NSError alloc] initWithDomain:@"curRoomNumber is null" code:-100 userInfo:nil]);
-    return;
-  }
-  
-  [[Kandy sharedInstance].services.multiPartyConference destroyRoom:curRoomNumber
-                                                   responseCallback:^(NSError *error) {
-                                                     
-                                                     KDALog(@"error === %@ ", [error description]);
-                                                       if (callback) {
-                                                           callback(error);
-                                                       }
-                                                   }];
+    
+    if (!self.curRoomNumber && callback) {
+        callback([[NSError alloc] initWithDomain:@"curRoomNumber is null" code:-100 userInfo:nil]);
+        return;
+    }
+    
+    [[Kandy sharedInstance].services.multiPartyConference destroyRoom:curRoomNumber
+                                                     responseCallback:^(NSError *error) {
+                                                         
+                                                         KDALog(@"error === %@ ", [error description]);
+                                                         if (callback) {
+                                                             callback(error);
+                                                         }
+                                                     }];
 }
 
 
@@ -247,22 +247,22 @@ static ConferenceModule *shareInstance = nil;
 
 -(void)doParticipantAction:(EKandyMultiPartyConferenceAction)action participantID:(NSString *)participantID callback:(KandyCallback)callback
 {
-  if (!self.curConferenceId && callback) {
-    callback([[NSError alloc] initWithDomain:@"curConferenceId is null" code:-100 userInfo:nil]);
-    return;
-  }
-  
-  KandyMultiPartyConferenceParticipantActionParams * participantActions =
-  [[KandyMultiPartyConferenceParticipantActionParams alloc] initWithParticipantID:participantID action:action];
-  
-  [[Kandy sharedInstance].services.multiPartyConference
-   updateRoomParticipantActions:@[participantActions]
-   conferenceID:self.curConferenceId
-   responseCallback:^(NSError * error, NSArray<KandyMultiPartyConferenceParticipantActionParams*>* successfullActions, NSArray<KandyMultiPartyConferenceParticipantFailedActionParams*>* failedActions) {
-       if (callback) {
-           callback(error);
-       }
-   }];
+    if (!self.curConferenceId && callback) {
+        callback([[NSError alloc] initWithDomain:@"curConferenceId is null" code:-100 userInfo:nil]);
+        return;
+    }
+    
+    KandyMultiPartyConferenceParticipantActionParams * participantActions =
+    [[KandyMultiPartyConferenceParticipantActionParams alloc] initWithParticipantID:participantID action:action];
+    
+    [[Kandy sharedInstance].services.multiPartyConference
+     updateRoomParticipantActions:@[participantActions]
+     conferenceID:self.curConferenceId
+     responseCallback:^(NSError * error, NSArray<KandyMultiPartyConferenceParticipantActionParams*>* successfullActions, NSArray<KandyMultiPartyConferenceParticipantFailedActionParams*>* failedActions) {
+         if (callback) {
+             callback(error);
+         }
+     }];
 }
 
 
@@ -308,7 +308,7 @@ static ConferenceModule *shareInstance = nil;
                  
                  [[ConferenceModule shareInstance]
                   acceptConference:^(NSError *error) {
-
+                      
                   }];
              }
          }else{
@@ -322,81 +322,97 @@ static ConferenceModule *shareInstance = nil;
 }
 
 
--(void)onConferenceRoomRemovedReceived:(KandyMultiPartyConferenceRoomRemoved*)event;
-{
-  KDALog(@"");
-
-}
-
-
 -(void)onParticipantMuteReceived:(KandyMultiPartyConferenceParticipantMute*)event;
 {
-  KDALog(@"");
-
+    KDALog(@"");
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"loadMPVDetail" object:nil];
+    });
 }
 
 
 -(void)onParticipantUnmuteReceived:(KandyMultiPartyConferenceParticipantUnmute*)event;
 {
-  KDALog(@"");
-
+    KDALog(@"");
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"loadMPVDetail" object:nil];
+    });
 }
 
 
 -(void)onParticipantJoinedRoomReceived:(KandyMultiPartyConferenceParticipantJoined*)event;
 {
-  KDALog(@"");
-  
+    KDALog(@"");
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"loadMPVDetail" object:nil];
+    });
 }
 
 
 -(void)onParticipantLeftRoomReceived:(KandyMultiPartyConferenceParticipantLeft*)event;
 {
-  KDALog(@"");
-
-}
-
-
--(void)onParticipantNameChangeReceived:(KandyMultiPartyConferenceParticipantNameChanged*)event;
-{
-  KDALog(@"");
-
+    KDALog(@"");
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"loadMPVDetail" object:nil];
+    });
 }
 
 
 -(void)onParticipantVideoEnableReceived:(KandyMultiPartyConferenceParticipantVideoEnabled*)event;
 {
-  KDALog(@"");
-
+    KDALog(@"");
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"loadMPVDetail" object:nil];
+    });
 }
 
 
 -(void)onParticipantVideoDisableReceived:(KandyMultiPartyConferenceParticipantVideoDisabled*)event;
 {
-  KDALog(@"");
-
+    KDALog(@"");
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"loadMPVDetail" object:nil];
+    });
 }
 
 
 -(void)onParticipantHoldReceived:(KandyMultiPartyConferenceParticipantHold*)event;
 {
-  KDALog(@"");
+    KDALog(@"");
 }
 
 
 -(void)onParticipantUnholdReceived:(KandyMultiPartyConferenceParticipantUnhold*)event;
 {
-  KDALog(@"");
-
+    KDALog(@"");
+    
 }
+
+
+-(void)onParticipantNameChangeReceived:(KandyMultiPartyConferenceParticipantNameChanged*)event;
+{
+    KDALog(@"");
+    
+}
+
+-(void)onConferenceRoomRemovedReceived:(KandyMultiPartyConferenceRoomRemoved*)event;
+{
+    KDALog(@"");
+}
+
 
 
 -(void)onParticipantRemovedReceived:(KandyMultiPartyConferenceParticipantRemoved*)event;
 {
-  KDALog(@"");
+    KDALog(@"");
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"loadMPVDetail" object:nil];
+    });
 
 }
 
 @end
+
+
 
 
