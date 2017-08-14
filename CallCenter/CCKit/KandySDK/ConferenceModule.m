@@ -149,12 +149,12 @@ static ConferenceModule *shareInstance = nil;
     [TonePlayer stopTonePlayer];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        CCMPVCallViewController *cccall = [[CCMPVCallViewController alloc] initWithNibName:@"CCMPVCallViewController" bundle:nil];
+        CCMPVCallViewController *cccall = [[CCMPVCallViewController alloc] initWithNibName:@"CCMPVCallViewController"
+                                                                                    bundle:nil];
         cccall.roomNumber = self.curRoomNumber;
         cccall.isVideo = YES;
         cccall.nickName = @" ";
         [cccall showInWindow];
-        
     });
 }
 
