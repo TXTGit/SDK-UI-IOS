@@ -282,9 +282,9 @@ static char Object_NotificationsList;
                 }
             }];
         });
-    }
-    
+    }    
 }
+
 
 +(void)showCallPushNotification:(id<KandyCallProtocol>)call;
 {
