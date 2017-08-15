@@ -61,7 +61,7 @@ CCMPVRoomListViewController *cccall = [[CCMPVRoomListViewController alloc] initW
 本推送是采用IOS的VOIP push 为推送消息载体，故要求sdk running ios8+ </br>关于voip push：[http://blog.csdn.net/openglnewbee/article/details/44807191](http://blog.csdn.net/openglnewbee/article/details/44807191) </br>将voip 证书转化格式：[https://blog.serverdensity.com/how-to-renew-your-apple-push-notification-push-ssl-certificate/](https://blog.serverdensity.com/how-to-renew-your-apple-push-notification-push-ssl-certificate/)邮件发送给我们，我们帮你维护到后台系统中。
 
 ## 更多信息请
-参考[详细集成文档](https://github.com/TXTGit/SDK-UI-IOS/blob/master/doc/KANDY%20IOS%20SDK%20%E5%85%A5%E9%97%A8-%E4%B8%AD%E6%96%87%E7%89%88%20%E8%AF%A6%E7%BB%86.docx)
+参考[详细集成文档, doc/KANDY IOS SDK 入门-中文版 详细.docx](https://github.com/TXTGit/SDK-UI-IOS/blob/master/doc/KANDY%20IOS%20SDK%20%E5%85%A5%E9%97%A8-%E4%B8%AD%E6%96%87%E7%89%88%20%E8%AF%A6%E7%BB%86.docx)
 
 
 
