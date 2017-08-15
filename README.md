@@ -23,7 +23,7 @@ CCKitManger.h 是SDKDemo 对外调用的函数合集，完成Call和MPV 的功�
 
 #### 用户登录
 参考LoginViewController</br>
-```oc 
+` 
 [Utils showHUDOnWindowWithText:@"正在登录.."];  
 [CCKitManger loginKandyWithUserName:self.phoneTextField.text
                password:self.smsTextField.text
@@ -35,7 +35,7 @@ CCKitManger.h 是SDKDemo 对外调用的函数合集，完成Call和MPV 的功�
              [self.navigationController popViewControllerAnimated:YES];  
        [self.navigationController setNavigationBarHidden:NO];  
   }
-}];```
+}];`
 
 
 #### 拨打call
