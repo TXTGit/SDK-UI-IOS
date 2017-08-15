@@ -108,7 +108,6 @@
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M6v-04-AwX">
                     <rect key="frame" x="200" y="70" width="120" height="150"/>
-                    <color key="backgroundColor" white="0.89070161459999997" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="8sA-UP-yV4"/>
                         <constraint firstAttribute="width" constant="120" id="BeI-FS-OuN"/>

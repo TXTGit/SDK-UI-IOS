@@ -415,7 +415,10 @@ static CallModule *shareInstance = nil;
                  if(strongself){
                      strongself.outgoingCall = toutgoingCall;
                  }
-                 if(callback) callback(nil);
+                 if(callback)
+                 {
+                     callback(nil);
+                 }
              }
          }];
     }else{
@@ -436,7 +439,10 @@ static CallModule *shareInstance = nil;
                  if(strongself){
                      strongself.outgoingCall = toutgoingCall;
                  }
-                 if(callback) callback(nil);
+                 if(callback)
+                 {
+                     callback(nil);
+                 }
              }
          }];
         
@@ -455,10 +461,13 @@ static CallModule *shareInstance = nil;
     [self.outgoingCall establishWithResponseBlock:^(NSError *rerror) {
         KDALog(@"rerror === %@", [rerror description]);
         if (rerror) {
-            if(callback) callback(rerror);
+            if(callback) {
+                callback(rerror);
+            }
         }else{
-            if(callback) callback(nil);
-            
+            if(callback) {
+                callback(nil);
+            }
             [TonePlayer startRingSound:RING_TYPE_CONNECTING];
             typeof(self) strongself = weekSelf;
             if(strongself){
@@ -478,9 +487,9 @@ static CallModule *shareInstance = nil;
     }else{
         if (currentCall.isIncomingCall) {
             if (currentCall.isAudioOnlyCall) {
-                isVideo = YES;
-            }else{
                 isVideo = NO;
+            }else{
+                isVideo = YES;
             }
         }else{
             if (currentCall.isAudioOnlyCall) {
@@ -904,14 +913,12 @@ static CallModule *shareInstance = nil;
                  callback(nil);
              }
              
-             [TonePlayer startRingSound:RING_TYPE_CONNECTING];
-             
              [toutgoingCall establishWithResponseBlock:^(NSError *error) {
                  KDALog(@"establishWithResponseBlock error === %@", [error description]);
                  if (error) {
                      
                  }else{
-                     [TonePlayer stopTonePlayer];
+                     [TonePlayer startRingSound:RING_TYPE_CONNECTING];
                  }
              }];
          }

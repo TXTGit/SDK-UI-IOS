@@ -205,6 +205,14 @@ static char Object_NotificationsList;
         if (applicationState != UIApplicationStateActive) {
             [TonePlayer startTonePlayerWithOneTime];
         }
+        
+    }else if (messageType && [messageType isEqualToString:@"answeredCall"]) {
+        if (applicationState != UIApplicationStateActive) {
+            [TonePlayer stopTonePlayer];
+        }
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        return YES;
+        
     }else if(messageType && [messageType isEqualToString:@"chat"]){
         
         //暂时仅仅判断chat 消息

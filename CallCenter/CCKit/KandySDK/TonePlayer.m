@@ -215,7 +215,7 @@ static AVAudioPlayer *ringAudioPlayer;
   if ([ringAudioPlayer isPlaying]) {
     [ringAudioPlayer pause];
     [ringAudioPlayer stop];
-    [[AVAudioSession sharedInstance]setActive:NO error:nil];
+    [[AVAudioSession sharedInstance] setActive:NO error:nil];
   }
 }
 

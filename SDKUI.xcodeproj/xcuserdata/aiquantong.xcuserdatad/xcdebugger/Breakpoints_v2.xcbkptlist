@@ -26,28 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CallCenter/CCKit/KandySDK/CallModule.m"
-            timestampString = "524140562.523749"
+            timestampString = "524491860.769283"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "878"
-            endingLineNumber = "878"
+            startingLineNumber = "887"
+            endingLineNumber = "887"
             landmarkName = "-establishMPVCall:isVideo:callback:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CallCenter/CCKit/KandySDK/CallModule.m"
-            timestampString = "524394603.589566"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "593"
-            endingLineNumber = "593"
-            landmarkName = "-hangup:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -71,30 +55,30 @@
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "+[CCKitManger conferenceHangup:]"
-                  moduleName = "SDKDemo"
+                  moduleName = "SDKUI"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aiquantong/Documents/genband/code/sdkDemo/CallCenter/CCKit/CCKitManger.m"
-                  timestampString = "524394923.887203"
+                  urlString = "file:///Users/aiquantong/Documents/GitHub/SDK-UI-IOS/CallCenter/CCKit/CCKitManger.m"
+                  timestampString = "524492802.027278"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "182"
                   endingLineNumber = "182"
-                  offsetFromSymbolStart = "43">
+                  offsetFromSymbolStart = "64">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__32+[CCKitManger conferenceHangup:]_block_invoke"
-                  moduleName = "SDKDemo"
+                  moduleName = "SDKUI"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aiquantong/Documents/genband/code/sdkDemo/CallCenter/CCKit/CCKitManger.m"
-                  timestampString = "524394923.88992"
+                  urlString = "file:///Users/aiquantong/Documents/GitHub/SDK-UI-IOS/CallCenter/CCKit/CCKitManger.m"
+                  timestampString = "524492802.028725"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "182"
                   endingLineNumber = "182"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -119,32 +103,64 @@
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[CCMPVCallViewController onclickHangup:]"
-                  moduleName = "SDKDemo"
+                  moduleName = "SDKUI"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aiquantong/Documents/genband/code/sdkDemo/CallCenter/CCKit/MPVVc/CCMPVCallViewController.m"
-                  timestampString = "524394923.896924"
+                  urlString = "file:///Users/aiquantong/Documents/GitHub/SDK-UI-IOS/CallCenter/CCKit/MPVVc/CCMPVCallViewController.m"
+                  timestampString = "524492802.032102"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "375"
                   endingLineNumber = "375"
-                  offsetFromSymbolStart = "83">
+                  offsetFromSymbolStart = "108">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__41-[CCMPVCallViewController onclickHangup:]_block_invoke"
-                  moduleName = "SDKDemo"
+                  moduleName = "SDKUI"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aiquantong/Documents/genband/code/sdkDemo/CallCenter/CCKit/MPVVc/CCMPVCallViewController.m"
-                  timestampString = "524394923.899374"
+                  urlString = "file:///Users/aiquantong/Documents/GitHub/SDK-UI-IOS/CallCenter/CCKit/MPVVc/CCMPVCallViewController.m"
+                  timestampString = "524492802.033637"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "377"
                   endingLineNumber = "377"
-                  offsetFromSymbolStart = "47">
+                  offsetFromSymbolStart = "60">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CallCenter/CCKit/KandySDK/CallModule.m"
+            timestampString = "524492727.736225"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "-stateChanged:forCall:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CallCenter/CCKit/KandySDK/CallModule.m"
+            timestampString = "524492788.733941"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "471"
+            endingLineNumber = "471"
+            landmarkName = "-establishCallWithResponseBlock:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

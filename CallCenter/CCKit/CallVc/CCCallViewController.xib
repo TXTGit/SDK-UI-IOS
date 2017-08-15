@@ -381,7 +381,7 @@
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="10z-q1-Bqb">
                     <rect key="frame" x="255" y="23" width="120" height="150"/>
-                    <color key="backgroundColor" white="0.89070161459999997" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="150" id="Drg-XL-biY"/>
                         <constraint firstAttribute="width" constant="120" id="Jil-n6-CVV"/>
