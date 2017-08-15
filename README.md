@@ -18,9 +18,10 @@ CCKitManger.h 是SDKDemo 对外调用的函数合集，完成Call和MPV 的功�
 在Appdelegate.m中
 ![](./doc/4.png)
 
+
 ####用户登录
 参考LoginViewController
-```[Utils showHUDOnWindowWithText:@"正在登录.."];  
+`[Utils showHUDOnWindowWithText:@"正在登录.."];  
 [CCKitManger loginKandyWithUserName:self.phoneTextField.text
                password:self.smsTextField.text
                                callback:^(NSError *error) {  
@@ -31,15 +32,17 @@ CCKitManger.h 是SDKDemo 对外调用的函数合集，完成Call和MPV 的功�
              [self.navigationController popViewControllerAnimated:YES];  
        [self.navigationController setNavigationBarHidden:NO];  
   }
-}];```
+}];`
+
 
 ####拨打call
 参考SupportViewController
-```[CCKitManger     callWithIsPstn:NO     isWithVideo:self.switchVideo.isOn     callee:self.iphoneTxt.text     callback:^(NSError *error) {         dispatch_async(dispatch_get_main_queue(), ^{             if (!error) {                 CCCallViewController *cccall = [[CCCallViewController alloc] initWithNibName:@"CCCallViewController" bundle:nil];                 [self.navigationController presentViewController:cccall animated:YES completion:NULL];             }else{             }         });}];```
+`[CCKitManger     callWithIsPstn:NO     isWithVideo:self.switchVideo.isOn     callee:self.iphoneTxt.text     callback:^(NSError *error) {         dispatch_async(dispatch_get_main_queue(), ^{             if (!error) {                 CCCallViewController *cccall = [[CCCallViewController alloc] initWithNibName:@"CCCallViewController" bundle:nil];                 [self.navigationController presentViewController:cccall animated:YES completion:NULL];             }else{             }         });}];`
+
 
 ####发起MPV 会议
 参考SupportViewController
-```CCMPVRoomListViewController *cccall = [[CCMPVRoomListViewController alloc] initWithNibName:@"CCMPVRoomListViewController" bundle:nil];[self.navigationController pushViewController:cccall animated:YES];```
+`CCMPVRoomListViewController *cccall = [[CCMPVRoomListViewController alloc] initWithNibName:@"CCMPVRoomListViewController" bundle:nil];[self.navigationController pushViewController:cccall animated:YES];`
 
 ###推送
 本推送是采用IOS的VOIP push 为推送消息载体，故要求sdk running ios8+关于voip push：[http://blog.csdn.net/openglnewbee/article/details/44807191](http://blog.csdn.net/openglnewbee/article/details/44807191) </br>将voip 证书转化格式：[https://blog.serverdensity.com/how-to-renew-your-apple-push-notification-push-ssl-certificate/](https://blog.serverdensity.com/how-to-renew-your-apple-push-notification-push-ssl-certificate/)邮件发送给我们，我们帮你维护到后台系统中。
