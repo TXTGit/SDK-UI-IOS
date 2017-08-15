@@ -36,14 +36,10 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="1e3-I1-ZUR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="EY4-4J-kqh"/>
-                <constraint firstAttribute="bottom" secondItem="1e3-I1-ZUR" secondAttribute="bottom" id="Szv-JQ-YrA"/>
-                <constraint firstItem="1e3-I1-ZUR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YhL-Lk-q04"/>
-                <constraint firstAttribute="trailing" secondItem="1e3-I1-ZUR" secondAttribute="trailing" id="Z1M-cz-FJa"/>
-                <constraint firstItem="1e3-I1-ZUR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dcD-cG-IKV"/>
-                <constraint firstItem="1e3-I1-ZUR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="izM-Wf-S7F"/>
-                <constraint firstAttribute="trailing" secondItem="1e3-I1-ZUR" secondAttribute="trailing" id="u75-rV-7Sk"/>
-                <constraint firstAttribute="bottom" secondItem="1e3-I1-ZUR" secondAttribute="bottom" id="x7U-ee-zSt"/>
+                <constraint firstItem="1e3-I1-ZUR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2dc-os-xq5"/>
+                <constraint firstAttribute="bottom" secondItem="1e3-I1-ZUR" secondAttribute="bottom" id="FAk-do-3bc"/>
+                <constraint firstAttribute="trailing" secondItem="1e3-I1-ZUR" secondAttribute="trailing" id="YM5-G6-vWD"/>
+                <constraint firstItem="1e3-I1-ZUR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="a9v-QB-Q40"/>
             </constraints>
             <point key="canvasLocation" x="34.5" y="118.5"/>
         </view>

@@ -247,7 +247,7 @@ static BOOL isHiddenInWindow = YES;
     [[UIDevice currentDevice] setValue:@(UIDeviceOrientationPortrait) forKey:@"orientation"];
     [UIViewController attemptRotationToDeviceOrientation];
     
-    CGRect startFrame = showWindow.frame;
+    //CGRect startFrame = showWindow.frame;
     CGRect screenRect = [UIScreen mainScreen].bounds;
     
     CGRect endFrame = CGRectMake(0,

@@ -113,7 +113,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		28138CFB1F2AE56F003FD944 /* SDKDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SDKDemo.entitlements; sourceTree = "<group>"; };
+		28138CFB1F2AE56F003FD944 /* SDKUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SDKUI.entitlements; sourceTree = "<group>"; };
 		28138D0B1F2AF361003FD944 /* CallKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CallKit.framework; path = System/Library/Frameworks/CallKit.framework; sourceTree = SDKROOT; };
 		28138D1C1F2B155E003FD944 /* SessionMangementModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionMangementModule.h; sourceTree = "<group>"; };
 		28138D1D1F2B155E003FD944 /* SessionMangementModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionMangementModule.m; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 		285E5A1E1D2A5E0E009435AB /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		286E4DAD1F204C7100E5765D /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		2873DEBF1D34DC1700B2B14F /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		2876947B1D1A694400AEECB8 /* SDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2876947B1D1A694400AEECB8 /* SDKUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDKUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2876947F1D1A694400AEECB8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		287694811D1A694400AEECB8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		287694821D1A694400AEECB8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -502,7 +502,7 @@
 		287694721D1A694400AEECB8 = {
 			isa = PBXGroup;
 			children = (
-				28138CFB1F2AE56F003FD944 /* SDKDemo.entitlements */,
+				28138CFB1F2AE56F003FD944 /* SDKUI.entitlements */,
 				2876949C1D1A6AFE00AEECB8 /* newFramework */,
 				2876947D1D1A694400AEECB8 /* CallCenter */,
 				286E4DAC1F204C7100E5765D /* Frameworks */,
@@ -512,7 +512,7 @@
 		2876947C1D1A694400AEECB8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2876947B1D1A694400AEECB8 /* SDKDemo.app */,
+				2876947B1D1A694400AEECB8 /* SDKUI.app */,
 			);
 			name = Products;
 			path = ..;
@@ -609,9 +609,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2876947A1D1A694400AEECB8 /* SDKDemo */ = {
+		2876947A1D1A694400AEECB8 /* SDKUI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 287694921D1A694500AEECB8 /* Build configuration list for PBXNativeTarget "SDKDemo" */;
+			buildConfigurationList = 287694921D1A694500AEECB8 /* Build configuration list for PBXNativeTarget "SDKUI" */;
 			buildPhases = (
 				287694771D1A694400AEECB8 /* Sources */,
 				287694781D1A694400AEECB8 /* Frameworks */,
@@ -621,9 +621,9 @@
 			);
 			dependencies = (
 			);
-			name = SDKDemo;
+			name = SDKUI;
 			productName = CallCenter;
-			productReference = 2876947B1D1A694400AEECB8 /* SDKDemo.app */;
+			productReference = 2876947B1D1A694400AEECB8 /* SDKUI.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -649,7 +649,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 287694761D1A694400AEECB8 /* Build configuration list for PBXProject "SDKDemo" */;
+			buildConfigurationList = 287694761D1A694400AEECB8 /* Build configuration list for PBXProject "SDKUI" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -662,7 +662,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2876947A1D1A694400AEECB8 /* SDKDemo */,
+				2876947A1D1A694400AEECB8 /* SDKUI */,
 			);
 		};
 /* End PBXProject section */
@@ -847,7 +847,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = SDKDemo.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SDKUI.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Feiyang Guo (265N83RDWJ)";
 				DEVELOPMENT_TEAM = S4HJG5CE5R;
 				ENABLE_BITCODE = NO;
@@ -874,7 +874,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = SDKDemo.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SDKUI.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Pivos Technology Group Co., Ltd (S4HJG5CE5R)";
 				DEVELOPMENT_TEAM = S4HJG5CE5R;
 				ENABLE_BITCODE = NO;
@@ -899,7 +899,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		287694761D1A694400AEECB8 /* Build configuration list for PBXProject "SDKDemo" */ = {
+		287694761D1A694400AEECB8 /* Build configuration list for PBXProject "SDKUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				287694901D1A694500AEECB8 /* Debug */,
@@ -908,7 +908,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		287694921D1A694500AEECB8 /* Build configuration list for PBXNativeTarget "SDKDemo" */ = {
+		287694921D1A694500AEECB8 /* Build configuration list for PBXNativeTarget "SDKUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				287694931D1A694500AEECB8 /* Debug */,

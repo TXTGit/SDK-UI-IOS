@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2876947A1D1A694400AEECB8"
-               BuildableName = "SDKDemo.app"
-               BlueprintName = "SDKDemo"
-               ReferencedContainer = "container:SDKDemo.xcodeproj">
+               BuildableName = "SDKUI.app"
+               BlueprintName = "SDKUI"
+               ReferencedContainer = "container:SDKUI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2876947A1D1A694400AEECB8"
-            BuildableName = "SDKDemo.app"
-            BlueprintName = "SDKDemo"
-            ReferencedContainer = "container:SDKDemo.xcodeproj">
+            BuildableName = "SDKUI.app"
+            BlueprintName = "SDKUI"
+            ReferencedContainer = "container:SDKUI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2876947A1D1A694400AEECB8"
-            BuildableName = "SDKDemo.app"
-            BlueprintName = "SDKDemo"
-            ReferencedContainer = "container:SDKDemo.xcodeproj">
+            BuildableName = "SDKUI.app"
+            BlueprintName = "SDKUI"
+            ReferencedContainer = "container:SDKUI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2876947A1D1A694400AEECB8"
-            BuildableName = "SDKDemo.app"
-            BlueprintName = "SDKDemo"
-            ReferencedContainer = "container:SDKDemo.xcodeproj">
+            BuildableName = "SDKUI.app"
+            BlueprintName = "SDKUI"
+            ReferencedContainer = "container:SDKUI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

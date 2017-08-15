@@ -43,8 +43,8 @@
 -(void) gotMissedCall:(KandyMissedCall*)missedCall {
     KDALog(@"gotMissedCall");
     
-    NSString *callId = missedCall.callId==nil ? @"" : missedCall.callId;
-    NSString *remoteUri = missedCall.caller.uri==nil?@"" : missedCall.caller.uri;
+    //NSString *callId = missedCall.callId==nil ? @"" : missedCall.callId;
+   // NSString *remoteUri = missedCall.caller.uri==nil?@"" : missedCall.caller.uri;
     
 }
 
