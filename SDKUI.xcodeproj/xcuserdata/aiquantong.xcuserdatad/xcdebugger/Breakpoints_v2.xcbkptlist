@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CallCenter/CCKit/KandySDK/KandyAdpter.m"
+            timestampString = "524111351.426915"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "-reinitKandySDK"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CallCenter/CCKit/KandySDK/CallModule.m"
+            timestampString = "524543715.568553"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "885"
+            endingLineNumber = "885"
+            landmarkName = "-establishMPVCall:isVideo:callback:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CallCenter/CCKit/CCKitManger.m"
+            timestampString = "524394683.391574"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "+conferenceHangup:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "+[CCKitManger conferenceHangup:]"
+                  moduleName = "SDKUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aiquantong/Documents/GitHub/SDK-UI-IOS/CallCenter/CCKit/CCKitManger.m"
+                  timestampString = "524544695.591709"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "182"
+                  endingLineNumber = "182"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__32+[CCKitManger conferenceHangup:]_block_invoke"
+                  moduleName = "SDKUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aiquantong/Documents/GitHub/SDK-UI-IOS/CallCenter/CCKit/CCKitManger.m"
+                  timestampString = "524544695.593165"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "182"
+                  endingLineNumber = "182"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CallCenter/CCKit/MPVVc/CCMPVCallViewController.m"
+            timestampString = "524394922.833975"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "375"
+            endingLineNumber = "375"
+            landmarkName = "-onclickHangup:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CCMPVCallViewController onclickHangup:]"
+                  moduleName = "SDKUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aiquantong/Documents/GitHub/SDK-UI-IOS/CallCenter/CCKit/MPVVc/CCMPVCallViewController.m"
+                  timestampString = "524544695.596618"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "375"
+                  endingLineNumber = "375"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__41-[CCMPVCallViewController onclickHangup:]_block_invoke"
+                  moduleName = "SDKUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aiquantong/Documents/GitHub/SDK-UI-IOS/CallCenter/CCKit/MPVVc/CCMPVCallViewController.m"
+                  timestampString = "524544695.598054"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "377"
+                  endingLineNumber = "377"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
