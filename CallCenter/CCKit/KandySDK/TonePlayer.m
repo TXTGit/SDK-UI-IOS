@@ -46,18 +46,18 @@ static TonePlayer  *shareInstance = nil;
 static SystemSoundID sound;
 
 
+static bool isAbleVibrate = YES;
+static bool isAbleToning = YES;
+
+
 +(void)startTonePlayerWithOneTime
 {
-  bool isVibrate = YES;
-  
-  bool isToning = YES;
-  
-  if (isVibrate) {
+  if (isAbleVibrate) {
     AudioServicesAddSystemSoundCompletion(kSystemSoundID_Vibrate, NULL, NULL, systemAudioCallback, NULL);
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
   }
   
-  if (isToning) {
+  if (isAbleToning) {
     if (!sound) {
       
       NSString *path = [[NSBundle mainBundle] pathForResource:@"ringtone" ofType:@"m4r"];
@@ -86,16 +86,12 @@ static SystemSoundID sound;
 
 +(void)startTonePlayer
 {
-  bool isVibrate = YES;
-  
-  bool isToning = YES;
-  
-  if (isVibrate) {
+  if (isAbleVibrate) {
     AudioServicesAddSystemSoundCompletion(kSystemSoundID_Vibrate, NULL, NULL, systemAudioCallback, NULL);
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
   }
   
-  if (isToning) {
+  if (isAbleToning) {
     if (!sound) {
         
       NSString *path = [[NSBundle mainBundle] pathForResource:@"ringtone" ofType:@"m4r"];
@@ -151,15 +147,11 @@ void soundOneTimeAudioCallback()
 
 +(void)stopTonePlayer
 {
-  bool isVibrate = YES;
-  
-   bool isToning = YES;
-  
-  if (isVibrate) {
+  if (isAbleVibrate) {
         AudioServicesRemoveSystemSoundCompletion(kSystemSoundID_Vibrate);
   }
   
-  if (isToning && sound) {
+  if (isAbleToning && sound) {
     AudioServicesRemoveSystemSoundCompletion(sound);
     AudioServicesDisposeSystemSoundID(sound);
     sound = 0;
@@ -169,7 +161,6 @@ void soundOneTimeAudioCallback()
 
 
 static AVAudioPlayer *ringAudioPlayer;
-
 
 +(void)startRingSound:(RING_TYPE)ringType
 {
@@ -188,7 +179,7 @@ static AVAudioPlayer *ringAudioPlayer;
   ringAudioPlayer.numberOfLoops = NSIntegerMax;
   [ringAudioPlayer prepareToPlay];
   if(error){
-    KDALog(@"initWithContentsOfURL:%@",error.localizedDescription);
+    KDALog(@"startRingSound initWithContentsOfURL:%@",error.localizedDescription);
     return;
   }
   
@@ -203,21 +194,29 @@ static AVAudioPlayer *ringAudioPlayer;
     KDALog(@"setActive:%@",error.localizedDescription);
   }
   
-  if (![ringAudioPlayer isPlaying]) {
-    [ringAudioPlayer play];
-  }
+   BOOL startPreparePlay = [ringAudioPlayer prepareToPlay];
+   BOOL startPlay =  [ringAudioPlayer play];
+    KDALog(@"startPreparePlay:%d startPlay:%d",startPreparePlay,startPlay);
 }
 
 
 
 +(void)stopRingSound
 {
-  if ([ringAudioPlayer isPlaying]) {
+  if (ringAudioPlayer) {
     [ringAudioPlayer pause];
     [ringAudioPlayer stop];
-    [[AVAudioSession sharedInstance] setActive:NO error:nil];
+      
+      NSError *error=nil;
+      [[AVAudioSession sharedInstance] setActive:NO error:&error];
+      if(error){
+          KDALog(@"ringAudioPlayer stopRingSound :%@",[error description]);
+          return;
+      }
+      ringAudioPlayer = nil;
   }
 }
+
 
 
 static AVAudioPlayer *overAudioPlayer = nil;

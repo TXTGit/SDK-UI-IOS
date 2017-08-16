@@ -853,7 +853,6 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/CallCenter/KandySDK",
 					"$(PROJECT_DIR)/CallCenter/CCKit/KandySDK",
 				);
 				GCC_PREFIX_HEADER = CallCenter/PrefixHeader.pch;
@@ -880,7 +879,6 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/CallCenter/KandySDK",
 					"$(PROJECT_DIR)/CallCenter/CCKit/KandySDK",
 				);
 				GCC_PREFIX_HEADER = CallCenter/PrefixHeader.pch;

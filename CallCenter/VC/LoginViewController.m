@@ -7,6 +7,8 @@
 //
 
 #import "LoginViewController.h"
+#import "SupportViewController.h"
+
 #import "../CCKit/3rdParty/Toast/UIView+Toast.h"
 #import "Utils.h"
 #import "CCKitManger.h"
@@ -52,17 +54,18 @@
 -(IBAction)login:(id)sender
 {
     [Utils showHUDOnWindowWithText:@"正在登录.."];
-    [CCKitManger loginKandyWithUserName:self.phoneTextField.text
-                               password:self.smsTextField.text
-                               callback:^(NSError *error) {
-                                   [Utils hideHUDForWindow];
-                                   if (error) {
-                                       [self.view makeToast:[error description]];
-                                   }else{
-                                       [self.navigationController popViewControllerAnimated:YES];
-                                       [self.navigationController setNavigationBarHidden:NO];
-                                   }
-                               }];
+    [CCKitManger
+     loginKandyWithUserName:self.phoneTextField.text
+     password:self.smsTextField.text
+     callback:^(NSError *error) {
+         [Utils hideHUDForWindow];
+         if (error) {
+             [self.view makeToast:[error description]];
+         }else{
+             SupportViewController *mvc = [[SupportViewController alloc] initWithNibName:@"SupportViewController" bundle:nil];
+             [self.navigationController setViewControllers:@[mvc] animated:YES];
+         }
+     }];
 }
 
 /*

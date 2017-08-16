@@ -61,14 +61,13 @@
                     [Utils hideHUDForWindow];
                     if (error) {
                         LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-                        [self.rootNv  pushViewController:login animated:NO];
+                        [self.rootNv setViewControllers:@[login] animated:YES];
                     }
                 });
             }];
         }else{
-            [self.rootNv setNavigationBarHidden:YES];
             LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-            [self.rootNv  pushViewController:login animated:NO];
+            [self.rootNv setViewControllers:@[login] animated:YES];
         }
     });
     

@@ -84,7 +84,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
             LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-            [ad.rootNv  pushViewController:login animated:NO];
+            [ad.rootNv  setViewControllers:@[login] animated:YES];
         });
     }];
 }

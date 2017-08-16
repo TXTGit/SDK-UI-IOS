@@ -18,7 +18,7 @@
 @interface AppDelegate(Push)<PKPushRegistryDelegate>
 
 @property (atomic, strong) PKPushRegistry *pushRegistry;;
-@property (atomic, strong) NSMutableArray *notificationsList;
+@property (atomic, strong) NSMutableArray *notificationsMsgList;
 
 
 -(void)startNotification:(NSDictionary *)launchOptions;
@@ -28,7 +28,6 @@
 -(void)doRemoteNotifications;
 
 +(void)showCallPushNotification:(id<KandyCallProtocol>)call;
-
 
 @end
 

@@ -42,6 +42,7 @@
     return vc;
 }
 
+
 - (BOOL)shouldAutorotate
 {
     return [[self realVisibleViewController] shouldAutorotate];

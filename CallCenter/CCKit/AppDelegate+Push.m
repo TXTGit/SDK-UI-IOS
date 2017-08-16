@@ -13,7 +13,7 @@
 @implementation AppDelegate(Push)
 
 @dynamic pushRegistry;
-@dynamic notificationsList;
+@dynamic notificationsMsgList;
 
 
 static char Object_PushRegistry;
@@ -31,34 +31,36 @@ static char Object_PushRegistry;
 }
 
 
-static char Object_NotificationsList;
+static char Object_notificationsMsgList;
 
-- (id)notificationsList {
-    id object = objc_getAssociatedObject(self, &Object_NotificationsList);
+- (id)notificationsMsgList {
+    id object = objc_getAssociatedObject(self, &Object_notificationsMsgList);
     return object;
 }
 
-- (void)setNotificationsList:(NSMutableArray *)notificationsList
+- (void)setNotificationsMsgList:(NSMutableArray *)notificationsMsgList
 {
-    [self willChangeValueForKey:@"notificationsList"];
-    objc_setAssociatedObject(self, &Object_NotificationsList, notificationsList, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    [self didChangeValueForKey:@"notificationsList"];
+    [self willChangeValueForKey:@"notificationsMsgList"];
+    objc_setAssociatedObject(self, &Object_notificationsMsgList, notificationsMsgList, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self didChangeValueForKey:@"notificationsMsgList"];
 }
 
 
+static NSMutableArray *localNotificationsList;
+
 -(void)startNotification:(NSDictionary *)launchOptions
 {
-    if (self.notificationsList == nil) {
-        self.notificationsList = [NSMutableArray new];
+    if (self.notificationsMsgList == nil) {
+        self.notificationsMsgList = [NSMutableArray new];
     }
     [self removeLocalNotificaion];
     
     if (launchOptions && [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] != nil)
     {
         NSDictionary* remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-        [self.notificationsList addObject:remoteNotification];
+        [self.notificationsMsgList addObject:remoteNotification];
     }
-    KDALog(@"notificationsList == %@ launchOptions == %@", [self.notificationsList description], launchOptions);
+    KDALog(@"notificationsMsgList == %@ launchOptions == %@", [self.notificationsMsgList description], launchOptions);
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     [self initPushNotificationCategory];
@@ -105,7 +107,7 @@ static char Object_NotificationsList;
 //传统推送方式 已经不在支持
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    [self.notificationsList addObject:userInfo];
+    [self.notificationsMsgList addObject:userInfo];
     //[self handleRemoteNotifications];
 }
 
@@ -134,11 +136,11 @@ static char Object_NotificationsList;
     if (type && [type isEqualToString:PKPushTypeVoIP]) {
         [self createLocalNotificaion:payload.dictionaryPayload];
         
-        if (self.notificationsList == nil) {
-            self.notificationsList = [NSMutableArray new];
+        if (self.notificationsMsgList == nil) {
+            self.notificationsMsgList = [NSMutableArray new];
         }
         
-        [self.notificationsList addObject:[payload.dictionaryPayload copy]];
+        [self.notificationsMsgList addObject:[payload.dictionaryPayload copy]];
         UIApplicationState applicationState = [UIApplication sharedApplication].applicationState;
         if (applicationState == UIApplicationStateActive) {
             [self doRemoteNotifications];
@@ -196,6 +198,12 @@ static char Object_NotificationsList;
             if (userId) {
                 alertBodyStr = [NSString stringWithFormat:@"%@ %@", alertBodyStr, userId];
             }
+        }
+        NSString *callid = dic[@"call_id"];
+        if (callid && ![AppDelegate isExistLocalNotificaiton:callid]) {
+            [localNotificationsList addObject:callid];
+        }else{
+            return NO;
         }
         
         notification.alertBody = alertBodyStr;
@@ -270,7 +278,7 @@ static char Object_NotificationsList;
 //kandy sdk 将不同的事件分发到对应的处理模块，调用响应的代理函数
 -(void)doRemoteNotifications
 {
-    for(NSDictionary *remoteNotification in self.notificationsList)
+    for(NSDictionary *remoteNotification in self.notificationsMsgList)
     {
         KDALog(@"222 remoteNotification === %@", remoteNotification);
         id<KandyEventProtocol> event = [[Kandy sharedInstance].services.push getRemoteNotificationEvent:remoteNotification];
@@ -286,19 +294,36 @@ static char Object_NotificationsList;
                 {
                     //Push format not supported by Kandy, handle the notification by my self
                 }else{
-                    [self.notificationsList removeObject:remoteNotification];
+                    [self.notificationsMsgList removeObject:remoteNotification];
                 }
             }];
         });
     }    
 }
 
+//防止出现重复推送的问题
++(BOOL)isExistLocalNotificaiton:(NSString *)pushId
+{
+    if (localNotificationsList == nil) {
+        localNotificationsList = [[NSMutableArray alloc] initWithCapacity:10];
+    }
+    
+    if (pushId == nil || [pushId isEqualToString:@""]) {
+        return NO;
+    }
+    
+    for (NSString *tpushid in localNotificationsList) {
+        if (tpushid && [tpushid isEqualToString:pushId]) {
+            return YES;
+        }
+    }
+    return NO;
+}
 
 +(void)showCallPushNotification:(id<KandyCallProtocol>)call;
 {
-    
     UIApplicationState applicationState = [UIApplication sharedApplication].applicationState;
-    if (applicationState == UIApplicationStateBackground) {
+    if (applicationState != UIApplicationStateActive) {
         UILocalNotification *notification = [[UILocalNotification alloc] init];
         notification.fireDate = [NSDate date];
         notification.timeZone = [NSTimeZone defaultTimeZone];
@@ -310,7 +335,11 @@ static char Object_NotificationsList;
         notification.alertBody = alertBodyStr;
         notification.category = @"comingCall";
         
-        [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+        NSString *callId = call.callId;
+        if (callId && ![self isExistLocalNotificaiton:callId]) {
+            [localNotificationsList addObject:callId];
+            [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+        }
     }
 }
 

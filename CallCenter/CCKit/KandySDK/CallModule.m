@@ -223,9 +223,7 @@
         }];
         return;
     }
-    
-  //[AppDelegate showCallPushNotification:call];
-    
+
     switch ([call incomingCallAnswerType]) {
         case EKandyIncomingCallAnswerType_none:
         {
@@ -242,6 +240,7 @@
         case EKandyIncomingCallAnswerType_pendingUserAnswer:
         {
             [TonePlayer startTonePlayer];
+            [AppDelegate showCallPushNotification:call];
             self.currentIncomingCall = call;
             CCCallViewController *cccall = [[CCCallViewController alloc] initWithNibName:@"CCCallViewController" bundle:nil];
             [cccall showInWindow];
@@ -458,6 +457,8 @@ static CallModule *shareInstance = nil;
     }
     
     __weak typeof(self) weekSelf = self;
+    
+    [TonePlayer startRingSound:RING_TYPE_CONNECTING];
     [self.outgoingCall establishWithResponseBlock:^(NSError *rerror) {
         KDALog(@"rerror === %@", [rerror description]);
         if (rerror) {
@@ -468,7 +469,6 @@ static CallModule *shareInstance = nil;
             if(callback) {
                 callback(nil);
             }
-            [TonePlayer startRingSound:RING_TYPE_CONNECTING];
             typeof(self) strongself = weekSelf;
             if(strongself){
                 [strongself setupCameraResolution];
@@ -913,12 +913,13 @@ static CallModule *shareInstance = nil;
                  callback(nil);
              }
              
+             [TonePlayer startRingSound:RING_TYPE_CONNECTING];
              [toutgoingCall establishWithResponseBlock:^(NSError *error) {
                  KDALog(@"establishWithResponseBlock error === %@", [error description]);
                  if (error) {
                      
                  }else{
-                     [TonePlayer startRingSound:RING_TYPE_CONNECTING];
+
                  }
              }];
          }
